@@ -9,11 +9,10 @@ const jobSchema = new mongoose.Schema(
     },
 
     company: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "Company",
+  required: true,
+},
     location: {
       type: String,
       default: "Not Specified",

@@ -2,8 +2,7 @@ import Job from "../models/Job.js";
 
 const getJobs = async (req, res) => {
   try {
-    const jobs = await Job.find();
-
+   const jobs = await Job.find().populate("company");
     res.status(200).json({
       success: true,
       count: jobs.length,
@@ -34,7 +33,7 @@ const createJob = async (req, res) => {
 };
 const getJobById = async (req, res) => {
   try {
-    const job = await Job.findById(req.params.id);
+   const job = await Job.findById(req.params.id).populate("company");
 
     if (!job) {
       return res.status(404).json({
