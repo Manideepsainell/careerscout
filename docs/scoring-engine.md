@@ -6,7 +6,7 @@ The scoring engine ranks jobs based on relevance to the user.
 
 Goal:
 
-Identify the highest ROI opportunities and reduce manual job filtering.
+Rank opportunities based on relevance to the user.
 
 ---
 

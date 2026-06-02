@@ -2,7 +2,10 @@
 
 ## System Goal
 
-CareerScout collects jobs from multiple sources, normalizes data, scores opportunities, and presents the highest-value jobs to the user.
+CareerScout collects jobs from multiple sources,
+normalizes data,
+scores opportunities,
+and presents them in a dashboard.
 
 ---
 
