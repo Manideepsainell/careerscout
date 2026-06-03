@@ -1,7 +1,8 @@
 import Company from "../models/Company.js";
-
-const getCompanies = async (req, res) => {
-  try {
+import Job from "../models/Job.js";
+import CustomError from "../utils/customError.js";
+import asyncHandler from "../utils/asyncHandler.js";
+const getCompanies = asyncHandler(async (req, res) => {
     const companies = await Company.find();
 
     res.status(200).json({
@@ -9,55 +10,30 @@ const getCompanies = async (req, res) => {
       count: companies.length,
       data: companies,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+  });
 
-const createCompany = async (req, res) => {
-  try {
+const createCompany = asyncHandler(async (req, res) => {
     const company = await Company.create(req.body);
 
     res.status(201).json({
       success: true,
       data: company,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-
-const getCompanyById = async (req, res) => {
-  try {
+  });
+const getCompanyById = asyncHandler(async (req, res) => {
     const company = await Company.findById(req.params.id);
 
     if (!company) {
-      return res.status(404).json({
-        success: false,
-        message: "Company not found",
-      });
+      throw new CustomError("Company not found", 404);
     }
 
     res.status(200).json({
       success: true,
       data: company,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+  });
 
-const updateCompany = async (req, res) => {
-  try {
+const updateCompany = asyncHandler(async (req, res) => {
     const company = await Company.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -68,57 +44,33 @@ const updateCompany = async (req, res) => {
     );
 
     if (!company) {
-      return res.status(404).json({
-        success: false,
-        message: "Company not found",
-      });
+     throw new CustomError("Company not found", 404);
     }
 
     res.status(200).json({
       success: true,
       data: company,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+  });
+const deleteCompany = asyncHandler(async (req, res) => {
 
-const deleteCompany = async (req, res) => {
-  try {
     const company = await Company.findByIdAndDelete(req.params.id);
 
     if (!company) {
-      return res.status(404).json({
-        success: false,
-        message: "Company not found",
-      });
+    throw new CustomError("Company not found", 404);
     }
 
     res.status(200).json({
       success: true,
       message: "Company deleted successfully",
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-import Job from "../models/Job.js";
+  } );
 
-const getCompanyJobs = async (req, res) => {
-  try {
+const getCompanyJobs = asyncHandler(async (req, res) => {
     const company = await Company.findById(req.params.id);
 
     if (!company) {
-      return res.status(404).json({
-        success: false,
-        message: "Company not found",
-      });
+     throw new CustomError("Company not found", 404);
     }
 
     const jobs = await Job.find({
@@ -131,13 +83,7 @@ const getCompanyJobs = async (req, res) => {
       count: jobs.length,
       data: jobs,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+  });
 export {
   getCompanies,
   createCompany,
