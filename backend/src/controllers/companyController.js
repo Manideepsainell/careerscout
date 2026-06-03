@@ -108,11 +108,41 @@ const deleteCompany = async (req, res) => {
     });
   }
 };
+import Job from "../models/Job.js";
 
+const getCompanyJobs = async (req, res) => {
+  try {
+    const company = await Company.findById(req.params.id);
+
+    if (!company) {
+      return res.status(404).json({
+        success: false,
+        message: "Company not found",
+      });
+    }
+
+    const jobs = await Job.find({
+      company: req.params.id,
+    }).populate("company");
+
+    res.status(200).json({
+      success: true,
+      company: company.name,
+      count: jobs.length,
+      data: jobs,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 export {
   getCompanies,
   createCompany,
   getCompanyById,
   updateCompany,
   deleteCompany,
+  getCompanyJobs
 };

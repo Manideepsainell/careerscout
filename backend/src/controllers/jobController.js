@@ -2,17 +2,50 @@ import Job from "../models/Job.js";
 
 const getJobs = async (req, res) => {
   try {
-   const jobs = await Job.find().populate("company");
+const filter = {};
+
+if (req.query.jobType) {
+  filter.jobType = req.query.jobType;
+}
+
+if (req.query.location) {
+  filter.location = req.query.location;
+}
+
+if (req.query.status) {
+  filter.status = req.query.status;
+}
+let sortOption = {};
+
+if (req.query.sort === "latest") {
+  sortOption = { createdAt: -1 };
+}
+
+if (req.query.sort === "oldest") {
+  sortOption = { createdAt: 1 };
+}
+const jobs = await Job.find(filter)
+  .sort(sortOption)
+  .populate("company");
     res.status(200).json({
       success: true,
       count: jobs.length,
       data: jobs,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+   if (error.name === "ValidationError") {
+  const firstError = Object.values(error.errors)[0].message;
+
+  return res.status(400).json({
+    success: false,
+    message: firstError,
+  });
+}
+
+res.status(500).json({
+  success: false,
+  message: error.message,
+});
   }
 };
 

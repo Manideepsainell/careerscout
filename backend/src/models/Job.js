@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const jobSchema = new mongoose.Schema(
   {
     title: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+  type: String,
+  required: [true, "Title is required"],
+  trim: true,
+},
 
-    company: {
+   company: {
   type: mongoose.Schema.Types.ObjectId,
   ref: "Company",
-  required: true,
+  required: [true, "Company is required"],
 },
     location: {
       type: String,
@@ -34,14 +34,13 @@ const jobSchema = new mongoose.Schema(
     },
 
     source: {
-      type: String,
-      required: true,
-    },
-
+  type: String,
+  required: [true, "Source is required"],
+},
     jobUrl: {
-      type: String,
-      required: true,
-    },
+  type: String,
+  required: [true, "Job URL is required"],
+},
 
     description: {
       type: String,
