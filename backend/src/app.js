@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import jobRoutes from "./routes/jobRoutes.js";
 import companyRoutes from "./routes/companyRoutes.js";
+import errorHandler from "./middleware/errorMiddleware.js";
 const app = express();
 
 app.use(cors());
@@ -15,5 +16,5 @@ app.get("/api/health", (req, res) => {
     message: "CareerScout API is running",
   });
 });
-
+app.use(errorHandler);
 export default app;

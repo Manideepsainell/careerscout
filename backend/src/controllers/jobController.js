@@ -1,7 +1,7 @@
 import Job from "../models/Job.js";
-
-const getJobs = async (req, res) => {
-  try {
+import CustomError from "../utils/customError.js";
+import asyncHandler from "../utils/asyncHandler.js";
+const getJobs = asyncHandler(async (req, res) => {
 const filter = {};
 
 if (req.query.jobType) {
@@ -32,85 +32,42 @@ const jobs = await Job.find(filter)
       count: jobs.length,
       data: jobs,
     });
-  } catch (error) {
-   if (error.name === "ValidationError") {
-  const firstError = Object.values(error.errors)[0].message;
-
-  return res.status(400).json({
-    success: false,
-    message: firstError,
   });
-}
 
-res.status(500).json({
-  success: false,
-  message: error.message,
-});
-  }
-};
+const createJob = asyncHandler(async (req, res) => {
 
-const createJob = async (req, res) => {
-  try {
     const job = await Job.create(req.body);
 
     res.status(201).json({
       success: true,
       data: job,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+  });
+const getJobById = asyncHandler(async (req, res) => {
+  const job = await Job.findById(req.params.id).populate("company");
+
+  if (!job) {
+    throw new CustomError("Job not found", 404);
   }
-};
-const getJobById = async (req, res) => {
-  try {
-   const job = await Job.findById(req.params.id).populate("company");
 
-    if (!job) {
-      return res.status(404).json({
-        success: false,
-        message: "Job not found",
-      });
-    }
+  res.status(200).json({
+    success: true,
+    data: job,
+  });
+});
 
-    res.status(200).json({
-      success: true,
-      data: job,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-
-const deleteJob = async (req, res) => {
-  try {
+const deleteJob = asyncHandler(async (req, res) => {
     const job = await Job.findByIdAndDelete(req.params.id);
 
-    if (!job) {
-      return res.status(404).json({
-        success: false,
-        message: "Job not found",
-      });
-    }
-
+   if (!job) {
+  throw new CustomError("Job not found", 404);
+}
     res.status(200).json({
       success: true,
       message: "Job deleted successfully",
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-const updateJob = async (req, res) => {
-  try {
+});
+const updateJob = asyncHandler(async (req, res) => {
     const job = await Job.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -121,23 +78,13 @@ const updateJob = async (req, res) => {
     );
 
     if (!job) {
-      return res.status(404).json({
-        success: false,
-        message: "Job not found",
-      });
-    }
+      throw new CustomError("Job not found", 404);}
 
     res.status(200).json({
       success: true,
       data: job,
     });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
+  });
 
 export {
   getJobs,
