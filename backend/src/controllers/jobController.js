@@ -3,7 +3,31 @@ import CustomError from "../utils/customError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 const getJobs = asyncHandler(async (req, res) => {
 const filter = {};
-
+if (req.query.search) {
+  filter.$or = [
+    {
+      title: {
+        $regex: req.query.search,
+        $options: "i",
+      },
+    },
+    {
+      location: {
+        $regex: req.query.search,
+        $options: "i",
+      },
+    },
+    {
+  description: {
+    $regex: req.query.search,
+    $options: "i",
+  },
+}
+  ];
+}
+const page = Number(req.query.page) || 1;
+const limit = Number(req.query.limit) || 5;
+const skip = (page - 1) * limit;
 if (req.query.jobType) {
   filter.jobType = req.query.jobType;
 }
@@ -26,12 +50,16 @@ if (req.query.sort === "oldest") {
 }
 const jobs = await Job.find(filter)
   .sort(sortOption)
+  .skip(skip)
+  .limit(limit)
   .populate("company");
     res.status(200).json({
-      success: true,
-      count: jobs.length,
-      data: jobs,
-    });
+  success: true,
+  page,
+  limit,
+  count: jobs.length,
+  data: jobs,
+});
   });
 
 const createJob = asyncHandler(async (req, res) => {
