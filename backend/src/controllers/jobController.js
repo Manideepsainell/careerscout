@@ -48,16 +48,20 @@ if (req.query.sort === "latest") {
 if (req.query.sort === "oldest") {
   sortOption = { createdAt: 1 };
 }
+const totalJobs = await Job.countDocuments(filter);
+const totalPages = Math.ceil(totalJobs / limit);
 const jobs = await Job.find(filter)
   .sort(sortOption)
   .skip(skip)
   .limit(limit)
   .populate("company");
-    res.status(200).json({
+   res.status(200).json({
   success: true,
   page,
   limit,
   count: jobs.length,
+  totalJobs,
+  totalPages,
   data: jobs,
 });
   });
