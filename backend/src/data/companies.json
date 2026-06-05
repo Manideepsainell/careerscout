@@ -1,0 +1,502 @@
+[
+  {
+    "name": "BrowserStack",
+    "website": "https://www.browserstack.com",
+    "careersUrl": "https://www.browserstack.com/careers",
+    "category": "Product",
+    "location": "Mumbai",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Postman",
+    "website": "https://www.postman.com",
+    "careersUrl": "https://www.postman.com/company/careers",
+    "category": "Product",
+    "location": "Bengaluru",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Razorpay",
+    "website": "https://razorpay.com",
+    "careersUrl": "https://razorpay.com/jobs",
+    "category": "Product",
+    "location": "Bengaluru",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Freshworks",
+    "website": "https://www.freshworks.com",
+    "careersUrl": "https://www.freshworks.com/company/careers",
+    "category": "SaaS",
+    "location": "Bengaluru",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Zoho",
+    "website": "https://www.zoho.com",
+    "careersUrl": "https://www.zoho.com/careers/#jobs",
+    "category": "SaaS",
+    "location": "Chennai",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Darwinbox",
+    "website": "https://darwinbox.com",
+    "careersUrl": "https://darwinbox.com/careers",
+    "category": "SaaS",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "HIGH"
+  },
+  {
+    "name": "Chargebee",
+    "website": "https://www.chargebee.com",
+    "careersUrl": "https://www.chargebee.com/careers/join-us",
+    "category": "SaaS",
+    "location": "Chennai",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Juspay",
+    "website": "https://juspay.io",
+    "careersUrl": "https://juspay.io/careers",
+    "category": "Product",
+    "location": "Bengaluru",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Keka",
+    "website": "https://www.keka.com",
+    "careersUrl": "https://hr.keka.com/careers",
+    "category": "SaaS",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "HIGH"
+  },
+  {
+    "name": "HighRadius",
+    "website": "https://www.highradius.com",
+    "careersUrl": "https://www.highradius.com/about/career",
+    "category": "SaaS",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "HIGH"
+  },
+  {
+    "name": "Techolution",
+    "website": "https://www.techolution.com",
+    "careersUrl": "https://www.techolution.com/careers",
+    "category": "Startup",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "HIGH"
+  },
+  {
+    "name": "ValueLabs",
+    "website": "https://www.valuelabs.com",
+    "careersUrl": "https://www.valuelabs.com/careers",
+    "category": "Service",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "HIGH"
+  },
+  {
+    "name": "People Tech Group",
+    "website": "https://peopletech.com",
+    "careersUrl": "https://peopletech.com/careers",
+    "category": "Service",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "HIGH"
+  },
+  {
+    "name": "Innominds",
+    "website": "https://www.innominds.com",
+    "careersUrl": "https://careers.innominds.com/jobs",
+    "category": "Enterprise",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Nisum",
+    "website": "https://www.nisum.com",
+    "careersUrl": "https://www.nisum.com/careers/careers-india",
+    "category": "Enterprise",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Cyient",
+    "website": "https://www.cyient.com",
+    "careersUrl": "https://careers.cyient.com/cyient",
+    "category": "Enterprise",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+    "name": "Evergent",
+    "website": "https://evergent.com",
+    "careersUrl": "https://evergent.com/careers",
+    "category": "SaaS",
+    "location": "Hyderabad",
+    "active": true,
+    "crawlStatus": "PENDING",
+    "priority": "MEDIUM"
+  },
+  {
+  "name": "Zenoti",
+  "website": "https://www.zenoti.com",
+  "careersUrl": "https://www.zenoti.com/company/careers",
+  "category": "SaaS",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "HIGH"
+},
+{
+  "name": "Coforge",
+  "website": "https://www.coforge.com",
+  "careersUrl": "https://careers.coforge.com/coforge/",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Ahex Technologies",
+  "website": "https://ahex.co",
+  "careersUrl": "https://ahex.co/careers/",
+  "category": "Startup",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "HIGH"
+},
+{
+  "name": "TEKsystems Global Services",
+  "website": "https://www.teksystems.com",
+  "careersUrl": "https://careers.teksystems.com",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "T-Mobile",
+  "website": "https://www.t-mobile.com",
+  "careersUrl": "https://careers.t-mobile.com/technology-jobs",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "HIGH"
+},
+{
+  "name": "Synchrony",
+  "website": "https://www.synchrony.com",
+  "careersUrl": "https://www.synchronycareers.com/location/hyderabad-jobs/49398/1269750-1254788-1269843/4",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Micron",
+  "website": "https://www.micron.com",
+  "careersUrl": "https://micron.eightfold.ai/careers",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Blue Yonder",
+  "website": "https://blueyonder.com",
+  "careersUrl": "https://careers.blueyonder.com/us/en/search-results",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "HIGH"
+},
+{
+  "name": "Ivanti",
+  "website": "https://www.ivanti.com",
+  "careersUrl": "https://www.ivanti.com/company/careers/find",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "EPAM Systems",
+  "website": "https://www.epam.com",
+  "careersUrl": "https://careers.epam.com/en/jobs/india",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Persistent Systems",
+  "website": "https://www.persistent.com",
+  "careersUrl": "https://careers.persistent.com/explore-opportunities",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "ServiceNow",
+  "website": "https://www.servicenow.com",
+  "careersUrl": "https://careers.servicenow.com/jobs",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "NCR Atleos",
+  "website": "https://www.ncratleos.com",
+  "careersUrl": "https://ncratleos.wd1.myworkdayjobs.com/ext_apacatleos",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Oracle",
+  "website": "https://www.oracle.com",
+  "careersUrl": "https://careers.oracle.com",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "ADP",
+  "website": "https://www.adp.com",
+  "careersUrl": "https://jobs.adp.com",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "OpenText",
+  "website": "https://www.opentext.com",
+  "careersUrl": "https://careers.opentext.com/us/en/India",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Salesforce",
+  "website": "https://www.salesforce.com",
+  "careersUrl": "https://www.salesforce.com/company/careers/jobs/",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Progress",
+  "website": "https://www.progress.com",
+  "careersUrl": "https://www.progress.com/company/careers/open-positions",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Pegasystems",
+  "website": "https://www.pega.com",
+  "careersUrl": "https://www.pega.com/about/careers/job-listings",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "HCLTech",
+  "website": "https://www.hcltech.com",
+  "careersUrl": "https://careers.hcltech.com/go/India/9553955/",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "NVIDIA",
+  "website": "https://www.nvidia.com",
+  "careersUrl": "https://nvidia.eightfold.ai/careers",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Qualcomm",
+  "website": "https://www.qualcomm.com",
+  "careersUrl": "https://careers.qualcomm.com/careers",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "FactSet",
+  "website": "https://www.factset.com",
+  "careersUrl": "https://factset.wd108.myworkdayjobs.com/FactSetCareers",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Franklin Templeton",
+  "website": "https://www.franklintempleton.com",
+  "careersUrl": "https://franklintempleton.wd5.myworkdayjobs.com/Primary-External-1",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "State Street",
+  "website": "https://www.statestreet.com",
+  "careersUrl": "https://careers.statestreet.com/global/en/c/information-technology-jobs",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Fidelity International",
+  "website": "https://www.fidelityinternational.com",
+  "careersUrl": "https://fidelityinternational.tal.net",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "UnitedHealth Group",
+  "website": "https://www.unitedhealthgroup.com",
+  "careersUrl": "https://careers.unitedhealthgroup.com",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Medtronic",
+  "website": "https://www.medtronic.com",
+  "careersUrl": "https://medtronic.wd1.myworkdayjobs.com/MedtronicCareers",
+  "category": "Enterprise",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Thomson Reuters",
+  "website": "https://www.thomsonreuters.com",
+  "careersUrl": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site",
+  "category": "Product",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Cornerstone OnDemand",
+  "website": "https://www.cornerstoneondemand.com",
+  "careersUrl": "https://cornerstone.csod.com/ux/ats/careersite/2/home",
+  "category": "SaaS",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Virtusa",
+  "website": "https://www.virtusa.com",
+  "careersUrl": "https://www.virtusa.com/careers/job-search",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "Mphasis",
+  "website": "https://www.mphasis.com",
+  "careersUrl": "https://mphasis.ripplehire.com",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+},
+{
+  "name": "LTIMindtree",
+  "website": "https://www.ltimindtree.com",
+  "careersUrl": "https://ltimindtree.ripplehire.com",
+  "category": "Service",
+  "location": "Hyderabad",
+  "active": true,
+  "crawlStatus": "PENDING",
+  "priority": "MEDIUM"
+}
+]

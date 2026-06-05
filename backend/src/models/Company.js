@@ -40,7 +40,11 @@ const companySchema = new mongoose.Schema(
       enum: ["PENDING", "SUCCESS", "FAILED"],
       default: "PENDING",
     },
-
+    priority: {
+  type: String,
+  enum: ["HIGH", "MEDIUM", "LOW"],
+  default: "MEDIUM"
+},
     lastCrawledAt: {
       type: Date,
     },
