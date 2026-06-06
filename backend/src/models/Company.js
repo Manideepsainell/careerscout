@@ -18,6 +18,29 @@ const companySchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    openPositionsUrl: {
+  type: String,
+  default: "",
+},
+jobBoardType: {
+  type: String,
+  enum: [
+    "WORKDAY",
+    "GREENHOUSE",
+    "SMARTRECRUITERS",
+    "EIGHTFOLD",
+    "RIPPLEHIRE",
+    "DARWINBOX",
+    "SUCCESSFACTORS",
+    "TALEO",
+    "ORACLE",
+    "CORNERSTONE",
+    "LINKEDIN",
+    "CUSTOM",
+    "UNKNOWN",
+  ],
+  default: "UNKNOWN",
+},
 
     category: {
       type: String,

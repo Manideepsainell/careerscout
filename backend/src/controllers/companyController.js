@@ -3,14 +3,28 @@ import Job from "../models/Job.js";
 import CustomError from "../utils/customError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 const getCompanies = asyncHandler(async (req, res) => {
-    const companies = await Company.find();
+  const filter = {};
 
-    res.status(200).json({
-      success: true,
-      count: companies.length,
-      data: companies,
-    });
+  if (req.query.category) {
+    filter.category = req.query.category;
+  }
+
+  if (req.query.location) {
+    filter.location = req.query.location;
+  }
+
+  if (req.query.priority) {
+    filter.priority = req.query.priority;
+  }
+
+  const companies = await Company.find(filter);
+
+  res.status(200).json({
+    success: true,
+    count: companies.length,
+    data: companies,
   });
+});
 
 const createCompany = asyncHandler(async (req, res) => {
     const company = await Company.create(req.body);
