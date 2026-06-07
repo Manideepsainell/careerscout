@@ -41,6 +41,10 @@ const jobSchema = new mongoose.Schema(
   type: String,
   required: [true, "Job URL is required"],
 },
+externalJobId: {
+  type: String,
+  default: "",
+},
 
     description: {
       type: String,
