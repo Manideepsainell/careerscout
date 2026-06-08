@@ -139,3 +139,9 @@ Custom Collector Per Company
 
 Reusable ATS collectors provide significantly higher coverage and lower maintenance cost.
 
+SUCCESSFACTORS
+- Found DWR endpoint
+- Requires JSESSIONID
+- Requires CSRF token
+- HTML does not contain jobs
+- Collector postponed
