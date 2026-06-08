@@ -5,134 +5,78 @@ import collectGreenhouseJobs from "../collectors/greenhouseCollector.js";
 import collectSmartRecruitersJobs from "../collectors/smartRecruitersCollector.js";
 import collectOracleJobs
 from "../collectors/oracleCollector.js";
+import collectEightfoldJobs
+from "../collectors/eightfoldCollector.js";
+
+const collectors = {
+  WORKDAY: collectWorkdayJobs,
+  GREENHOUSE: collectGreenhouseJobs,
+  SMARTRECRUITERS:
+    collectSmartRecruitersJobs,
+  ORACLE: collectOracleJobs,
+  EIGHTFOLD:
+    collectEightfoldJobs,
+};
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
 
 const companies =
   await Company.find({
-    jobBoardType:
-      "ORACLE",
+    active: true,
   });
 
   console.log(`Loaded ${companies.length} companies`);
   for (const company of companies) {
-switch (company.jobBoardType) {
-  case "WORKDAY": {
-  const jobs = await collectWorkdayJobs(company);
-
-  let newJobsCount = 0;
-
-  for (const job of jobs) {
-    const existingJob = await Job.findOne({
-  company: job.company,
-  externalJobId: job.externalJobId,
-});
-
-    if (existingJob) {
-      continue;
-    }
-
-    await Job.create(job);
-
-    newJobsCount++;
-  }
-
+    const collector =
+  collectors[
+    company.jobBoardType
+  ];
+if (!collector) {
   console.log(
-    `${newJobsCount} new jobs stored`
+    `No collector configured for ${company.name}`
   );
 
-  break;
-}case "GREENHOUSE": {
-  const jobs = await collectGreenhouseJobs(company);
+  continue;
+}
+const jobs = await collector(
+  company
+);
+let newJobsCount = 0;
 
-  let newJobsCount = 0;
-
-  for (const job of jobs) {
-    const existingJob = await Job.findOne({
+for (const job of jobs) {
+  const existingJob =
+    await Job.findOne({
       company: job.company,
-      externalJobId: job.externalJobId,
+      externalJobId:
+        job.externalJobId,
     });
 
-    if (existingJob) {
-      continue;
-    }
-
-    await Job.create(job);
-
-    newJobsCount++;
+  if (existingJob) {
+    continue;
   }
 
-  console.log(
-    `${newJobsCount} new jobs stored`
-  );
-
-  break;
-}
-
-  case "SMARTRECRUITERS": {
-  const jobs =
-    await collectSmartRecruitersJobs(company);
-
-  let newJobsCount = 0;
-
-  for (const job of jobs) {
-    const existingJob =
-      await Job.findOne({
-        company: job.company,
-        externalJobId:
-          job.externalJobId,
-      });
-
-    if (existingJob) {
-      continue;
-    }
-
-    await Job.create(job);
-
-    newJobsCount++;
-  }
-
-  console.log(
-    `${newJobsCount} new jobs stored`
-  );
-
-  break;
-}
-case "ORACLE": {
-  const jobs =
-    await collectOracleJobs(company);
-
-  let newJobsCount = 0;
-
-  for (const job of jobs) {
-    const existingJob =
-      await Job.findOne({
-        company: job.company,
-        externalJobId:
-          job.externalJobId,
-      });
-
-    if (existingJob) {
-      continue;
-    }
-
-    await Job.create(job);
-
-    newJobsCount++;
-  }
-
-  console.log(
-    `${newJobsCount} new jobs stored`
-  );
-
-  break;
-}
-  default:
+  if (!job.title) {
     console.log(
-      `No collector configured for ${company.name}`
+      `Skipping invalid job from ${company.name}`
     );
+
+    continue;
+  }
+
+  await Job.create(job);
+
+  newJobsCount++;
 }
+
+console.log(
+  `${newJobsCount} new jobs stored`
+);
+
+console.log(
+  `${company.name}: ${jobs.length} jobs`
+);
+  }
 }
-};
+
 
 export default runDiscovery;

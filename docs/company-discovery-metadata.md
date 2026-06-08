@@ -145,3 +145,6 @@ SUCCESSFACTORS
 - Requires CSRF token
 - HTML does not contain jobs
 - Collector postponed
+
+TODO:
+Deduplicate positions by atsJobId before normalization.
