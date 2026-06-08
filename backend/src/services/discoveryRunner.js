@@ -7,9 +7,9 @@ import collectSmartRecruitersJobs from "../collectors/smartRecruitersCollector.j
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
 
-  const companies = await Company.find({
-    active: true,
-  });
+const companies = await Company.find({
+  active: true,
+});
 
   console.log(`Loaded ${companies.length} companies`);
   for (const company of companies) {
@@ -21,8 +21,33 @@ switch (company.jobBoardType) {
 
   for (const job of jobs) {
     const existingJob = await Job.findOne({
+  company: job.company,
+  externalJobId: job.externalJobId,
+});
+
+    if (existingJob) {
+      continue;
+    }
+
+    await Job.create(job);
+
+    newJobsCount++;
+  }
+
+  console.log(
+    `${newJobsCount} new jobs stored`
+  );
+
+  break;
+}case "GREENHOUSE": {
+  const jobs = await collectGreenhouseJobs(company);
+
+  let newJobsCount = 0;
+
+  for (const job of jobs) {
+    const existingJob = await Job.findOne({
       company: job.company,
-      jobUrl: job.jobUrl,
+      externalJobId: job.externalJobId,
     });
 
     if (existingJob) {
@@ -40,15 +65,9 @@ switch (company.jobBoardType) {
 
   break;
 }
-  case "GREENHOUSE": {
-    const jobs = await collectGreenhouseJobs(company);
-    console.log(jobs);
-    break;
-  }
 
   case "SMARTRECRUITERS": {
     const jobs = await collectSmartRecruitersJobs(company);
-    console.log(jobs);
     break;
   }
 
