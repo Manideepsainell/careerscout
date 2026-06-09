@@ -1,5 +1,8 @@
-import { searchJobs } from "../utils/eightfold.js";
 
+import {
+  searchJobs,
+  getJobDetails,
+} from "../utils/eightfold.js";
 const collectEightfoldJobs = async (
   company
 ) => {
@@ -15,8 +18,7 @@ while (true) {
     start,
   });
 
-  const positions =
-    data.positions;
+  const positions = data.positions;
 
   if (
     !positions ||
@@ -25,9 +27,26 @@ while (true) {
     break;
   }
 
-  allPositions.push(
-    ...positions
+if (start === 0) {
+  const details =
+    await getJobDetails({
+      domain: "micron.com",
+      positionId:
+  positions[0].atsJobId,
+    });
+
+  console.log(
+    JSON.stringify(
+      details,
+      null,
+      2
+    )
   );
+
+  process.exit(0);
+}
+
+  allPositions.push(...positions);
 
   console.log(
     `Fetched ${allPositions.length} jobs`
@@ -35,11 +54,6 @@ while (true) {
 
   start += 10;
 }
-
-console.log(
-  `Retrieved ${allPositions.length} jobs`
-);
-
  return allPositions.map(
     (job) => ({
       title: job.name,

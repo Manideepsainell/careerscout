@@ -55,7 +55,19 @@ externalJobId: {
       type: Number,
       default: 0,
     },
+roleCategory: {
+  type: String,
+  default: "OTHER",
+},
 
+eligibilityLevel: {
+  type: String,
+  default: "GENERAL",
+},
+experienceBand: {
+  type: String,
+  default: "UNKNOWN",
+},
     status: {
       type: String,
       enum: ["ACTIVE", "EXPIRED", "FILLED"],

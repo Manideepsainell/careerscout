@@ -7,7 +7,11 @@ import collectOracleJobs
 from "../collectors/oracleCollector.js";
 import collectEightfoldJobs
 from "../collectors/eightfoldCollector.js";
+import categorizeRole
+from "../utils/jobCategorizer.js";
 
+import getEligibilityLevel
+from "../utils/eligibilityTagger.js";
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
@@ -62,7 +66,11 @@ for (const job of jobs) {
 
     continue;
   }
+job.roleCategory =
+  categorizeRole(job.title);
 
+job.eligibilityLevel =
+  getEligibilityLevel(job.title);
   await Job.create(job);
 
   newJobsCount++;

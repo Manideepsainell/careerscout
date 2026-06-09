@@ -4,6 +4,7 @@ import CustomError from "../utils/customError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 const getCompanies = asyncHandler(async (req, res) => {
   const filter = {};
+  
 
   if (req.query.category) {
     filter.category = req.query.category;
