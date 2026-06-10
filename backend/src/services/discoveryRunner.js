@@ -17,6 +17,8 @@ import collectLeverJobs
   from "../collectors/successFactorsCollector.js";
 import categorizeRole from "../utils/jobCategorizer.js";
 import getEligibilityLevel from "../utils/eligibilityTagger.js";
+import collectZwayamJobs
+  from "../collectors/zwayamCollector.js";
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
@@ -25,6 +27,7 @@ const collectors = {
   EIGHTFOLD: collectEightfoldJobs,
     SUCCESSFACTORS: collectSuccessFactorsJobs,
      RIPPLEHIRE: collectRippleHireJobs,
+     ZWAYAM:collectZwayamJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -49,7 +52,7 @@ const collectors = {
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
 const companies = await Company.find({
-  active: true
+  name: "Persistent Systems",
 });
   console.log(`Loaded ${companies.length} companies`);
 

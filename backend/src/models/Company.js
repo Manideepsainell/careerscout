@@ -21,6 +21,16 @@ const companySchema = new mongoose.Schema(
     openPositionsUrl: {
   type: String,
   default: "",
+  
+},
+companyId: {
+  type: String,
+  default: "",
+},
+
+domain: {
+  type: String,
+  default: "",
 },
 jobBoardType: {
   type: String,
