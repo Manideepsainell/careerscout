@@ -1,13 +1,33 @@
-import axios from "axios";
+import dotenv from "dotenv";
 
-const test = async () => {
-  const response = await axios.get(
-    "https://career55.sapsf.eu/career?company=HCLPRD&career_ns=job_listing_summary"
+dotenv.config();
+
+import connectDB
+  from "../config/db.js";
+
+import Company
+  from "../models/Company.js";
+
+import collectSuccessFactorsJobs
+  from "../collectors/successFactorsCollector.js";
+
+await connectDB();
+
+const company =
+  await Company.findOne({
+    name: "HCLTech",
+  });
+
+const jobs =
+  await collectSuccessFactorsJobs(
+    company
   );
 
-  console.log(
-    response.data.includes("postingCount")
-  );
-};
+console.log(
+  "Jobs fetched:",
+  jobs.length
+);
 
-test();
+console.log(jobs[0]);
+
+process.exit(0);

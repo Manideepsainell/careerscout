@@ -37,9 +37,9 @@ jobBoardType: {
     "CORNERSTONE",
     "LINKEDIN",
     "CUSTOM",
+    "LEVER",
     "UNKNOWN",
   ],
-  default: "UNKNOWN",
 },
 
     category: {

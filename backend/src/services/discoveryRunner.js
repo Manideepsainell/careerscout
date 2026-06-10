@@ -7,26 +7,50 @@ import collectSmartRecruitersJobs from "../collectors/smartRecruitersCollector.j
 import collectOracleJobs from "../collectors/oracleCollector.js";
 import collectEightfoldJobs from "../collectors/eightfoldCollector.js";
 import collectAtlassianJobs from "../collectors/atlassianCollector.js";
-
+import collectRippleHireJobs
+  from "../collectors/rippleHireCollector.js";
+import collectLeverJobs
+  from "../collectors/leverCollector.js";
+  import collectJuspayJobs
+  from "../collectors/juspayCollector.js";
+  import collectSuccessFactorsJobs
+  from "../collectors/successFactorsCollector.js";
 import categorizeRole from "../utils/jobCategorizer.js";
 import getEligibilityLevel from "../utils/eligibilityTagger.js";
-
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
   SMARTRECRUITERS: collectSmartRecruitersJobs,
   ORACLE: collectOracleJobs,
   EIGHTFOLD: collectEightfoldJobs,
-  CUSTOM: collectAtlassianJobs,
+    SUCCESSFACTORS: collectSuccessFactorsJobs,
+     RIPPLEHIRE: collectRippleHireJobs,
+ CUSTOM: async (company) => {
+  if (company.name === "Atlassian") {
+    return collectAtlassianJobs(
+      company
+    );
+  }
+
+  if (company.name === "Juspay") {
+    return collectJuspayJobs(
+      company
+    );
+  }
+  if (company.name === "Juspay") {
+  return collectJuspayJobs(company);
+}
+
+  return [];
+},
+  LEVER: collectLeverJobs,
 };
 
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
-
-  const companies = await Company.find({
-    active: true,
-  });
-
+const companies = await Company.find({
+  active: true
+});
   console.log(`Loaded ${companies.length} companies`);
 
   for (const company of companies) {
