@@ -19,24 +19,28 @@ const [indiaOnly, setIndiaOnly] =
 
     fetchJobs();
   }, []);
-  const filteredJobs = indiaOnly
-  ? jobs.filter((job) => {
-      console.log(
-        job.title,
-        job.calculatedScore?.score
-      );
+  const [search, setSearch] =
+  useState("");
+  let filteredJobs = jobs;
 
-      return (
+if (indiaOnly) {
+  filteredJobs =
+    filteredJobs.filter(
+      (job) =>
         job.calculatedScore?.score > 0
-      );
-    })
-  : jobs;
-  console.log(
-  "indiaOnly:",
-  indiaOnly
-);
+    );
+}
 
-console.log(jobs[0]);
+if (search) {
+  filteredJobs =
+    filteredJobs.filter((job) =>
+      job.title
+        .toLowerCase()
+        .includes(
+          search.toLowerCase()
+        )
+    );
+}
 
  return (
   <div
@@ -46,6 +50,14 @@ console.log(jobs[0]);
       padding: "20px",
     }}
   >
+    <input
+  type="text"
+  placeholder="Search jobs..."
+  value={search}
+  onChange={(e) =>
+    setSearch(e.target.value)
+  }
+/>
   <label>
   <input
     type="checkbox"
