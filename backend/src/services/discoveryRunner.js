@@ -1,6 +1,6 @@
 import Company from "../models/Company.js";
 import Job from "../models/Job.js";
-
+import collectCornerstoneJobs from "../collectors/cornerstoneCollector.js";
 import collectWorkdayJobs from "../collectors/workdayCollector.js";
 import collectGreenhouseJobs from "../collectors/greenhouseCollector.js";
 import collectSmartRecruitersJobs from "../collectors/smartRecruitersCollector.js";
@@ -18,6 +18,7 @@ import collectLeverJobs
 import collectTaleoJobs
   from "../collectors/taleoCollector.js";
 
+
 import categorizeRole from "../utils/jobCategorizer.js";
 import getEligibilityLevel from "../utils/eligibilityTagger.js";
 import collectZwayamJobs
@@ -32,6 +33,7 @@ const collectors = {
      RIPPLEHIRE: collectRippleHireJobs,
      ZWAYAM:collectZwayamJobs,
      TALEO:collectTaleoJobs,
+     CORNERSTONE:collectCornerstoneJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -55,8 +57,9 @@ const collectors = {
 
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
+ 
 const companies = await Company.find({
-  name: "Micron",
+  name: "Cornerstone OnDemand",
 });
   console.log(`Loaded ${companies.length} companies`);
 

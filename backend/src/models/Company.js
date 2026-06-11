@@ -27,6 +27,13 @@ companyId: {
   type: String,
   default: "",
 },
+careerSiteId: {
+  type: Number,
+},
+
+careerSitePageId: {
+  type: Number,
+},
 
 domain: {
   type: String,
