@@ -56,7 +56,7 @@ const collectors = {
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
 const companies = await Company.find({
-  name: "UnitedHealth Group",
+  name: "Micron",
 });
   console.log(`Loaded ${companies.length} companies`);
 

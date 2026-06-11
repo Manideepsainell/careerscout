@@ -1,7 +1,6 @@
 
 import {
   searchJobs,
-  getJobDetails,
 } from "../utils/eightfold.js";
 const collectEightfoldJobs = async (
   company
@@ -11,13 +10,15 @@ const collectEightfoldJobs = async (
   );
 let allPositions = [];
 let start = 0;
+const baseUrl =
+  new URL(company.careersUrl).origin;
 
 while (true) {
-  const data = await searchJobs({
-    domain: "micron.com",
-    start,
-  });
-
+ const data = await searchJobs({
+  baseUrl,
+  domain: company.domain,
+  start,
+});
   const positions = data.positions;
 
   if (
@@ -26,25 +27,6 @@ while (true) {
   ) {
     break;
   }
-
-if (start === 0) {
-  const details =
-    await getJobDetails({
-      domain: "micron.com",
-      positionId:
-  positions[0].atsJobId,
-    });
-
-  console.log(
-    JSON.stringify(
-      details,
-      null,
-      2
-    )
-  );
-
-  process.exit(0);
-}
 
   allPositions.push(...positions);
 
@@ -69,7 +51,7 @@ if (start === 0) {
       externalJobId:
         job.atsJobId,
 
-      jobUrl: `https://careers.micron.com${job.positionUrl}`,
+      jobUrl: `${baseUrl}${job.positionUrl}`,
 
       description: "",
 
