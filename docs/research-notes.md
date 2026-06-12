@@ -452,3 +452,13 @@ reqId
 
 Status:
 NEW ATS FAMILY
+
+
+DARWINBOX
+---------
+Status: Investigated
+Endpoint: Found
+Pagination: Found
+Mapping: Found
+Issue: Cloudflare 403
+Action: Revisit later with Puppeteer/browser session
