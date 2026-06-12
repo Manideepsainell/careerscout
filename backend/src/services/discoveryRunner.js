@@ -29,6 +29,7 @@ import collectZwayamJobs
   from "../collectors/zwayamCollector.js";
 import collectTecholutionJobs from "../collectors/techolutionCollector.js";
 import collectEpamJobs from "../collectors/epamCollector.js";
+import collectVirtusaJobs from "../collectors/virtusaCollector.js";
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
@@ -47,6 +48,7 @@ const collectors = {
      PEOPLETECH:collectPeopleTechJobs,
      TECHOLUTION:collectTecholutionJobs,
      EPAM:collectEpamJobs,
+     VIRTUSA:collectVirtusaJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -72,7 +74,7 @@ const runDiscovery = async () => {
   console.log("Discovery Runner Started");
  
 const companies = await Company.find({
-  name: "EPAM Systems",
+  name: "Virtusa",
 });
   console.log(`Loaded ${companies.length} companies`);
 
