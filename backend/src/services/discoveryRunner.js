@@ -18,8 +18,11 @@ import collectLeverJobs
 import collectTaleoJobs
   from "../collectors/taleoCollector.js";
 import collectTopGradingJobs from "../collectors/topgradingCollector.js";
-
-
+import collectKekaJobs from "../collectors/kekaCollector.js";
+import collectZohoRecruitJobs
+  from "../collectors/zohoRecruitCollector.js";
+import collectDarwinboxJobs from "../collectors/darwinboxCollector.js";
+import collectPeopleTechJobs from "../collectors/peopletechCollector.js";
 import categorizeRole from "../utils/jobCategorizer.js";
 import getEligibilityLevel from "../utils/eligibilityTagger.js";
 import collectZwayamJobs
@@ -36,6 +39,10 @@ const collectors = {
      TALEO:collectTaleoJobs,
      CORNERSTONE:collectCornerstoneJobs,
      TOPGRADING:collectTopGradingJobs,
+     ZOHO_RECRUIT:collectZohoRecruitJobs,
+     KEKA:collectKekaJobs,
+     DARWINBOX:collectDarwinboxJobs,
+     PEOPLETECH:collectPeopleTechJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -61,7 +68,7 @@ const runDiscovery = async () => {
   console.log("Discovery Runner Started");
  
 const companies = await Company.find({
-  name: "Qualcomm",
+  name: "People Tech Group",
 });
   console.log(`Loaded ${companies.length} companies`);
 
