@@ -12,8 +12,6 @@ const getZwayamJobs = async (
 
   while (true) {
     console.log(`Fetching from ${start}`);
-    console.log("DOMAIN:", domain);
-    console.log("COMPANY ID:", companyId);
 
     const form = new FormData();
 
@@ -42,10 +40,9 @@ const getZwayamJobs = async (
             ...form.getHeaders(),
             Accept:
               "application/json, text/plain, */*",
-            Origin:
-              "https://careers.persistent.com",
-            Referer:
-              "https://careers.persistent.com/",
+          Origin: `https://${domain}`,
+
+Referer: `https://${domain}/`,
             "X-Requested-With":
               "XMLHttpRequest",
             "User-Agent":
@@ -54,22 +51,14 @@ const getZwayamJobs = async (
         }
       );
    
+   
 
 const jobs =
   response.data?.data?.data || [];
     //   console.log(
     //     `Retrieved ${jobs.length}`
     //   );
-    console.log(
-  "START:",
-  start,
-  "COUNT:",
-  jobs.length,
-  "TOTAL:",
-  response.data?.data?.totalCount,
-  "MORE:",
-  response.data?.data?.hasMoreData
-);
+   
   console.log(
   `Retrieved ${jobs.length}`
 );

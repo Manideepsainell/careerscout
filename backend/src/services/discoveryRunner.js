@@ -17,6 +17,7 @@ import collectLeverJobs
   from "../collectors/successFactorsCollector.js";
 import collectTaleoJobs
   from "../collectors/taleoCollector.js";
+import collectTopGradingJobs from "../collectors/topgradingCollector.js";
 
 
 import categorizeRole from "../utils/jobCategorizer.js";
@@ -34,6 +35,7 @@ const collectors = {
      ZWAYAM:collectZwayamJobs,
      TALEO:collectTaleoJobs,
      CORNERSTONE:collectCornerstoneJobs,
+     TOPGRADING:collectTopGradingJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -59,7 +61,7 @@ const runDiscovery = async () => {
   console.log("Discovery Runner Started");
  
 const companies = await Company.find({
-  name: "Cornerstone OnDemand",
+  name: "Coforge",
 });
   console.log(`Loaded ${companies.length} companies`);
 
