@@ -27,6 +27,8 @@ import categorizeRole from "../utils/jobCategorizer.js";
 import getEligibilityLevel from "../utils/eligibilityTagger.js";
 import collectZwayamJobs
   from "../collectors/zwayamCollector.js";
+import collectTecholutionJobs from "../collectors/techolutionCollector.js";
+import collectEpamJobs from "../collectors/epamCollector.js";
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
@@ -43,6 +45,8 @@ const collectors = {
      KEKA:collectKekaJobs,
      DARWINBOX:collectDarwinboxJobs,
      PEOPLETECH:collectPeopleTechJobs,
+     TECHOLUTION:collectTecholutionJobs,
+     EPAM:collectEpamJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -68,7 +72,7 @@ const runDiscovery = async () => {
   console.log("Discovery Runner Started");
  
 const companies = await Company.find({
-  name: "People Tech Group",
+  name: "EPAM Systems",
 });
   console.log(`Loaded ${companies.length} companies`);
 
