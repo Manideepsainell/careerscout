@@ -462,3 +462,14 @@ Pagination: Found
 Mapping: Found
 Issue: Cloudflare 403
 Action: Revisit later with Puppeteer/browser session
+
+EPAM
+-----
+Endpoint discovered
+Search API confirmed
+Pagination confirmed
+Collector not returning jobs
+Need fresh investigation
+
+Status: PARTIAL
+Priority: Medium
