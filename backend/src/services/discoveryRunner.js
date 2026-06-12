@@ -61,7 +61,7 @@ const runDiscovery = async () => {
   console.log("Discovery Runner Started");
  
 const companies = await Company.find({
-  name: "Coforge",
+  name: "Qualcomm",
 });
   console.log(`Loaded ${companies.length} companies`);
 
