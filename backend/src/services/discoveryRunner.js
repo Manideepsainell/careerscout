@@ -1,5 +1,8 @@
 import Company from "../models/Company.js";
 import Job from "../models/Job.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 import collectCornerstoneJobs from "../collectors/cornerstoneCollector.js";
 import collectWorkdayJobs from "../collectors/workdayCollector.js";
 import collectGreenhouseJobs from "../collectors/greenhouseCollector.js";
@@ -30,6 +33,16 @@ import collectZwayamJobs
 import collectTecholutionJobs from "../collectors/techolutionCollector.js";
 import collectEpamJobs from "../collectors/epamCollector.js";
 import collectVirtusaJobs from "../collectors/virtusaCollector.js";
+import collectAccentureJobs
+  from "../collectors/accentureCollector.js";
+import collectInfosysJobs from "../collectors/infosysCollector.js";
+import collectCapgeminiJobs
+  from "../collectors/capgeminiCollector.js";
+import collectIbmJobs from "../collectors/ibmCollector.js";
+import collectMastechJobs
+  from "../collectors/mastechCollector.js";
+import collect10kCodersJobs from "../collectors/tenkCollector.js";
+
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
@@ -49,6 +62,13 @@ const collectors = {
      TECHOLUTION:collectTecholutionJobs,
      EPAM:collectEpamJobs,
      VIRTUSA:collectVirtusaJobs,
+     ACCENTURE: collectAccentureJobs,
+     INFOSYS:collectInfosysJobs,
+     CAPGEMINI:
+  collectCapgeminiJobs,
+  IBM:collectIbmJobs,
+  MASTECH:collectMastechJobs,
+  "10KCODERS": collect10kCodersJobs,
  CUSTOM: async (company) => {
   if (company.name === "Atlassian") {
     return collectAtlassianJobs(
@@ -56,11 +76,6 @@ const collectors = {
     );
   }
 
-  if (company.name === "Juspay") {
-    return collectJuspayJobs(
-      company
-    );
-  }
   if (company.name === "Juspay") {
   return collectJuspayJobs(company);
 }
@@ -72,15 +87,27 @@ const collectors = {
 
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
- 
+const companyName =
+  process.argv[2] ||
+  process.env.COMPANY;
+
+console.log(
+  "Running company:",
+  companyName
+);
+
 const companies = await Company.find({
-  name: "Virtusa",
+  name: companyName,
 });
+
   console.log(`Loaded ${companies.length} companies`);
 
   for (const company of companies) {
     const collector = collectors[company.jobBoardType];
-
+    console.log(
+  "JOB BOARD TYPE:",
+  company.jobBoardType
+);
     if (!collector) {
       console.log(
         `No collector configured for ${company.name}`
@@ -90,34 +117,58 @@ const companies = await Company.find({
 
     const jobs = await collector(company);
 
-    let newJobsCount = 0;
+   const existingJobs = await Job.find({
+  company: company._id,
+}).select("externalJobId");
 
-    for (const job of jobs) {
-      const existingJob = await Job.findOne({
-        company: job.company,
-        externalJobId: job.externalJobId,
-      });
+const existingIds = new Set(
+  existingJobs.map(job =>
+    String(job.externalJobId)
+  )
+);
 
-      if (existingJob) {
-        continue;
-      }
+const jobsToInsert = [];
 
-      if (!job.title) {
-        console.log(
-          `Skipping invalid job from ${company.name}`
-        );
-        continue;
-      }
+for (const job of jobs) {
+  if (
+    existingIds.has(
+      String(job.externalJobId)
+    )
+  ) {
+    continue;
+  }
 
-      job.roleCategory = categorizeRole(job.title);
-      job.eligibilityLevel = getEligibilityLevel(job.title);
+  if (!job.title) {
+    console.log(
+      `Skipping invalid job from ${company.name}`
+    );
+    continue;
+  }
 
-      await Job.create(job);
+  job.roleCategory =
+    categorizeRole(job.title);
 
-      newJobsCount++;
+  job.eligibilityLevel =
+    getEligibilityLevel(job.title);
+
+  jobsToInsert.push(job);
+}
+
+if (jobsToInsert.length > 0) {
+  await Job.insertMany(
+    jobsToInsert,
+    {
+      ordered: false,
     }
+  );
+}
 
-    console.log(`${newJobsCount} new jobs stored`);
+const newJobsCount =
+  jobsToInsert.length;
+
+console.log(
+  `${newJobsCount} new jobs stored`
+);
     console.log(`${company.name}: ${jobs.length} jobs`);
   }
 };

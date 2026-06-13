@@ -1,475 +1,418 @@
-Company:
-Darwinbox
 
-Careers URL:
-https://darwinbox.com/careers
+Last Major Update: 13 June
+Companies: 64
+Jobs: 15,001+
+Project Phase: Product & Relevance
+# CareerScout Research Notes
 
-Endpoint:
-https://dbx.darwinbox.in/ms/candidateapi/job/alljobs
+## Current Status
 
-Method:
-POST
+### Database
 
-Auth:
-NONE ✅
+* Companies: 64
+* Jobs Collected: 15,001+
 
-Payload:
-{
-  companyId: "main",
-  page: 1,
-  limit: 10,
-  sort_option: "new"
-}
+---
 
-Response:
-response.data.data
+# Implemented ATS Families
 
-Pagination:
-Likely NO backend pagination.
-"Load More" triggers no new requests.
-Frontend appears to receive all jobs and reveal them gradually.
+## Workday
 
-Useful Fields:
-id                     -> externalJobId
-title                  -> job title
-locations              -> location
-experience             -> experience
-emp_type               -> Full-time / etc
-department             -> department
-jd                     -> description
-posted_on              -> human readable date
-created_on             -> ISO date
-is_remote              -> remote flag
+* BrowserStack
+* Synchrony
+* Salesforce
+* NVIDIA
+* NCR Atleos
+* Franklin Templeton
+* State Street
+* Medtronic
+* Thomson Reuters
+* FactSet
 
-Example Mapping:
-externalJobId = job.id
-title = job.title
-location = job.locations
-experience = job.experience
-description = job.jd
-postedDate = new Date(job.created_on)
+## Greenhouse
 
-Job URL:
-Still needs verification.
-Need to inspect one Apply button click or job details page URL.
+* Postman
+* Razorpay
+* HighRadius
+* Zenoti
+* PhonePe
+* Groww
 
-Collector Difficulty:
-VERY EASY
+## SmartRecruiters
+
+* ServiceNow
+* Freshworks
+
+## Oracle
+
+* Oracle
+* Zensar
+* Hexaware
+
+## SuccessFactors
+
+* Wipro
+* HCLTech
+
+## RippleHire
+
+* LTIMindtree
+* Mphasis
+
+## Zwayam
+
+* Cyient
+* Coforge
+* Persistent Systems
+
+## Taleo
+
+* UnitedHealth Group
+
+## Cornerstone
+
+* Cornerstone OnDemand
+
+## Keka
+
+* Keka
+
+## Zoho Recruit
+
+* Zoho
+
+## Virtusa
+
+* Virtusa
+
+## Accenture ATS
+
+* Accenture
+
+## Infosys ATS
+
+* Infosys
+
+## Capgemini Azure ATS
+
+* Capgemini
+
+## IBM Careers Search
+
+* IBM
+
+## HTML Scraping
+
+* Mastech Digital
+
+## Aggregator Sources
+
+* 10K Coders
+
+---
+
+# Today's Implementations
+
+## LTIMindtree
+
+Status: Implemented
+
+Jobs:
+
+* 226+
+
+ATS:
+
+* RippleHire
+
+Notes:
+
+* Token-based implementation
+* Pagination verified
+
+---
+
+## Mphasis
+
+Status: Implemented
+
+Jobs:
+
+* 74+
+
+ATS:
+
+* RippleHire
+
+Notes:
+
+* Reused RippleHire collector
+* Company-specific token
+
+---
+
+## Accenture
+
+Status: Implemented
+
+Jobs:
+
+* 1008+
+
+ATS:
+
+* Accenture Elastic Search API
+
+Notes:
+
+* startIndex pagination
+* Safety stop implemented
+
+---
+
+## Infosys
+
+Status: Implemented
+
+Jobs:
+
+* 1632+
+
+ATS:
+
+* Infosys Internal ATS
+
+Notes:
+
+* Single endpoint
+* Full job payload available
+
+---
+
+## Capgemini
+
+Status: Implemented
+
+Jobs:
+
+* 817+
+
+ATS:
+
+* Azure Job API
+
+Notes:
+
+* Pagination verified
+
+---
+
+## IBM
+
+Status: Implemented
+
+Jobs:
+
+* 100+
+
+ATS:
+
+* IBM Careers Search
+
+Notes:
+
+* _source mapping required
+* Pagination working
+
+---
+
+## Freshworks
+
+Status: Implemented
+
+Jobs:
+
+* 73+
+
+ATS:
+
+* SmartRecruiters
+
+Notes:
+
+* Existing collector reused
+
+---
+
+## Mastech Digital
+
+Status: Implemented
+
+Jobs:
+
+* 16+
+
+ATS:
+
+* HTML Scraping
+
+Notes:
+
+* HubSpot careers page
+* Cheerio scraper
+
+---
+
+## 10K Coders
+
+Status: Implemented
+
+Jobs:
+
+* 38+
+
+Source:
+
+* Internal Job Platform
+
+Notes:
+
+* page/page_size pagination
+* has_more support
+* Useful for internship and startup opportunities
+
+---
+
+# Blocked
+
+## Sonata Software
+
+ATS:
+
+* Darwinbox
 
 Status:
-READY FOR IMPLEMENTATION
 
+* Blocked
 
-Company:
-Keka
+Issue:
 
-Endpoint:
-GET /careers/api/embedjobs/default/active/{guid}
+* Cloudflare protection
+* 403 Forbidden
 
-Method:
-GET
+Notes:
 
-Auth:
-None
+* Endpoint verified
+* Payload verified
+* Collector logic understood
 
-Pagination:
-None found
+Future Options:
 
-Response:
-Array of jobs
+* Browser automation
+* Puppeteer
+* Session-based scraping
 
-Useful Fields:
-id
-title
-description
-departmentName
-jobLocations
-experience
-jobNumber
-publishedOn
+---
 
-externalJobId:
-id
+# Zero Job Companies (Do Not Prioritize Immediately)
 
-title:
-title
+* Darwinbox
+* Chargebee
+* ValueLabs
+* Innominds
+* Nisum
+* Ahex Technologies
+* TEKsystems Global Services
+* T-Mobile
+* Blue Yonder
+* Ivanti
+* EPAM Systems
+* ADP
+* OpenText
+* Progress
+* Pegasystems
+* Fidelity International
+* Sonata Software
 
-description:
-description
+Notes:
 
-department:
-departmentName
+* Do not chase blindly.
+* Prioritize only if role quality aligns with CareerScout goals.
 
-location:
-jobLocations
+---
 
-postedDate:
-publishedOn
+# Product Direction
 
-jobNumber:
-jobNumber
+CareerScout Goal:
 
-Company:
-Juspay
+Not:
 
-Endpoint:
-https://joinus.juspay.in/api/careerJobOpening?limit=1000&isGlobal=true
+* Collect maximum jobs
 
-Method:
-GET
+Instead:
 
-Auth:
-None
+* Surface the best opportunities quickly
 
-Pagination:
-None
+Priority Ranking:
 
-Response:
-Array of jobs
+1. Freshness
+2. Experience Level
+3. Location
+4. Internship Quality
+5. Opportunity Scoring
 
-externalJobId:
-job_id
+Target Roles:
 
-title:
-job_title
+* Backend Developer
+* Java Developer
+* MERN Developer
+* Full Stack Developer
+* Associate Engineer
+* Graduate Engineer Trainee
+* SDE
+* Software Engineer
 
-location:
-job_location
+Target Experience:
 
-description:
-job_description_career
+* Internship
+* 0-1 Years
+* 0-2 Years
 
-experience:
-experience_year
+Preferred Locations:
 
-category:
-category
+* Hyderabad
+* Remote
+* Pune
+* Noida
+* Chennai
+* Gurgaon
+* Bangalore (when opportunity quality justifies relocation)
 
-jobType:
-job_type
+Special Focus:
 
-Difficulty:
-Very Easy
+* Paid Internships
+* PPO / Conversion Opportunities
+* Backend Internships
+* MERN Internships
+* Startup Roles with Growth Potential
 
-Status:
-Ready For Implementation
+---
 
-Company:
-Qualcomm
+# Next Phase
 
-Platform:
-Eightfold
+Sunday:
 
-Endpoint:
-https://careers.qualcomm.com/api/pcsx/search
+* Frontend Integration
+* Freshness Filter
+* Experience Filter
+* Location Filter
 
-Method:
-GET
+Monday Onwards:
 
-Auth:
-None
+* 70% Product
+* 30% Collector Expansion
 
-Pagination:
-YES
+Collector Rule:
 
-Parameters:
-domain=qualcomm.com
-query=
-location=India
-start=0
-sort_by=distance
-
-Response:
-positions[]
-count
-
-Total Jobs:
-415
-
-externalJobId:
-atsJobId
-
-title:
-name
-
-location:
-locations
-
-department:
-department
-
-postedDate:
-postedTs
-
-jobUrl:
-https://careers.qualcomm.com + positionUrl
-
-Status:
-NO NEW COLLECTOR NEEDED
-
-
-Potential ATS:
-PHENOM PEOPLE
-
-Companies:
-- Blue Yonder
-- OpenText
-
-Evidence:
-- categoryMasterDataV2 endpoint
-- Similar search-results structure
-- Similar careers-site behavior
-
-Status:
-Need actual jobs endpoint
-
-
-Company:
-Virtusa
-
-Platform:
-Custom GraphQL
-
-Endpoint:
-https://prod.agenticweb-marketing.com/careers/graphql
-
-Method:
-POST
-
-Auth:
-None found
-
-Payload:
-{
-  query: JobListResultsQuery,
-  variables: {
-    isList: "true"
-  }
-}
-
-Response:
-data.jobListResults.results[]
-
-Pagination:
-Not yet verified
-
-Fields Found:
-title
-careerCtaLink
-contestNumber
-city
-country
-state
-jobField
-employeeStatus
-skill
-category
-yearsOfExperience
-descriptionExternalHTML
-postedDate
-lastModifiedDate
-
-externalJobId:
-contestNumber
-
-title:
-title
-
-location:
-city + state + country
-
-description:
-descriptionExternalHTML
-
-experience:
-yearsOfExperience
-
-jobUrl:
-https://www.virtusa.com + careerCtaLink
-
-postedDate:
-postedDate
-
-Difficulty:
-Easy-Medium
-
-Status:
-READY FOR IMPLEMENTATION (unless pagination exists)
-
-
-Company:
-EPAM
-
-Endpoint:
-https://careers.epam.com/api/jobs/v2/search/careers-i18n
-
-Method:
-GET
-
-Auth:
-None
-
-Pagination:
-YES
-
-Parameters:
-from=0
-size=10
-
-Likely:
-from=10
-from=20
-from=30
-...
-
-Response:
-{
-  total: 167,
-  jobs: [...]
-}
-
-Fields Found:
-uid
-name
-city[]
-posting_type
-unique_id
-tenant
-
-externalJobId:
-uid
-
-title:
-name
-
-location:
-city[]
-
-totalJobs:
-167
-
-Status:
-READY FOR IMPLEMENTATION
-
-Company:
-Coforge
-
-Platform:
-Zwayam
-
-Endpoint:
-https://public.zwayam.com/jobs/search
-
-Method:
-POST
-
-Auth:
-None
-
-Status:
-Use Existing Zwayam Collector
-
-Coforge  -> Zwayam
-Cyient   -> Zwayam
-
-Company:
-ADP
-
-Response:
-{
-  count: 1,
-  jobRequisitions: [...]
-}
-
-Auth:
-None (appears public)
-
-Fields Found:
-reqId
-clientRequisitionID
-jobTitle
-publishedJobTitle
-jobDescription
-requisitionLocations
-canApply
-
-externalJobId:
-reqId
-
-title:
-publishedJobTitle
-(or jobTitle)
-
-description:
-jobDescription
-
-location:
-requisitionLocations[0].address.cityName
-+
-countrySubdivisionLevel1.longName
-
-jobUrl:
-Need one more lookup
-
-Pagination:
-Need to verify
-
-Status:
-READY FOR IMPLEMENTATION
-
-Company:
-ADP
-
-Platform:
-ADP Recruiting
-
-Endpoint:
-GET /mycareer/public/staffing/v1/job-requisitions
-
-Auth:
-None
-
-Response:
-{
-  count,
-  jobRequisitions:[]
-}
-
-Pagination:
-Likely supported
-
-Fields:
-reqId
-clientRequisitionID
-jobTitle
-publishedJobTitle
-jobDescription
-requisitionLocations
-postingDate
-
-externalJobId:
-reqId
-
-Status:
-NEW ATS FAMILY
-
-
-DARWINBOX
----------
-Status: Investigated
-Endpoint: Found
-Pagination: Found
-Mapping: Found
-Issue: Cloudflare 403
-Action: Revisit later with Puppeteer/browser session
-
-EPAM
------
-Endpoint discovered
-Search API confirmed
-Pagination confirmed
-Collector not returning jobs
-Need fresh investigation
-
-Status: PARTIAL
-Priority: Medium
+* Add companies based on relevance and opportunity quality
+* Not based on company count alone

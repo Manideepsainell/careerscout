@@ -27,6 +27,14 @@ companyId: {
   type: String,
   default: "",
 },
+categoryId: {
+  type: Number,
+  default: 0,
+},
+rippleHireToken: {
+  type: String,
+  default: "",
+},
 careerSiteId: {
   type: Number,
 },
@@ -55,7 +63,17 @@ jobBoardType: {
     "LINKEDIN",
     "CUSTOM",
     "LEVER",
+    "ACCENTURE",
+    "INFOSYS",
+    "CAPGEMINI",
+    "IBM",
+    "DARWINBOX",
+    "SONATA SOFTWARE",
+    "MASTECH",
+    "10kCODERS",
     "UNKNOWN",
+
+    
   ],
 },
 

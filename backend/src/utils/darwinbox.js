@@ -1,43 +1,44 @@
 import axios from "axios";
 
 const getDarwinboxJobs = async (
-  companyId
+  careersUrl,
+  companyId = "main"
 ) => {
+
   let page = 1;
 
-  let allJobs = [];
+  const allJobs = [];
 
- while (true) {
-  try {
+  while (true) {
+
     const response =
-      await axios.post(
-        `https://dbx.darwinbox.in/ms/candidateapi/job/alljobs?companyId=${companyId}`,
-        {
-          companyId,
-          page,
-          sort_option: "new",
-          limit: 10,
-        },
-        {
-          headers: {
-            Accept:
-              "application/json, text/plain, */*",
+  await axios.post(
+    careersUrl,
+    {
+      companyId,
+      page,
+      sort_option: "new",
+      limit: 10,
+    },
+    {
+      headers: {
+        Accept:
+          "application/json, text/plain, */*",
 
-            Origin:
-              "https://dbx.darwinbox.in",
+        Origin:
+          "https://sonataone.darwinbox.in",
 
-            Referer:
-"https://dbx.darwinbox.in/ms/candidatev2/main/careers/allJobs",
+        Referer:
+          "https://sonataone.darwinbox.in/",
 
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/149.0.0.0 Safari/537.36",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/149.0.0.0 Safari/537.36",
 
-            "Content-Type":
-              "application/json",
-          },
-        }
-      );
-
+        "Content-Type":
+          "application/json",
+      },
+    }
+  );
     const jobs =
       response.data?.data || [];
 
@@ -51,21 +52,12 @@ const getDarwinboxJobs = async (
 
     allJobs.push(...jobs);
 
+    if (jobs.length < 10) {
+      break;
+    }
+
     page++;
-  } catch (error) {
-    console.log(
-      "STATUS:",
-      error.response?.status
-    );
-
-    console.log(
-      "DATA:",
-      error.response?.data
-    );
-
-    throw error;
   }
-}
 
   return allJobs;
 };

@@ -47,7 +47,7 @@ const getSuccessFactorsJobs = async (
 
       allJobs.push(...jobs);
    await new Promise(resolve =>
-  setTimeout(resolve, 3000)
+  setTimeout(resolve, 1000)
 );
       pageNumber++;
     } catch (error) {

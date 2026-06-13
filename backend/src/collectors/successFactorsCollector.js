@@ -11,11 +11,10 @@ console.log(company);
     );
 
     const jobs =
-      await getSuccessFactorsJobs(
-        company.openPositionsUrl,
-        9553955
-      );
-
+     await getSuccessFactorsJobs(
+  company.openPositionsUrl,
+  company.categoryId ?? 0
+);
     console.log(
       `Retrieved ${jobs.length} jobs`
     );

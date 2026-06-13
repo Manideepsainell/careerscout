@@ -12,36 +12,44 @@ const getRippleHireJobs = async (
   let allJobs = [];
 
   while (true) {
-
-   const payload = qs.stringify({
+ const payload = qs.stringify({
   careerSiteUrlParams: JSON.stringify({
     page,
     search: "*:*",
-    token:"ty4DfyWddnOrtpclQeia",
+    token,
     source: "CAREERSITE",
     pagesize: pageSize,
     function: "IT Application Services",
-    geo: "IND",
+    geo: "IND"
   }),
-  lang: "en",
+  lang: "en"
 });
+const response = await axios.post(
+  careersUrl,
+  payload,
+  {
+    headers: {
+      Accept:
+        "application/json, text/javascript, */*; q=0.01",
 
-    const response =
-      await axios.post(
-        careersUrl,
-        payload,
-        {
-          headers: {
-            Accept:
-              "application/json, text/javascript, */*; q=0.01",
-            "Content-Type":
-              "application/x-www-form-urlencoded; charset=UTF-8",
-            "X-Requested-With":
-              "XMLHttpRequest",
-          },
-        }
-      );
+      "Content-Type":
+        "application/x-www-form-urlencoded; charset=UTF-8",
 
+      "X-Requested-With":
+        "XMLHttpRequest",
+
+      Origin: careersUrl,
+
+      Referer: careersUrl,
+
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    },
+  }
+);
+console.dir(response.data, {
+  depth: null
+});
     const jobs =
       response.data?.jobVoList || [];
 

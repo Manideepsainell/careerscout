@@ -8,17 +8,16 @@ const collectDarwinboxJobs =
       `Darwinbox collector running for ${company.name}`
     );
 
-    const jobs =
-      await getDarwinboxJobs(
-        company.companyId
-      );
+   const jobs =
+  await getDarwinboxJobs(
+    company.openPositionsUrl,
+    company.companyId || "main"
+  );
 
     console.log(
       `Retrieved ${jobs.length} jobs`
     );
-console.log(
-  `Page ${page}: ${jobs.length} jobs`
-);
+
     return jobs.map((job) => ({
       title:
         job.title,

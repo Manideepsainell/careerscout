@@ -11,10 +11,10 @@ const collectSmartRecruitersJobs = async (
     `Smart Recruiter collector running for ${company.name}`
   );
 
-  const endpoint =
-    buildSmartRecruitersEndpoint(
-      company.openPositionsUrl
-    );
+const endpoint =
+  buildSmartRecruitersEndpoint(
+    company.careersUrl
+  );
 
   console.log(endpoint);
 

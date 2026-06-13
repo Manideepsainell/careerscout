@@ -11,23 +11,48 @@ const collectOracleJobs = async (
     `Oracle collector running for ${company.name}`
   );
 
-  const endpoint =
-    buildOracleJobsEndpoint();
+ const endpoint =
+  buildOracleJobsEndpoint(
+    company.openPositionsUrl
+  );
+  console.log(
+  "ORACLE ENDPOINT:",
+  endpoint
+);
 
   console.log(endpoint);
 
-  const response = await axios.get(
-    endpoint
-  );
+let offset = 0;
+let allJobs = [];
 
-  const requisitions =
+while (true) {
+
+  const endpoint =
+    buildOracleJobsEndpoint(
+      company.openPositionsUrl,
+      offset
+    );
+
+  const response =
+    await axios.get(endpoint);
+
+  const jobs =
     response.data.items[0]
       .requisitionList;
 
+  allJobs.push(...jobs);
+
   console.log(
-    `Retrieved ${requisitions.length} jobs`
+    `Offset ${offset}: ${jobs.length}`
   );
-return requisitions.map((job) => ({
+
+  if (jobs.length < 200) {
+    break;
+  }
+
+  offset += 200;
+}
+return allJobs.map((job) => ({
   title: job.Title,
   company: company._id,
 
