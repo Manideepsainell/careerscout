@@ -360,17 +360,89 @@ Priority Ranking:
 3. Location
 4. Internship Quality
 5. Opportunity Scoring
+Target Roles (High Priority)
 
-Target Roles:
+Core Development Roles
+
+* Software Engineer
+* Software Developer
+* Associate Software Engineer
+* Associate Software Developer
+* Junior Software Engineer
+* Junior Software Developer
+* Graduate Engineer Trainee (GET)
+* Engineer Trainee
+* Software Trainee
+* Developer Trainee
+* Technical Trainee
+* Programmer Analyst Trainee
+
+Backend Roles
 
 * Backend Developer
+* Backend Engineer
 * Java Developer
-* MERN Developer
+* Java Engineer
+* Junior Java Developer
+* Node.js Developer
+* Junior Backend Developer
+
+Full Stack Roles
+
 * Full Stack Developer
-* Associate Engineer
-* Graduate Engineer Trainee
-* SDE
-* Software Engineer
+* Full Stack Engineer
+* MERN Developer
+* MERN Stack Developer
+* MEAN Developer
+* Junior Full Stack Developer
+
+Frontend Roles (Secondary Priority)
+
+* Frontend Developer
+* Frontend Engineer
+* React Developer
+* Junior Frontend Developer
+
+Platform & Product Engineering
+
+* Application Developer
+* Application Engineer
+* Product Engineer
+* Software Consultant (Development Focus)
+
+Internship Roles (High Priority)
+
+* Software Engineer Intern
+* Software Developer Intern
+* Backend Intern
+* Java Intern
+* Full Stack Intern
+* MERN Intern
+* Web Developer Intern
+* Product Engineering Intern
+* SDE Intern
+
+Startup-Friendly Titles
+
+* Founding Engineer Intern
+* Founding Engineer
+* Technical Intern
+* Engineering Intern
+* Software Intern
+
+Low Priority / Usually Exclude
+
+* Architect
+* Principal Engineer
+* Staff Engineer
+* Senior Engineer
+* Lead Engineer
+* Engineering Manager
+* Project Manager
+* Delivery Manager
+* SAP Consultant (Senior)
+* Support Executive
+* Non-Technical Roles
 
 Target Experience:
 
