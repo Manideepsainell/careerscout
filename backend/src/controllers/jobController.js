@@ -58,14 +58,43 @@ if (job.eligibilityLevel === "INTERNSHIP") {
   reasons.push("Internship role");
 }
 if (job.eligibilityLevel === "GENERAL") {
-  score -= 50;
+  score -= 10;
+}
+// Role Category Scoring
+
+if (job.roleCategory === "BACKEND") {
+  score += 40;
+  reasons.push("Backend category");
 }
 
-if (
-  ["LEAD", "MANAGER", "STAFF", "PRINCIPAL"]
-    .includes(job.eligibilityLevel)
-) {
-  score -= 20;
+if (job.roleCategory === "FULLSTACK") {
+  score += 35;
+  reasons.push("Full Stack category");
+}
+
+if (job.roleCategory === "GENERAL_SOFTWARE") {
+  score += 25;
+  reasons.push("Software category");
+}
+
+if (job.roleCategory === "FRONTEND") {
+  score += 20;
+  reasons.push("Frontend category");
+}
+
+if (job.roleCategory === "DEVOPS") {
+  score += 20;
+  reasons.push("DevOps category");
+}
+
+if (job.roleCategory === "DATA_ENGINEERING") {
+  score += 20;
+  reasons.push("Data Engineering category");
+}
+
+if (job.roleCategory === "QA") {
+  score -= 30;
+  reasons.push("QA category");
 }
  if (title.includes("backend")) {
   score += 40;
@@ -151,24 +180,44 @@ if (experience.includes("0-2")) {
   );
 }
 if (location.includes("hyderabad")) {
-  score += 25;
+  score += 40;
   reasons.push("Hyderabad location");
 }
 
 if (location.includes("remote")) {
-  score += 20;
+  score += 35;
   reasons.push("Remote opportunity");
 }
 
 if (
-  location.includes("pune") ||
   location.includes("bangalore") ||
-  location.includes("bengaluru") ||
-  location.includes("chennai") ||
-  location.includes("noida")
+  location.includes("bengaluru")
 ) {
-  score += 10;
-  reasons.push("Preferred city");
+  score += 20;
+  reasons.push("Bangalore location");
+}
+
+if (location.includes("pune")) {
+  score += 20;
+  reasons.push("Pune location");
+}
+
+if (location.includes("noida")) {
+  score += 20;
+  reasons.push("Noida location");
+}
+
+
+if (location.includes("chennai")) {
+  score += 20;
+  reasons.push("Chennai location");
+}
+if (
+  location.includes("gurgaon") ||
+  location.includes("gurugram")
+) {
+  score += 20;
+  reasons.push("Gurgaon location");
 }
 
 if (
@@ -293,16 +342,18 @@ const skip = (page - 1) * limit;
 if (req.query.jobType) {
   filter.jobType = req.query.jobType;
 }
-
 if (req.query.location) {
-  filter.location = req.query.location;
+  filter.location = {
+    $regex: req.query.location,
+    $options: "i",
+  };
 }
 
 if (req.query.status) {
   filter.status = req.query.status;
-}
-let sortOption = {};
-
+}let sortOption = {
+  createdAt: -1
+};
 if (req.query.sort === "latest") {
   sortOption = { createdAt: -1 };
 }
@@ -310,10 +361,7 @@ if (req.query.sort === "latest") {
 if (req.query.sort === "oldest") {
   sortOption = { createdAt: 1 };
 }
-if (req.query.role) {
-  filter.roleCategory =
-    req.query.role;
-}
+
 
 if (req.query.level) {
   filter.eligibilityLevel =
@@ -324,7 +372,13 @@ if (req.query.experienceBand) {
     req.query.experienceBand;
 }
 
-if (req.query.softwareOnly === "true") {
+if (req.query.role) {
+  filter.roleCategory =
+    req.query.role;
+}
+else if (
+  req.query.softwareOnly === "true"
+) {
   filter.roleCategory = {
     $in: [
       "BACKEND",
@@ -333,11 +387,11 @@ if (req.query.softwareOnly === "true") {
       "DEVOPS",
       "DATA_ENGINEERING",
       "QA",
-      "GENERAL_SOFTWARE"
-    ]
+      "GENERAL_SOFTWARE",
+    ],
   };
 }
-
+console.log("FILTER:", filter);
 const totalJobs = await Job.countDocuments(filter);
 const totalPages = Math.ceil(totalJobs / limit);
 const jobs = await Job.find(filter)

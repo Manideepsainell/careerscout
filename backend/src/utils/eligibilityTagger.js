@@ -26,7 +26,7 @@ const getEligibilityLevel = (
     return "LEAD";
   }
 
-  // MANAGER / DIRECTOR / VP
+  // MANAGER
   if (
     normalizedTitle.includes("manager") ||
     normalizedTitle.includes("director") ||
@@ -34,9 +34,7 @@ const getEligibilityLevel = (
     normalizedTitle.includes("vp") ||
     normalizedTitle.includes("avp") ||
     normalizedTitle.includes("vice president") ||
-    normalizedTitle.includes(
-      "assistant vice president"
-    ) ||
+    normalizedTitle.includes("assistant vice president") ||
     normalizedTitle.includes("rvp")
   ) {
     return "MANAGER";
@@ -51,12 +49,14 @@ const getEligibilityLevel = (
 
   // SENIOR
   if (
-    normalizedTitle.includes("engineer iv") ||
-    normalizedTitle.includes("developer iv") ||
     normalizedTitle.includes("senior") ||
     normalizedTitle.includes("sr.") ||
     normalizedTitle.includes("sr ") ||
     normalizedTitle.startsWith("sr") ||
+    normalizedTitle.includes("engineer iv") ||
+    normalizedTitle.includes("developer iv") ||
+    normalizedTitle.includes("software engineer iv") ||
+    normalizedTitle.includes("software developer iv") ||
     normalizedTitle.includes("smts")
   ) {
     return "SENIOR";
@@ -66,26 +66,15 @@ const getEligibilityLevel = (
   if (
     normalizedTitle.includes("engineer iii") ||
     normalizedTitle.includes("developer iii") ||
+    normalizedTitle.includes("software engineer iii") ||
+    normalizedTitle.includes("software developer iii") ||
     normalizedTitle.includes("engineer ii") ||
     normalizedTitle.includes("developer ii") ||
-    normalizedTitle.includes("sw engineer ii") ||
-    normalizedTitle.includes("sw engineer iii") ||
-    normalizedTitle.includes("engineer 2") ||
-    normalizedTitle.includes("developer 2") ||
+    normalizedTitle.includes("software engineer ii") ||
+    normalizedTitle.includes("software developer ii") ||
     normalizedTitle.includes("sde 2") ||
-    normalizedTitle.includes("engineer 3") ||
-    normalizedTitle.includes("developer 3") ||
     normalizedTitle.includes("sde 3") ||
-    normalizedTitle.includes("mts")||
-        normalizedTitle.includes("engineer - ii")||
-normalizedTitle.includes("engineer-ii")||
-normalizedTitle.includes("engineer - iii")||
-normalizedTitle.includes("engineer-iiI")||
-normalizedTitle.includes("engineer - iv")||
-normalizedTitle.includes("engineer-iv")||
-normalizedTitle.includes("sde 2")||
-normalizedTitle.includes("software development engineer ii")||
-normalizedTitle.includes("software development engineer - ii")
+    normalizedTitle.includes("mts")
   ) {
     return "MID_LEVEL";
   }
@@ -94,18 +83,14 @@ normalizedTitle.includes("software development engineer - ii")
   if (
     normalizedTitle.includes("engineer i") ||
     normalizedTitle.includes("developer i") ||
-    normalizedTitle.includes("sw engineer i") ||
-    normalizedTitle.includes("engineer 1") ||
-    normalizedTitle.includes("developer 1") ||
+    normalizedTitle.includes("software engineer i") ||
+    normalizedTitle.includes("software developer i") ||
     normalizedTitle.includes("sde 1") ||
     normalizedTitle.includes("associate") ||
     normalizedTitle.includes("graduate") ||
-    normalizedTitle.includes(
-      "new college grad"
-    ) ||
+    normalizedTitle.includes("new college grad") ||
     normalizedTitle.includes("trainee") ||
     normalizedTitle.includes("amts")
-
   ) {
     return "ENTRY_LEVEL";
   }

@@ -1,4 +1,34 @@
 function JobCard({ job }) {
+  const getDaysAgo = (date) => {
+  if (!date) {
+    return "Unknown";
+  }
+
+  const postedDate =
+    new Date(date);
+
+  const today =
+    new Date();
+
+  const diffTime =
+    today - postedDate;
+
+  const diffDays =
+    Math.floor(
+      diffTime /
+      (1000 * 60 * 60 * 24)
+    );
+
+  if (diffDays === 0) {
+    return "Today";
+  }
+
+  if (diffDays === 1) {
+    return "1 day ago";
+  }
+
+  return `${diffDays} days ago`;
+};
   return (
     <div
       style={{
@@ -19,7 +49,12 @@ function JobCard({ job }) {
       </p>
 
       <p>{job.location}</p>
-
+<p>
+  <strong>Posted:</strong>{" "}
+  {getDaysAgo(
+    job.postedDate
+  )}
+</p>
       <div
         style={{
           display: "flex",

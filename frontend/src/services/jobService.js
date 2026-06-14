@@ -1,11 +1,28 @@
 import axios from "axios";
 
-const API_URL =
-  "http://localhost:5000/api/jobs?experienceBand=FRESHER&softwareOnly=true";
+const BASE_URL =
+  "http://localhost:5000/api/jobs";
 
-export const getJobs = async () => {
+export const getJobs = async (
+  filters = {}
+) => {
+
   const response =
-    await axios.get(API_URL);
+    await axios.get(
+      BASE_URL,
+      {
+        params: {
+
+          softwareOnly:
+            true,
+
+          sort:
+            "latest",
+
+          ...filters,
+        },
+      }
+    );
 
   return response.data.data;
 };
