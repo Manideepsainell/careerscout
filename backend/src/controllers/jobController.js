@@ -351,15 +351,32 @@ if (req.query.location) {
 
 if (req.query.status) {
   filter.status = req.query.status;
-}let sortOption = {
+}
+let sortOption = {
   createdAt: -1
 };
-if (req.query.sort === "latest") {
-  sortOption = { createdAt: -1 };
+
+if (
+  req.query.sort === "latest"
+) {
+  sortOption = {
+    createdAt: -1
+  };
 }
 
-if (req.query.sort === "oldest") {
-  sortOption = { createdAt: 1 };
+if (
+  req.query.sort === "oldest"
+) {
+  sortOption = {
+    createdAt: 1
+  };
+}
+
+if (
+  req.query.sort ===
+  "recommended"
+) {
+  sortOption = {};
 }
 
 

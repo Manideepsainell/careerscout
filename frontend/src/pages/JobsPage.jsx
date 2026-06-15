@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { getJobs } from "../services/jobService";
 import JobCard from "../components/JobCard";
+import "./JobsPage.css";
+import {
+  FiSearch,
+  FiMapPin,
+  FiBriefcase,
+  FiClock,
+  FiTrendingUp
+} from "react-icons/fi";
 function JobsPage() {
-  const [jobs, setJobs] = useState([]);
 const [indiaOnly, setIndiaOnly] =
   useState(false);
     const [days, setDays] = useState("");
@@ -10,6 +17,26 @@ const [indiaOnly, setIndiaOnly] =
   useState("");
     const [location, setLocation] =
   useState("");
+  const [jobs, setJobs] =
+  useState([]);
+  const [sort, setSort] =
+  useState("latest");
+  const [hiddenJobs, setHiddenJobs] =
+  useState([]);
+const [savedJobs, setSavedJobs] =
+  useState([]);
+  const [
+  showSavedOnly,
+  setShowSavedOnly
+] = useState(false);
+const [totalJobs, setTotalJobs] =
+  useState(0);
+
+const [totalPages, setTotalPages] =
+  useState(1);
+
+const [page, setPage] =
+  useState(1);
   const [
   experienceBand,
   setExperienceBand
@@ -17,14 +44,25 @@ const [indiaOnly, setIndiaOnly] =
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-    const data =
+const response =
   await getJobs({
-  days,
-  location,
-  experienceBand,
-  role,
-});
-        setJobs(data);
+    days,
+    location,
+    experienceBand,
+    role,
+    page,
+    sort
+  });
+
+setJobs(response.data);
+
+setTotalJobs(
+  response.totalJobs
+);
+
+setTotalPages(
+  response.totalPages
+);
       } catch (error) {
         console.error(error);
       }
@@ -35,13 +73,22 @@ const [indiaOnly, setIndiaOnly] =
   days,
   location,
   experienceBand,
-  role
+  role,page,sort
 ]);
   const [search, setSearch] =
   useState("");
   
   let filteredJobs = jobs;
-
+  filteredJobs =
+  filteredJobs.filter(
+    (job) =>
+      !hiddenJobs.includes(
+        job._id
+      )
+  );
+if (showSavedOnly) {
+  filteredJobs = savedJobs;
+}
   
 
 if (indiaOnly) {
@@ -62,22 +109,78 @@ if (search) {
         )
     );
 }
+const hideJob = (jobId) => {
+  setHiddenJobs([
+    ...hiddenJobs,
+    jobId,
+  ]);
+};
+const saveJob = (job) => {
+  if (
+    savedJobs.some(
+      (saved) =>
+        saved._id === job._id
+    )
+  ) {
+    return;
+  }
 
+  setSavedJobs([
+    ...savedJobs,
+    job,
+  ]);
+};
  return (
+
   
-  <div
-    style={{
-      maxWidth: "1000px",
-      margin: "0 auto",
-      padding: "20px",
-    }}
-  >
+  <div className="page-container">
+  
+  <div className="header-card">
+  <h1>CareerScout</h1>
+<div className="stats">
+  <span>
+    {totalJobs} Jobs
+  </span>
+
+  <span>
+    Page {page}/{totalPages}
+  </span>
+
+  <span>
+    Saved {savedJobs.length}
+  </span>
+</div>
+
+</div>
+<div className="filters-container">
+
+<select className="sort-select"
+  value={sort}
+  onChange={(e) => {
+  setSort(e.target.value);
+  setPage(1);
+}}
+>
+  <option value="latest">
+    Latest
+  </option>
+
+  <option value="recommended">
+    Recommended
+  </option>
+</select>
+<div className="filter-group">
+<label>
+    <FiBriefcase />
+Role</label>
     <select
   value={role}
-  onChange={(e) =>
-    setRole(e.target.value)
-  }
+  onChange={(e) => {
+  setRole(e.target.value);
+  setPage(1);
+}}
 >
+
   <option value="">
     All Roles
   </option>
@@ -110,13 +213,20 @@ if (search) {
     QA
   </option>
 </select>
+</div>
+<div className="filter-group">
+<label>
+    <FiTrendingUp />
+    Expereince</label>
+
     <select
   value={experienceBand}
-  onChange={(e) =>
-    setExperienceBand(
-      e.target.value
-    )
-  }
+  onChange={(e) => {
+  setExperienceBand(
+    e.target.value
+  );
+  setPage(1);
+}}
 >
   <option value="">
     All Experience
@@ -138,11 +248,17 @@ if (search) {
     Senior
   </option>
 </select>
+</div>
+<div className="filter-group">
+<label>
+    <FiClock />
+    Days</label>
     <select
   value={days}
-  onChange={(e) =>
-    setDays(e.target.value)
-  }
+  onChange={(e) => {
+  setDays(e.target.value);
+  setPage(1);
+}}
 >
   <option value="">
     Any Time
@@ -160,11 +276,17 @@ if (search) {
     Last 30 Days
   </option>
 </select>
+</div>
+
+<div className="filter-group">
+<label>
+    <FiMapPin />Location</label>
 <select
   value={location}
-  onChange={(e) =>
-    setLocation(e.target.value)
-  }
+ onChange={(e) => {
+  setLocation(e.target.value);
+  setPage(1);
+}}
 >
   <option value="">
     All Locations
@@ -205,6 +327,10 @@ if (search) {
   Hybrid
 </option>
 </select>
+</div>
+<div className="filter-group">
+    <FiSearch />
+
     <input
   type="text"
   placeholder="Search jobs..."
@@ -213,6 +339,9 @@ if (search) {
     setSearch(e.target.value)
   }
 />
+</div>
+<div className="checkbox-group">
+
   <label>
   <input
     type="checkbox"
@@ -223,16 +352,57 @@ if (search) {
   />
   Hide Low Priority Jobs
 </label>
+<label>
+  <input
+    type="checkbox"
+    checked={showSavedOnly}
+    onChange={(e) =>
+      setShowSavedOnly(
+        e.target.checked
+      )
+    }
+  />
+  Show Saved Only
+</label>
+</div>
+</div>
 
-    <h1>CareerScout Jobs</h1>
 
     {filteredJobs.map((job) => (
-      <JobCard
-        key={job._id}
-        job={job}
-      />
+     <JobCard
+  key={job._id}
+  job={job}
+  onHide={hideJob}
+  onSave={saveJob}
+/>
     ))}
+ <div className="pagination">
+  <button
+    disabled={page === 1}
+    onClick={() =>
+      setPage(page - 1)
+    }
+  >
+    Previous
+  </button>
+
+  <span>
+    Page {page} of {totalPages}
+  </span>
+
+  <button
+    disabled={
+      page === totalPages
+    }
+    onClick={() =>
+      setPage(page + 1)
+    }
+  >
+    Next
+  </button>
+</div>
   </div>
+  
 );
 }
 

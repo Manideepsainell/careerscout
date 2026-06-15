@@ -1,4 +1,10 @@
-function JobCard({ job }) {
+
+import "./JobCard.css";
+function JobCard({
+  job,
+  onHide,
+  onSave,
+}){
   const getDaysAgo = (date) => {
   if (!date) {
     return "Unknown";
@@ -30,89 +36,88 @@ function JobCard({ job }) {
   return `${diffDays} days ago`;
 };
   return (
-    <div
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "12px",
-        padding: "16px",
-        marginBottom: "16px",
-        boxShadow:
-          "0 2px 8px rgba(0,0,0,0.1)",
-      }}
-    >
-      <h2>{job.title}</h2>
+   <div className="job-card">
+    
+      <h2 className="job-title">{job.title}</h2>
 
-      <p>
-        <strong>
-          {job.company?.name}
-        </strong>
-      </p>
-
-      <p>{job.location}</p>
-<p>
-  <strong>Posted:</strong>{" "}
-  {getDaysAgo(
-    job.postedDate
-  )}
+      <p className="job-company">
+  🏢 {job.company?.name} • {job.company?.category}
 </p>
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          marginTop: "10px",
-          marginBottom: "10px",
-        }}
-      >
-        <span
-          style={{
-            padding: "4px 8px",
-            borderRadius: "6px",
-            background: "#e3f2fd",
-          }}
-        >
-          {job.roleCategory}
-        </span>
+<div className="job-meta">
+  📍 {job.location}
+  {" • "}
+  🏆 {job.tier}
+  {" • "}
+  🕒 {getDaysAgo(job.postedDate)}
+</div>
+   <div className="job-tags">
 
-        <span
-          style={{
-            padding: "4px 8px",
-            borderRadius: "6px",
-            background: "#e8f5e9",
-          }}
-        >
-          {job.experienceBand}
-        </span>
+  <span className="tag role-tag">
+    {job.roleCategory}
+  </span>
 
-        <span
-          style={{
-            padding: "4px 8px",
-            borderRadius: "6px",
-            background: "#fff3cd",
-          }}
-        >
-          Score:
-          {" "}
-          {job.calculatedScore?.score}
-        </span>
-      </div>
+  <span className="tag exp-tag">
+    {job.experienceBand}
+  </span>
 
-      <a
-        href={job.jobUrl}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <button
-          style={{
-            padding:
-              "10px 16px",
-            cursor: "pointer",
-          }}
+  <span className="tag score-tag">
+    Score: {job.calculatedScore?.score}
+  </span>
+
+</div>
+
+<div className="reasons">
+
+  {job.calculatedScore?.reasons
+    ?.slice(0, 3)
+    .map(
+      (reason, index) => (
+        <span
+          key={index}
+          className="reason-chip"
         >
-          Apply
-        </button>
-      </a>
+          {reason}
+        </span>
+      )
+    )}
+
+</div>
+
+     <div className="job-actions">
+
+  <a
+    href={job.jobUrl}
+    target="_blank"
+    rel="noreferrer"
+  >
+    <button className="apply-btn">
+      Apply ↗
+    </button>
+  </a>
+
+  <button
+    className="save-btn"
+    onClick={() =>
+      onSave(job)
+    }
+  >
+    Save
+  </button>
+
+  <button
+    className="hide-btn"
+    onClick={() =>
+      onHide(job._id)
+    }
+  >
+    Hide
+  </button>
+
+</div>
     </div>
+    
   );
+  
 }
 
 export default JobCard;

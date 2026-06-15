@@ -24,5 +24,5 @@ export const getJobs = async (
       }
     );
 
-  return response.data.data;
+return response.data;
 };

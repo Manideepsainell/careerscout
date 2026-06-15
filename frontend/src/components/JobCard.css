@@ -1,0 +1,199 @@
+.job-card {
+  background:
+    linear-gradient(
+      135deg,
+      #effffb,
+      #e0f7fa
+    );
+
+  border: 1px solid #b9ece7;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  margin-bottom: 22px;
+
+  max-width: 95%;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+
+  box-shadow:
+    0 12px 30px
+    rgba(15,23,42,0.08);
+
+  transition: all 0.2s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 24px 48px
+    rgba(15,23,42,0.15);
+
+  border-color: #7dd3fc;
+}
+.job-title {
+  color: #2563eb;
+  margin-bottom: 12px;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+.job-company {
+  color: #2563eb;
+
+  font-weight: 700;
+
+  font-size: 17px;
+
+  margin-bottom: 8px;
+}
+
+.job-meta {
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.tag {
+  padding: 8px 12px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+.role-tag {
+  background: #dbeafe;
+}
+
+.exp-tag {
+  background: #dcfce7;
+}
+
+.score-tag {
+  background: #fef3c7;
+}
+
+.reasons {
+  margin-top: 12px;
+}
+
+.reasons ul {
+  margin-top: 6px;
+  padding-left: 20px;
+}
+
+.job-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.job-actions button {
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 12px 18px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+.job-actions button:hover {
+  transform: translateY(-2px);
+}
+.apply-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6
+    );
+}
+
+.save-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #16a34a,
+      #22c55e
+    );
+}
+
+.hide-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #ef4444
+    );
+}
+.apply-btn:hover {
+  background: #1d4ed8;
+}
+
+.save-btn:hover {
+  background: #15803d;
+}
+
+.hide-btn:hover {
+  background: #b91c1c;
+}
+.reasons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.reason-chip {
+   background:
+  linear-gradient(
+    135deg,
+    #ccfbf1,
+    #a7f3d0
+  );
+
+ color: #065f46;
+
+  padding: 8px 12px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+.stats {
+  color: #64748b;
+  font-weight: 600;
+}
+.stats span {
+  background: rgba(255,255,255,0.15);
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(8px);
+}
