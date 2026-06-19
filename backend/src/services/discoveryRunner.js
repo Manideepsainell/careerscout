@@ -42,6 +42,7 @@ import collectIbmJobs from "../collectors/ibmCollector.js";
 import collectMastechJobs
   from "../collectors/mastechCollector.js";
 import collect10kCodersJobs from "../collectors/tenkCollector.js";
+import collectAshbyJobs from "../collectors/ashbyCollector.js";
 
 const collectors = {
   WORKDAY: collectWorkdayJobs,
@@ -64,6 +65,7 @@ const collectors = {
      VIRTUSA:collectVirtusaJobs,
      ACCENTURE: collectAccentureJobs,
      INFOSYS:collectInfosysJobs,
+     ASHBY:collectAshbyJobs,
      CAPGEMINI:
   collectCapgeminiJobs,
   IBM:collectIbmJobs,
@@ -87,6 +89,7 @@ const collectors = {
 
 const runDiscovery = async () => {
   console.log("Discovery Runner Started");
+
 const companyName =
   process.argv[2] ||
   process.env.COMPANY;
@@ -97,8 +100,9 @@ console.log(
 );
 
 const companies = await Company.find({
-  name: companyName,
+  name:companyName
 });
+
 
   console.log(`Loaded ${companies.length} companies`);
 
@@ -114,8 +118,19 @@ const companies = await Company.find({
       );
       continue;
     }
+let jobs = [];
 
-    const jobs = await collector(company);
+try {
+  jobs = await collector(company);
+} catch (error) {
+  console.log(
+    `Collector failed for ${company.name}`
+  );
+
+  console.log(error.message);
+
+  continue;
+}
 
    const existingJobs = await Job.find({
   company: company._id,

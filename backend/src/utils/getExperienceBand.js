@@ -17,9 +17,20 @@ const getExperienceBand = (
     normalizedTitle.includes("vp") ||
     normalizedTitle.includes("avp") ||
     normalizedTitle.includes("senior") ||
+    normalizedTitle.includes("sr.") ||
+normalizedTitle.includes("sr ") ||
     normalizedTitle.includes("smts") ||
     normalizedTitle.includes("engineer iv") ||
-    normalizedTitle.includes("developer iv")
+    normalizedTitle.includes("developer iv")||
+    normalizedTitle.includes("distinguished") ||
+normalizedTitle.includes("architect") ||
+normalizedTitle.includes("cto") ||
+normalizedTitle.includes("developer 4") ||
+normalizedTitle.includes("developer 5") ||
+normalizedTitle.includes("engineer 4") ||
+normalizedTitle.includes("engineer 5") ||
+normalizedTitle.includes("software developer 4") ||
+normalizedTitle.includes("software developer 5")
   ) {
     return "SENIOR";
   }
@@ -31,7 +42,11 @@ const getExperienceBand = (
     normalizedTitle.includes("software engineer iii") ||
     normalizedTitle.includes("software developer iii") ||
     normalizedTitle.includes("sde 3") ||
-    normalizedTitle.includes("mts")
+    normalizedTitle.includes("mts")||
+    normalizedTitle.includes("developer 3") ||
+normalizedTitle.includes("engineer 3") ||
+normalizedTitle.includes("software developer 3") ||
+normalizedTitle.includes("software engineer 3")
   ) {
     return "MID";
   }
@@ -63,7 +78,13 @@ const getExperienceBand = (
   ) {
     return "FRESHER";
   }
-
+if (
+  normalizedTitle.includes("engineer") ||
+  normalizedTitle.includes("developer") ||
+  normalizedTitle.includes("programmer")
+) {
+  return "JUNIOR";
+}
   return "UNKNOWN";
 };
 

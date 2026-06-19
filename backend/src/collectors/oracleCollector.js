@@ -15,18 +15,12 @@ const collectOracleJobs = async (
   buildOracleJobsEndpoint(
     company.openPositionsUrl
   );
-  console.log(
-  "ORACLE ENDPOINT:",
-  endpoint
-);
 
-  console.log(endpoint);
 
 let offset = 0;
 let allJobs = [];
 
 while (true) {
-
   const endpoint =
     buildOracleJobsEndpoint(
       company.openPositionsUrl,
@@ -37,14 +31,18 @@ while (true) {
     await axios.get(endpoint);
 
   const jobs =
-    response.data.items[0]
-      .requisitionList;
-
-  allJobs.push(...jobs);
+    response.data.items?.[0]
+      ?.requisitionList || [];
 
   console.log(
     `Offset ${offset}: ${jobs.length}`
   );
+
+  if (!jobs.length) {
+    break;
+  }
+
+  allJobs.push(...jobs);
 
   if (jobs.length < 200) {
     break;

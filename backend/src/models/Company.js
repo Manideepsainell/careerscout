@@ -71,12 +71,15 @@ jobBoardType: {
     "SONATA SOFTWARE",
     "MASTECH",
     "10kCODERS",
+    "ASHBY",
     "UNKNOWN",
 
     
   ],
 },
-
+slug: {
+  type: String
+},
     category: {
       type: String,
       enum: ["Startup", "Product", "SaaS", "Service", "Enterprise"],
