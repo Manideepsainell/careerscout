@@ -7,11 +7,14 @@ const collectLeverJobs =
     console.log(
       `Lever collector running for ${company.name}`
     );
-
+console.log(
+  "Slug:",
+  company.slug
+);
     const jobs =
-      await getLeverJobs(
-        company.name.toLowerCase()
-      );
+  await getLeverJobs(
+    company.slug
+  );
 
     console.log(
       `Retrieved ${jobs.length} jobs`

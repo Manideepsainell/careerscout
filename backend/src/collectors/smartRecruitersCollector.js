@@ -1,9 +1,5 @@
 import axios from "axios";
 
-import {
-  buildSmartRecruitersEndpoint,
-} from "../utils/smartRecruiters.js";
-
 const collectSmartRecruitersJobs = async (
   company
 ) => {
@@ -11,10 +7,8 @@ const collectSmartRecruitersJobs = async (
     `Smart Recruiter collector running for ${company.name}`
   );
 
-const endpoint =
-  buildSmartRecruitersEndpoint(
-    company.careersUrl
-  );
+  const endpoint =
+    `https://api.smartrecruiters.com/v1/companies/${company.companyId}/postings`;
 
   console.log(endpoint);
 
@@ -22,32 +16,39 @@ const endpoint =
     endpoint
   );
 
+  const jobs =
+    response.data.content || [];
+
   console.log(
-    `Retrieved ${response.data.content.length} jobs`
+    `Retrieved ${jobs.length} jobs`
   );
 
-  return response.data.content.map(
-    (job) => ({
-      title: job.name,
+  return jobs.map((job) => ({
+    title: job.name,
 
-      company: company._id,
+    company: company._id,
 
-      location:
-        job.location?.fullLocation,
+    location:
+      job.location?.fullLocation ||
+      "Not Specified",
 
-      jobType:
-        job.typeOfEmployment?.label,
+    jobType:
+      job.typeOfEmployment?.label ||
+      "",
 
-      experience:
-        job.experienceLevel?.label,
+    experience:
+      job.experienceLevel?.label ||
+      "",
 
-      externalJobId: String(job.id),
+    externalJobId:
+      String(job.id),
 
-      source: "SMARTRECRUITERS",
+    source:
+      "SMARTRECRUITERS",
 
-      jobUrl: job.ref,
-    })
-  );
+    jobUrl:
+      job.ref,
+  }));
 };
 
 export default collectSmartRecruitersJobs;

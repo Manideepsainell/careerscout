@@ -1,9 +1,10 @@
 const buildGreenhouseJobsEndpoint = (
   careersUrl
 ) => {
-  const slug =
-    careersUrl.split("/").pop();
-
+ const slug = careersUrl
+  .replace(/\/$/, "")
+  .split("/")
+  .pop();
   return `https://boards-api.greenhouse.io/v1/boards/${slug}/jobs`;
 };
 

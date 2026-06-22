@@ -4,7 +4,6 @@ import {
   buildWorkdayJobUrl,
 } from "../utils/workday.js";
 
-
 const sleep = (ms) =>
   new Promise((resolve) =>
     setTimeout(resolve, ms)
@@ -17,12 +16,9 @@ const collectWorkdayJobs = async (
     `WORKDAY collector running for ${company.name}`
   );
 
-  const careersUrl =
-    company.openPositionsUrl;
-
   const endpoint =
     buildWorkdayJobsEndpoint(
-      careersUrl
+      company.openPositionsUrl
     );
 
   console.log(endpoint);
@@ -31,10 +27,11 @@ const collectWorkdayJobs = async (
 
   let offset = 0;
   let total = 0;
-  let allPostings = [];
+
+  const allPostings = [];
 
   while (true) {
-    let response;
+    let response = null;
 
     for (
       let attempt = 1;
@@ -42,25 +39,38 @@ const collectWorkdayJobs = async (
       attempt++
     ) {
       try {
-        response =
-          await axios.post(
-            endpoint,
-            {
-              limit,
-              offset,
-            }
-          );
-
-        break;
+ response = await axios.post(
+  endpoint,
+  {
+    appliedFacets: {},
+    limit,
+    offset,
+    searchText: ""
+  },
+  {
+    timeout: 20000,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+);  break;
       } catch (error) {
-        console.log(
-          `${company.name}: attempt ${attempt} failed`
-        );
+  console.log(
+    `${company.name}: attempt ${attempt} failed`
+  );
 
-        if (attempt < 3) {
-          await sleep(2000);
-        }
-      }
+  console.log(
+    error.response?.status
+  );
+
+  console.log(
+    error.response?.data
+  );
+
+  if (attempt < 3) {
+    await sleep(500);
+  }
+}
     }
 
     if (!response) {
@@ -71,28 +81,28 @@ const collectWorkdayJobs = async (
       break;
     }
 
+    const {
+      total: responseTotal,
+      jobPostings,
+    } = response.data;
+
     if (offset === 0) {
-      total = response.data.total;
+      total = responseTotal;
     }
 
-    console.log(
-      `${company.name}: fetched ${offset}/${total}`
-    );
-
-    const postings =
-      response.data.jobPostings;
-
-    if (!postings.length) {
+    if (!jobPostings.length) {
       break;
     }
 
     allPostings.push(
-      ...postings
+      ...jobPostings
     );
 
-    offset += postings.length;
+    offset += jobPostings.length;
 
-    await sleep(200);
+    console.log(
+      `${company.name}: fetched ${allPostings.length}/${total}`
+    );
 
     if (
       allPostings.length >= total
@@ -116,9 +126,9 @@ const collectWorkdayJobs = async (
           posting.locationsText,
 
         externalJobId:
-          posting
-            .bulletFields?.[0] ||
-          "",
+          posting.externalPath
+            ?.split("/")
+            .pop() || "",
 
         source: "WORKDAY",
 
@@ -130,10 +140,6 @@ const collectWorkdayJobs = async (
       })
     );
 
-  if (jobs.length > 0) {
-    console.log(jobs[0]);
-  }
-
   console.log(
     `Retrieved ${jobs.length} jobs`
   );
@@ -142,4 +148,3 @@ const collectWorkdayJobs = async (
 };
 
 export default collectWorkdayJobs;
-

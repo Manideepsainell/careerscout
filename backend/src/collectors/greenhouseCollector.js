@@ -10,10 +10,11 @@ const collectGreenHouseJobs = async (
     `GH collector running for ${company.name}`
   );
 
-  const endpoint =
-    buildGreenhouseJobsEndpoint(
-      company.openPositionsUrl
-    );
+const endpoint =
+  buildGreenhouseJobsEndpoint(
+    company.openPositionsUrl ||
+    company.careersUrl
+  );
 
   console.log(endpoint);
 

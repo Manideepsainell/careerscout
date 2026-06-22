@@ -8,10 +8,9 @@ const collectDarwinboxJobs =
       `Darwinbox collector running for ${company.name}`
     );
 
-   const jobs =
+  const jobs =
   await getDarwinboxJobs(
-    company.openPositionsUrl,
-    company.companyId || "main"
+    company.openPositionsUrl
   );
 
     console.log(

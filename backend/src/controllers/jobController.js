@@ -601,9 +601,56 @@ const updateJob = asyncHandler(async (req, res) => {
       data: job,
     });
   });
+const getNewJobs =
+  asyncHandler(async (req, res) => {
 
+    const yesterday = new Date();
+
+    yesterday.setDate(
+      yesterday.getDate() - 1
+    );
+
+   const filter = {
+  lastSeenAt: {
+    $gte: yesterday,
+  },
+};
+
+    if (req.query.role) {
+      filter.roleCategory =
+        req.query.role;
+    }
+
+    if (req.query.level) {
+      filter.eligibilityLevel =
+        req.query.level;
+    }
+
+    if (req.query.location) {
+      filter.location = {
+        $regex: req.query.location,
+        $options: "i",
+      };
+    }
+
+    const jobs =
+      await Job.find(filter)
+        .populate("company")
+        .sort({
+          createdAt: -1,
+        })
+        .limit(100);
+
+    res.status(200).json({
+      success: true,
+      count: jobs.length,
+      data: jobs,
+    });
+
+  });
 export {
   getJobs,
+  getNewJobs,
   getFresherJobs,
   getJobById,
   createJob,

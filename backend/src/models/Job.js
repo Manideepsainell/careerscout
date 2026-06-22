@@ -74,15 +74,33 @@ experienceBand: {
       default: "ACTIVE",
     },
 
-    postedDate: {
-      type: Date,
-    },
+  postedDate: {
+  type: Date,
+},
+
+lastSeenAt: {
+  type: Date,
+  default: Date.now,
+},
+},
+{
+  timestamps: true,
+}
+);
+
+jobSchema.index(
+  {
+    company: 1,
+    externalJobId: 1,
   },
   {
-    timestamps: true,
+    unique: true,
   }
 );
 
-const Job = mongoose.model("Job", jobSchema);
+const Job = mongoose.model(
+  "Job",
+  jobSchema
+);
 
 export default Job;

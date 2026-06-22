@@ -1,7 +1,7 @@
 import express from "express";
 
 import {
-  getJobs,getFresherJobs,getJobById,
+  getJobs,getNewJobs,getFresherJobs,getJobById,
   createJob,deleteJob,updateJob
 } from "../controllers/jobController.js";
 
@@ -11,6 +11,10 @@ router.get("/", getJobs);
 router.get(
   "/fresher",
   getFresherJobs
+);
+router.get(
+  "/new",
+  getNewJobs
 );
 router.get("/:id", getJobById);
 

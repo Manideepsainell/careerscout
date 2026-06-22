@@ -8,15 +8,14 @@ export async function searchJobs({
   const response = await axios.get(
     `${baseUrl}/api/pcsx/search`,
     {
-      params: {
-        domain,
-        query: "",
-        location: "Hyderabad, TS, India",
-filter_distance: 80,
-filter_include_remote: 1,
-        start,
-        sort_by: "hot",
-      },
+     params: {
+  domain,
+  query: "",
+  location: "India",
+  filter_include_remote: 1,
+  start,
+  sort_by: "hot",
+}
     }
   );
 

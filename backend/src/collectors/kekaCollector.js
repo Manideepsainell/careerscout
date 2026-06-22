@@ -9,9 +9,7 @@ const collectKekaJobs =
     );
 
     const jobs =
-      await getKekaJobs(
-        company.companyId
-      );
+  await getKekaJobs(company);
 
     console.log(
       `Retrieved ${jobs.length} jobs`

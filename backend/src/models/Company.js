@@ -72,6 +72,9 @@ jobBoardType: {
     "MASTECH",
     "10kCODERS",
     "ASHBY",
+    "KULA",
+    "FRESHTEAM",
+    "TRAKSTAR",
     "UNKNOWN",
 
     

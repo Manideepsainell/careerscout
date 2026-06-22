@@ -11,8 +11,11 @@ const collectEightfoldJobs = async (
 let allPositions = [];
 let start = 0;
 const baseUrl =
-  new URL(company.careersUrl).origin;
+  company.careersUrl
+    ? new URL(company.careersUrl).origin
+    : `https://${company.domain.split(".")[0]}.eightfold.ai`;
 
+    console.log("Base URL:", baseUrl);
 while (true) {
  const data = await searchJobs({
   baseUrl,
