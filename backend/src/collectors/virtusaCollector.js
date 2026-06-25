@@ -41,9 +41,9 @@ const collectVirtusaJobs =
         job.yearsOfExperience,
 
       postedDate:
-        job.postedDate
-          ? new Date(job.postedDate)
-          : new Date(),
+  job.postedDate
+    ? new Date(job.postedDate)
+    : null,
     }));
   };
 

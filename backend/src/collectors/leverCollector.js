@@ -48,8 +48,10 @@ ${job.lists
         job.categories?.commitment ||
         "Full Time",
 
-      postedDate:
-        new Date(job.createdAt),
+  postedDate:
+  job.createdAt
+    ? new Date(job.createdAt)
+    : null,
     }));
   };
 

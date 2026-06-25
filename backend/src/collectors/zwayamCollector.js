@@ -56,12 +56,12 @@ const collectZwayamJobs =
             ? "Full Time"
             : "Other",
 
-        postedDate:
-          data.createdDate
-            ? new Date(
-                data.createdDate
-              )
-            : new Date(),
+       postedDate:
+  data.createdDate
+    ? new Date(
+        data.createdDate
+      )
+    : null,
       };
     });
   };

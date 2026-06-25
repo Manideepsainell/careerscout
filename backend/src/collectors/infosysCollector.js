@@ -12,6 +12,10 @@ const collectInfosysJobs =
     console.log(
       `Retrieved ${jobs.length} jobs`
     );
+console.log(
+  "FIRST INFOSYS JOB:"
+);
+
 
     return jobs.map((job) => ({
 
@@ -46,11 +50,9 @@ const collectInfosysJobs =
         "Full Time",
 
       postedDate:
-        job.expiryDate
-          ? new Date(
-              job.expiryDate
-            )
-          : new Date(),
+  job.createdOn
+    ? new Date(job.createdOn)
+    : null,
 
     }));
   };

@@ -8,141 +8,227 @@ const sleep = (ms) =>
   new Promise((resolve) =>
     setTimeout(resolve, ms)
   );
+const parseWorkdayPostedDate = (
+  postedOn
+) => {
+  if (!postedOn) return null;
 
+  const text =
+    postedOn.toLowerCase();
+
+  if (text.includes("today")) {
+    return new Date();
+  }
+
+  if (
+    text.includes("yesterday")
+  ) {
+    const date = new Date();
+
+    date.setDate(
+      date.getDate() - 1
+    );
+
+    return date;
+  }
+
+  const match =
+    text.match(/(\d+)/);
+
+  if (match) {
+    const date = new Date();
+
+    date.setDate(
+      date.getDate() -
+        Number(match[1])
+    );
+
+    return date;
+  }
+
+  return null;
+};
 const collectWorkdayJobs = async (
   company
 ) => {
   console.log(
     `WORKDAY collector running for ${company.name}`
   );
-
-  const endpoint =
-    buildWorkdayJobsEndpoint(
-      company.openPositionsUrl
-    );
-
-  console.log(endpoint);
-
-  const limit = 20;
-
-  let offset = 0;
-  let total = 0;
-
-  const allPostings = [];
-
-  while (true) {
-    let response = null;
-
-    for (
-      let attempt = 1;
-      attempt <= 3;
-      attempt++
-    ) {
-      try {
- response = await axios.post(
-  endpoint,
-  {
-    appliedFacets: {},
-    limit,
-    offset,
-    searchText: ""
-  },
-  {
-    timeout: 20000,
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }
-);  break;
-      } catch (error) {
-  console.log(
-    `${company.name}: attempt ${attempt} failed`
+let endpoint =
+  buildWorkdayJobsEndpoint(
+    company.careersUrl
   );
 
-  console.log(
-    error.response?.status
-  );
+const limit = 20;
 
-  console.log(
-    error.response?.data
-  );
+let offset = 0;
+let total = 0;
 
-  if (attempt < 3) {
-    await sleep(500);
-  }
-}
-    }
+const allPostings = [];
 
-    if (!response) {
+while (true) {
+  let response = null;
+
+  for (
+    let attempt = 1;
+    attempt <= 3;
+    attempt++
+  ) {
+    try {
+
       console.log(
-        `${company.name}: stopping at offset ${offset}`
+        `${company.name}: ${endpoint}`
+      );
+
+      response = await axios.post(
+        endpoint,
+        {
+          appliedFacets: {},
+          limit,
+          offset,
+          searchText: "",
+        },
+        {
+          timeout: 20000,
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+        }
       );
 
       break;
-    }
 
-    const {
-      total: responseTotal,
-      jobPostings,
-    } = response.data;
+    } catch (error) {
 
-    if (offset === 0) {
-      total = responseTotal;
-    }
+      console.log(
+        `${company.name}: attempt ${attempt} failed`
+      );
 
-    if (!jobPostings.length) {
-      break;
-    }
+      console.log(
+        error.response?.status
+      );
 
-    allPostings.push(
-      ...jobPostings
-    );
+      console.log(
+        error.response?.data
+      );
 
-    offset += jobPostings.length;
+      if (
+        attempt === 1 &&
+        company.openPositionsUrl
+      ) {
+        console.log(
+          `${company.name}: trying openPositionsUrl fallback`
+        );
 
-    console.log(
-      `${company.name}: fetched ${allPostings.length}/${total}`
-    );
+        endpoint =
+          buildWorkdayJobsEndpoint(
+            company.openPositionsUrl
+          );
 
-    if (
-      allPostings.length >= total
-    ) {
-      break;
+        continue;
+      }
+
+      if (attempt < 3) {
+        await sleep(500);
+      }
     }
   }
 
-  console.log(
-    `${company.name} total jobs: ${allPostings.length}`
-  );
-
-  const jobs =
-    allPostings.map(
-      (posting) => ({
-        title: posting.title,
-
-        company: company._id,
-
-        location:
-          posting.locationsText,
-
-        externalJobId:
-          posting.externalPath
-            ?.split("/")
-            .pop() || "",
-
-        source: "WORKDAY",
-
-        jobUrl:
-          buildWorkdayJobUrl(
-            company.openPositionsUrl,
-            posting.externalPath
-          ),
-      })
+  if (!response) {
+    console.log(
+      `${company.name}: stopping at offset ${offset}`
     );
 
-  console.log(
-    `Retrieved ${jobs.length} jobs`
+    break;
+  }
+
+  const {
+    total: responseTotal,
+    jobPostings,
+  } = response.data;
+
+  if (
+    !Array.isArray(jobPostings)
+  ) {
+    console.log(
+      `${company.name}: invalid response`
+    );
+
+    console.log(
+      JSON.stringify(
+        response.data,
+        null,
+        2
+      )
+    );
+
+    break;
+  }
+
+  if (offset === 0) {
+    total = responseTotal;
+  }
+
+  if (!jobPostings.length) {
+    break;
+  }
+
+  allPostings.push(
+    ...jobPostings
   );
+
+  offset += jobPostings.length;
+
+  console.log(
+    `${company.name}: fetched ${allPostings.length}/${total}`
+  );
+
+  if (
+    allPostings.length >= total
+  ) {
+    break;
+  }
+}
+console.log(
+  `${company.name} total jobs: ${allPostings.length}`
+);
+
+const jobs =
+  allPostings.map(
+    (posting) => ({
+      title: posting.title,
+
+      company: company._id,
+
+      location:
+        posting.locationsText,
+
+      externalJobId:
+        posting.externalPath
+          ?.split("/")
+          .pop() || "",
+
+      source: "WORKDAY",
+
+      jobUrl:
+  buildWorkdayJobUrl(
+    company.careersUrl ||
+    company.openPositionsUrl,
+    posting.externalPath
+  ),
+
+      postedDate:
+        parseWorkdayPostedDate(
+          posting.postedOn
+        ),
+    })
+  );
+
+console.log(
+  `Retrieved ${jobs.length} jobs`
+);
+
 
   return jobs;
 };

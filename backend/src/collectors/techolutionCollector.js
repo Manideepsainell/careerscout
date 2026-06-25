@@ -44,9 +44,9 @@ const collectTecholutionJobs =
         job.employmentType,
 
       postedDate:
-        job.createdAt
-          ? new Date(job.createdAt)
-          : new Date(),
+  job.createdAt
+    ? new Date(job.createdAt)
+    : null,
     }));
   };
 

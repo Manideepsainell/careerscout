@@ -42,6 +42,7 @@ const collectZohoRecruitJobs =
       jobType:
         job.Job_Type ||
         "Not Specified",
+        postedDate: null,
     }));
   };
 

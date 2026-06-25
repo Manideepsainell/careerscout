@@ -80,11 +80,9 @@ const collectCornerstoneJobs =
         "",
 
       postedDate:
-        job.postingEffectiveDate
-          ? new Date(
-              job.postingEffectiveDate
-            )
-          : undefined,
+  job.postingEffectiveDate
+    ? new Date(job.postingEffectiveDate)
+    : null,
     }));
   };
 

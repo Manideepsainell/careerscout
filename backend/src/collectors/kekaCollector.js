@@ -43,6 +43,7 @@ const collectKekaJobs =
 
       jobUrl:
         company.careersUrl,
+        postedDate: null,
     }));
   };
 

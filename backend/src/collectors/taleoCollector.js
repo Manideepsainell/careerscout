@@ -23,6 +23,7 @@ const collectTaleoJobs =
       source: "TALEO",
       location: "India",
       jobUrl: job.url,
+      postedDate: null,
     }));
   };
 

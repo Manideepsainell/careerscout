@@ -54,10 +54,10 @@ console.log(
       jobType:
         job.posting_type,
 
-      postedDate:
-        job.date
-          ? new Date(job.date)
-          : new Date(),
+     postedDate:
+  job.date
+    ? new Date(job.date)
+    : null,
     }));
   };
 

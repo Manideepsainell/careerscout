@@ -3,6 +3,12 @@ import { getJobs } from "../services/jobService";
 import JobCard from "../components/JobCard";
 import "./JobsPage.css";
 import {
+  refresh10kJobs
+} from "../services/tenkService";
+import {
+  getStats
+} from "../services/statsService";
+import {
   FiSearch,
   FiMapPin,
   FiBriefcase,
@@ -19,6 +25,8 @@ const [indiaOnly, setIndiaOnly] =
   useState("");
   const [jobs, setJobs] =
   useState([]);
+  const [top10kJobs, setTop10kJobs] =
+  useState([]);
   const [sort, setSort] =
   useState("latest");
   const [hiddenJobs, setHiddenJobs] =
@@ -29,20 +37,53 @@ const [savedJobs, setSavedJobs] =
   showSavedOnly,
   setShowSavedOnly
 ] = useState(false);
+const [
+  refreshing10k,
+  setRefreshing10k
+] = useState(false);
+
+const [
+  last10kRefresh,
+  setLast10kRefresh
+] = useState(null);
 const [totalJobs, setTotalJobs] =
   useState(0);
 
 const [totalPages, setTotalPages] =
   useState(1);
+const [stats, setStats] =
+  useState(null);
+  useEffect(() => {
 
+  const fetchStats =
+    async () => {
+
+      try {
+
+        const data =
+          await getStats();
+
+        setStats(data);
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+
+    };
+
+  fetchStats();
+
+}, []);
 const [page, setPage] =
   useState(1);
+  
   const [
   experienceBand,
   setExperienceBand
 ] = useState("");
-  useEffect(() => {
-    const fetchJobs = async () => {
+  const fetchJobs = async () => {
       try {
 const response =
   await getJobs({
@@ -56,6 +97,15 @@ const response =
 
 setJobs(response.data);
 
+
+setTop10kJobs(
+  response.top10kJobs || []
+);
+console.log(
+  "Top10k jobs:",
+  response.top10kJobs
+);
+
 setTotalJobs(
   response.totalJobs
 );
@@ -68,12 +118,17 @@ setTotalPages(
       }
     };
 
-    fetchJobs();
- }, [
+ useEffect(() => {
+
+  fetchJobs();
+
+}, [
   days,
   location,
   experienceBand,
-  role,page,sort
+  role,
+  page,
+  sort
 ]);
   const [search, setSearch] =
   useState("");
@@ -95,7 +150,7 @@ if (indiaOnly) {
   filteredJobs =
     filteredJobs.filter(
       (job) =>
-        job.calculatedScore?.score > 0
+        job.calculatedScore?.score >= 40
     );
 }
 
@@ -130,26 +185,120 @@ const saveJob = (job) => {
     job,
   ]);
 };
+let filteredTop10kJobs = top10kJobs;
+
+filteredTop10kJobs =
+  filteredTop10kJobs.filter(
+    (job) =>
+      !hiddenJobs.includes(
+        job._id
+      )
+  );
+
+if (indiaOnly) {
+  filteredTop10kJobs =
+    filteredTop10kJobs.filter(
+      (job) =>
+        job.calculatedScore?.score >= 40
+    );
+}
+
+if (search) {
+  filteredTop10kJobs =
+    filteredTop10kJobs.filter(
+      (job) =>
+        job.title
+          .toLowerCase()
+          .includes(
+            search.toLowerCase()
+          )
+    );
+}
+const handleRefresh10k =
+  async () => {
+
+    try {
+
+      setRefreshing10k(true);
+
+      await refresh10kJobs();
+
+      setLast10kRefresh(
+        new Date()
+      );
+
+      window.location.reload();
+
+    } catch (error) {
+
+      console.error(error);
+
+    } finally {
+
+      setRefreshing10k(false);
+
+    }
+
+};
  return (
 
   
   <div className="page-container">
   
-  <div className="header-card">
+<div className="header-card">
+
   <h1>CareerScout</h1>
-<div className="stats">
-  <span>
-    {totalJobs} Jobs
-  </span>
 
-  <span>
-    Page {page}/{totalPages}
-  </span>
+  <p className="hero-text">
+    Fresh software jobs. Less searching. More applying.
+  </p>
 
-  <span>
-    Saved {savedJobs.length}
-  </span>
-</div>
+  <div className="dashboard-cards">
+
+    <div className="dashboard-card">
+      <h2>{stats?.newJobsToday}</h2>
+      <p>Fresh Today</p>
+    </div>
+
+    <div className="dashboard-card">
+      <h2>{stats?.activeJobs?.toLocaleString()}</h2>
+      <p>Active Jobs</p>
+    </div>
+
+    <div className="dashboard-card">
+      <h2>{savedJobs.length}</h2>
+      <p>Saved</p>
+    </div>
+    <button
+  className="refresh10k-btn"
+  onClick={handleRefresh10k}
+  disabled={refreshing10k}
+>
+
+{
+  refreshing10k
+    ? "🔄 Refreshing..."
+    : "🔄 Refresh 10K Jobs"
+}
+
+</button>
+{
+  last10kRefresh && (
+
+    <div className="refresh-status">
+
+      ✓ Updated at {" "}
+
+      {
+        last10kRefresh.toLocaleTimeString()
+      }
+
+    </div>
+
+  )
+}
+
+  </div>
 
 </div>
 <div className="filters-container">
@@ -366,14 +515,46 @@ Role</label>
 </label>
 </div>
 </div>
+{
+  !showSavedOnly &&
+  top10kJobs.length > 0 && (
+    <div className="top10k-section">
 
+     <h2 className="section-title">
+  🔥 Top Recommendations from 10K Coders
+</h2>
 
-    {filteredJobs.map((job) => (
-     <JobCard
+     {
+  filteredTop10kJobs.map(
+    (job) => (
+<JobCard
   key={job._id}
   job={job}
   onHide={hideJob}
   onSave={saveJob}
+  onStatusChange={fetchJobs}
+  isTop10k={true}
+/>
+    )
+  )
+}
+  
+
+      <h2 className="section-title">
+        ⭐ Recommended Jobs
+      </h2>
+
+    </div>
+  )
+}
+
+    {filteredJobs.map((job) => (
+   <JobCard
+  key={job._id}
+  job={job}
+  onHide={hideJob}
+  onSave={saveJob}
+  onStatusChange={fetchJobs}
 />
     ))}
  <div className="pagination">

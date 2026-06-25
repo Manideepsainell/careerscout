@@ -18,6 +18,7 @@ export const getJobs = async (
 
           sort:
             "latest",
+             excludeSenior: true,
 
           ...filters,
         },
@@ -25,4 +26,25 @@ export const getJobs = async (
     );
 
 return response.data;
+};
+
+export const markApplied =
+  async (jobId) => {
+
+    const response =
+      await axios.patch(
+        `${BASE_URL}/${jobId}/apply`
+      );
+
+    return response.data;
+};
+export const markExpired =
+  async (jobId) => {
+
+    const response =
+      await axios.patch(
+        `${BASE_URL}/${jobId}/expire`
+      );
+
+    return response.data;
 };

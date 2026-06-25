@@ -48,6 +48,7 @@ const collectSmartRecruitersJobs = async (
 
     jobUrl:
       job.ref,
+      postedDate: null,
   }));
 };
 

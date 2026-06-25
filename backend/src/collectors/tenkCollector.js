@@ -46,9 +46,9 @@ const collect10kCodersJobs =
         job.experience_level || "",
 
       postedDate:
-        job.posted_at
-          ? new Date(job.posted_at)
-          : new Date(),
+  job.posted_at
+    ? new Date(job.posted_at)
+    : null,
 
     }));
   };

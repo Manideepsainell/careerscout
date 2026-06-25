@@ -39,6 +39,7 @@ const endpoint =
       source: "GREENHOUSE",
 
       jobUrl: job.absolute_url,
+       postedDate: null,
     })
   );
 };

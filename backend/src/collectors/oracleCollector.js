@@ -66,8 +66,10 @@ return allJobs.map((job) => ({
 
   description:
     job.ShortDescriptionStr || "",
-
-  postedDate: job.PostedDate,
+postedDate:
+  job.PostedDate
+    ? new Date(job.PostedDate)
+    : null,
 }));
 };
 

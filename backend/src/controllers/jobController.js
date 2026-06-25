@@ -44,9 +44,21 @@ const foreignCountries = [
   "germany",
   "france",
   "ireland",
-  "poland"
-];
+  "poland",
+  "argentina",
+  "brazil",
+  "mexico",
+  "norway",
+  "slovakia",
+  "sweden",
+  "netherlands",
+  "australia",
+  "united kingdom",
+  "uk",
+  "spain",
+  "italy",
 
+];
   // Role Match
 if (job.eligibilityLevel === "ENTRY_LEVEL") {
   score += 80;
@@ -63,17 +75,17 @@ if (job.eligibilityLevel === "GENERAL") {
 // Role Category Scoring
 
 if (job.roleCategory === "BACKEND") {
-  score += 40;
+  score += 50;
   reasons.push("Backend category");
 }
 
 if (job.roleCategory === "FULLSTACK") {
-  score += 35;
+  score += 45;
   reasons.push("Full Stack category");
 }
 
 if (job.roleCategory === "GENERAL_SOFTWARE") {
-  score += 25;
+  score += 20;
   reasons.push("Software category");
 }
 
@@ -168,16 +180,40 @@ if (experience.includes("0-2")) {
   score += 30;
   reasons.push("0-2 years experience");
 }
+if (job.experienceBand === "FRESHER") {
+  score += 40;
+  reasons.push("Fresher profile");
+}
+
+if (job.experienceBand === "JUNIOR") {
+  score += 20;
+  reasons.push("Junior profile");
+}
+
+if (job.experienceBand === "MID") {
+  score += 5;
+  reasons.push("Mid profile");
+}
   // Location Match
   if (
   foreignCountries.some(country =>
     location.includes(country)
   )
 ) {
-  score -= 80;
+  score -= 150;
+
   reasons.push(
     "Outside preferred geography"
   );
+}
+if (
+  location.includes("USA") ||
+  location.includes("United States") ||
+  location.includes("Canada") ||
+  location.includes("Argentina") ||
+  location.includes("Vilnius")
+) {
+  score -= 150;
 }
 if (location.includes("hyderabad")) {
   score += 40;
@@ -185,7 +221,7 @@ if (location.includes("hyderabad")) {
 }
 
 if (location.includes("remote")) {
-  score += 35;
+  score += 20;
   reasons.push("Remote opportunity");
 }
 
@@ -237,12 +273,17 @@ if (job.company?.priority === "MEDIUM") {
   score += 10;
   reasons.push("Medium priority company");
 }
+if (job.company?.category === "Product") {
+  score += 10;
+  reasons.push("Product company");
+}
   //Role Match
   
 if (
   title.includes("nodejs") ||
   title.includes("node.js") ||
-  title.includes("node js")
+  title.includes("node js") ||
+  title.includes("node")
 ) {
   score += 35;
   reasons.push("Node.js role");
@@ -258,14 +299,23 @@ if (title.includes("developer")) {
   reasons.push("Developer role");
 }
 if (job.eligibilityLevel === "SENIOR") {
-  score -= 30;
+  score -= 100;
 }
 
-if (
-  ["LEAD", "MANAGER", "STAFF", "PRINCIPAL"]
-  .includes(job.eligibilityLevel)
-) {
-  score -= 50;
+if (job.eligibilityLevel === "LEAD") {
+  score -= 120;
+}
+
+if (job.eligibilityLevel === "MANAGER") {
+  score -= 140;
+}
+
+if (job.eligibilityLevel === "STAFF") {
+  score -= 160;
+}
+
+if (job.eligibilityLevel === "PRINCIPAL") {
+  score -= 200;
 }
 const freshnessScore =
   getFreshnessScore(job);
@@ -286,6 +336,13 @@ if (freshnessScore === 10) {
 if (freshnessScore === 5) {
   reasons.push("Posted within 30 days");
 }
+if (!job.postedDate) {
+  score -= 30;
+
+  reasons.push(
+    "Unknown posting date"
+  );
+}
 return {
   score,
   reasons,
@@ -299,6 +356,7 @@ const normalizeTitle = (title) => {
 };
 const getJobs = asyncHandler(async (req, res) => {
 const filter = {};
+filter.status = "ACTIVE";
 if (req.query.days) {
   const days = Number(req.query.days);
 
@@ -356,14 +414,11 @@ let sortOption = {
   createdAt: -1
 };
 
-if (
-  req.query.sort === "latest"
-) {
+if (req.query.sort === "latest") {
   sortOption = {
-    createdAt: -1
+    postedDate: -1
   };
 }
-
 if (
   req.query.sort === "oldest"
 ) {
@@ -409,13 +464,11 @@ else if (
   };
 }
 console.log("FILTER:", filter);
-const totalJobs = await Job.countDocuments(filter);
-const totalPages = Math.ceil(totalJobs / limit);
+
 const jobs = await Job.find(filter)
   .sort(sortOption)
-  .skip(skip)
-  .limit(limit)
   .populate("company");
+  
 const scoredJobs = jobs.map((job) => ({
   ...job.toObject(),
 
@@ -450,41 +503,143 @@ if (req.query.excludeSenior === "true") {
   filteredJobs = filteredJobs.filter(
     (job) =>
       ![
+        "SENIOR",
         "LEAD",
         "MANAGER",
         "STAFF",
         "PRINCIPAL",
-      ].includes(
-        job.eligibilityLevel
-      )
+      ].includes(job.eligibilityLevel) &&
+      job.experienceBand !== "SENIOR"
   );
 }
+console.log(
+  "SORT MODE:",
+  req.query.sort
+);
 
+if (req.query.sort === "recommended") {
 
-filteredJobs.sort((a, b) => {
+  filteredJobs.sort(
+    (a, b) =>
+      b.calculatedScore.score -
+      a.calculatedScore.score
+  );
 
-  const tierDifference =
-    tierPriority[a.tier] -
-    tierPriority[b.tier];
+  const companyCount = {};
+  const diversifiedJobs = [];
 
-  if (tierDifference !== 0) {
-    return tierDifference;
+  for (const job of filteredJobs) {
+
+    const companyName =
+      job.company?.name || "Unknown";
+
+    companyCount[companyName] =
+      companyCount[companyName] || 0;
+
+    if (companyCount[companyName] < 2) {
+      diversifiedJobs.push(job);
+      companyCount[companyName]++;
+    }
+  }
+console.log(
+  diversifiedJobs
+    .slice(0, 20)
+    .map(job => job.company?.name)
+);
+  filteredJobs = diversifiedJobs;
+}
+else {
+
+  console.log(
+    "LATEST SORT"
+  );
+
+  filteredJobs.sort(
+    (a, b) =>
+      new Date(b.postedDate || 0) -
+      new Date(a.postedDate || 0)
+  );
+
+  const firstBatch =
+    filteredJobs.slice(0, 50);
+
+  const remainingJobs =
+    filteredJobs.slice(50);
+
+  const companyCount = {};
+  const diversifiedLatest = [];
+
+  for (const job of firstBatch) {
+
+    const companyName =
+      job.company?.name || "Unknown";
+
+    companyCount[companyName] =
+      companyCount[companyName] || 0;
+
+    if (companyCount[companyName] < 3) {
+      diversifiedLatest.push(job);
+      companyCount[companyName]++;
+    }
   }
 
-  return (
-    b.calculatedScore.score -
-    a.calculatedScore.score
-  );
-});
+  filteredJobs = [
+    ...diversifiedLatest,
+    ...remainingJobs,
+  ];
+}
+if (req.query.sort === "latest") {
 
+  const cutoffDate = new Date();
+
+  cutoffDate.setDate(
+    cutoffDate.getDate() - 30
+  );
+
+  filteredJobs = filteredJobs.filter(
+    job =>
+      job.postedDate &&
+      new Date(job.postedDate) >= cutoffDate
+  );
+
+}
+const top10kJobs = filteredJobs
+  .filter(
+    job => job.source === "10KCODERS"
+  )
+  .slice(0, 5);
+
+const recommendedJobs = filteredJobs
+  .filter(
+    job => job.source !== "10KCODERS"
+  );
+const totalJobs =
+
+  recommendedJobs.length;
+
+const totalPages =
+  Math.ceil(totalJobs / limit);
+
+const startIndex =
+  (page - 1) * limit;
+
+const endIndex =
+  startIndex + limit;
+
+const paginatedJobs =
+  recommendedJobs.slice(
+    startIndex,
+    endIndex
+  );
 res.status(200).json({
   success: true,
   page,
   limit,
-  count: filteredJobs.length,
+  count: recommendedJobs.length,
   totalJobs,
   totalPages,
-  data: filteredJobs,
+  top10kJobs,
+  data: paginatedJobs,
 });
 });
 
@@ -542,14 +697,57 @@ const uniqueJobs =
         b.calculatedScore.score -
         a.calculatedScore.score
     );
+    const top10kJobs = uniqueJobs
+  .filter(
+    job => job.source === "10KCODERS"
+  )
+  .slice(0, 5);
+
+const recommendedJobs = uniqueJobs
+  .filter(
+    job => job.source !== "10KCODERS"
+  );
 
     res.status(200).json({
-      success: true,
-      count: uniqueJobs.length,
-      data: uniqueJobs,
-    });
-
+  success: true,
+  count: uniqueJobs.length,
+  top10kJobs,
+  data: recommendedJobs,
+});
   });
+const markApplied =
+  asyncHandler(async (req, res) => {
+
+    const job =
+      await Job.findByIdAndUpdate(
+        req.params.id,
+        {
+          status: "APPLIED",
+        },
+        {
+          new: true,
+        }
+      );
+
+    res.status(200).json(job);
+});
+const markExpired =
+  asyncHandler(async (req, res) => {
+
+    const job =
+      await Job.findByIdAndUpdate(
+        req.params.id,
+        {
+          status: "EXPIRED",
+        },
+        {
+          new: true,
+        }
+      );
+
+    res.status(200).json(job);
+
+});
 const createJob = asyncHandler(async (req, res) => {
 
     const job = await Job.create(req.body);
@@ -652,6 +850,8 @@ export {
   getJobs,
   getNewJobs,
   getFresherJobs,
+  markApplied,
+  markExpired,
   getJobById,
   createJob,
   deleteJob,

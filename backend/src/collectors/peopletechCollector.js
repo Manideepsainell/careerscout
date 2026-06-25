@@ -36,9 +36,9 @@ const collectPeopleTechJobs =
         job.description || "",
 
       postedDate:
-        job.createdOn
-          ? new Date(job.createdOn)
-          : new Date(),
+  job.createdOn
+    ? new Date(job.createdOn)
+    : null,
     }));
 };
 

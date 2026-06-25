@@ -47,10 +47,10 @@ console.log(
       job.job_type ||
       "Full Time",
 
-    postedDate:
-      job.created_at
-        ? new Date(job.created_at)
-        : new Date(),
+     postedDate:
+  job.created_at
+    ? new Date(job.created_at)
+    : null,
   }));
 };
 

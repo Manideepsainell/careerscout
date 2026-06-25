@@ -28,7 +28,7 @@ ${job.responsibilities}
 
 ${job.qualifications}`,
     jobType: job.type || "Full Time",
-    postedDate: new Date(),
+    postedDate: null,
   }));
 }
 

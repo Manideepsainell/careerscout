@@ -44,8 +44,7 @@ const collectRippleHireJobs =
       jobType:
         "Full Time",
 
-      postedDate:
-        new Date(),
+   postedDate: null,
     }));
   };
 

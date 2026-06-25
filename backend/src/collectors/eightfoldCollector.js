@@ -58,9 +58,10 @@ while (true) {
 
       description: "",
 
-      postedDate: new Date(
-        job.postedTs * 1000
-      ),
+     postedDate:
+  job.postedTs
+    ? new Date(job.postedTs * 1000)
+    : null,
     })
   );
 };

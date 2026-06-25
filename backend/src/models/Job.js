@@ -69,10 +69,15 @@ experienceBand: {
   default: "UNKNOWN",
 },
     status: {
-      type: String,
-      enum: ["ACTIVE", "EXPIRED", "FILLED"],
-      default: "ACTIVE",
-    },
+  type: String,
+  enum: [
+    "ACTIVE",
+    "APPLIED",
+    "EXPIRED",
+    "FILLED"
+  ],
+  default: "ACTIVE",
+},
 
   postedDate: {
   type: Date,

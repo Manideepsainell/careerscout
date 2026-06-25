@@ -42,11 +42,10 @@ const collectDarwinboxJobs =
       experience:
         job.experience || "",
 
-      postedDate:
-        job.posted_on
-          ? new Date(job.posted_on)
-          : new Date(),
-
+     postedDate:
+  job.posted_on
+    ? new Date(job.posted_on)
+    : null,
       jobType:
         job.emp_type || "",
     }));

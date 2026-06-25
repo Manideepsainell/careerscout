@@ -3,7 +3,8 @@ import Job from "../models/Job.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-
+import withTimeout
+  from "../utils/withTimeout.js";
 // imports ...
 import CrawlStat from "../models/CrawlStat.js";
 import RunStat from "../models/RunStat.js";
@@ -96,7 +97,37 @@ const collectors = {
   LEVER: collectLeverJobs,
 };
 
-async function processCompany(company) {
+ export async function processCompany(company) {
+if (!company.jobBoardType) {
+
+  console.log(
+    `${company.name}: missing jobBoardType`
+  );
+
+  return {
+  success: false,
+  jobsAdded: 0,
+  company: company.name,
+};
+
+}
+
+if (!company.openPositionsUrl) {
+
+  console.log(
+    `${company.name}: missing openPositionsUrl`
+  );
+
+  return {
+  success: false,
+  jobsAdded: 0,
+  company: company.name,
+};
+
+}
+  console.log(
+    `\n========== START ${company.name} ==========`
+  );
 
   const crawlStat =
     await CrawlStat.create({
@@ -110,8 +141,7 @@ async function processCompany(company) {
     collectors[company.jobBoardType];
 
   console.log(
-    "JOB BOARD TYPE:",
-    company.jobBoardType
+    `Collector: ${company.jobBoardType}`
   );
 
   if (!collector) {
@@ -129,26 +159,35 @@ async function processCompany(company) {
     );
 
     return {
-      success: false,
-      jobsAdded: 0,
-    };
+  success: false,
+  jobsAdded: 0,
+  company: company.name,
+};
+
   }
 
   let jobs = [];
 
   try {
 
+    console.log(
+      `Fetching jobs for ${company.name}`
+    );
+
     jobs =
-      await collector(company);
+      await withTimeout(
+        collector(company),
+        120000
+      );
+
+    console.log(
+      `Fetched ${jobs.length} jobs`
+    );
 
   } catch (error) {
 
     console.log(
-      `Collector failed for ${company.name}`
-    );
-
-    console.log(
-      error.message
+      `${company.name}: ${error.message}`
     );
 
     await CrawlStat.findByIdAndUpdate(
@@ -160,9 +199,10 @@ async function processCompany(company) {
     );
 
     return {
-      success: false,
-      jobsAdded: 0,
-    };
+  success: false,
+  jobsAdded: 0,
+  company: company.name,
+};
   }
 
   const jobsToInsert = [];
@@ -170,11 +210,6 @@ async function processCompany(company) {
   for (const job of jobs) {
 
     if (!job.title) {
-
-      console.log(
-        `Skipping invalid job from ${company.name}`
-      );
-
       continue;
     }
 
@@ -187,114 +222,104 @@ async function processCompany(company) {
     jobsToInsert.push(job);
   }
 
-let jobsAdded = 0;
+  let jobsAdded = 0;
 
-try {
+  try {
 
-  if (jobsToInsert.length > 0) {
+    if (jobsToInsert.length > 0) {
 
-    const operations =
-      jobsToInsert.map((job) => ({
-        updateOne: {
-
-          filter: {
-            company: job.company,
-            externalJobId:
-              job.externalJobId,
-          },
-
-          update: {
-
-            $set: {
-
-              title:
-                job.title,
-
-              location:
-                job.location,
-
-              jobType:
-                job.jobType,
-
-              experience:
-                job.experience,
-
-              salary:
-                job.salary,
-
-              source:
-                job.source,
-
-              jobUrl:
-                job.jobUrl,
-
-              description:
-                job.description,
-
-              score:
-                job.score,
-
-              roleCategory:
-                job.roleCategory,
-
-              eligibilityLevel:
-                job.eligibilityLevel,
-
-              experienceBand:
-                job.experienceBand,
-
-              status:
-                "ACTIVE",
-
-              postedDate:
-                job.postedDate,
-
-              lastSeenAt:
-                new Date(),
-            },
-
-            $setOnInsert: {
-              createdAt:
-                new Date(),
-            },
-          },
-
-          upsert: true,
-        },
-      }));
-
-    const result =
-      await Job.bulkWrite(
-        operations
+      console.log(
+        `Writing ${jobsToInsert.length} jobs`
       );
 
-    jobsAdded =
-      result.upsertedCount;
-  }
+      const operations =
+        jobsToInsert.map((job) => ({
+          updateOne: {
+            filter: {
+              company: job.company,
+              externalJobId:
+                job.externalJobId,
+            },
 
-} catch (error) {
+            update: {
+              $set: {
+                title: job.title,
+                location: job.location,
+                jobType: job.jobType,
+                experience: job.experience,
+                salary: job.salary,
+                source: job.source,
+                jobUrl: job.jobUrl,
+                description: job.description,
+                score: job.score,
+                roleCategory: job.roleCategory,
+                eligibilityLevel:
+                  job.eligibilityLevel,
+                experienceBand:
+                  job.experienceBand,
+                status: "ACTIVE",
+                postedDate: job.postedDate,
+                lastSeenAt: new Date(),
+              },
 
-  console.log(
-    `Insert failed for ${company.name}`
-  );
+              $setOnInsert: {
+                createdAt: new Date(),
+              },
+            },
 
-  console.log(
-    error.message
-  );
+            upsert: true,
+          },
+        }));
 
-  await CrawlStat.findByIdAndUpdate(
-    crawlStat._id,
-    {
-      completedAt: new Date(),
-      status: "FAILED",
+      const result =
+        await Job.bulkWrite(
+          operations
+        );
+
+      console.log(
+        "bulkWrite completed"
+      );
+
+      jobsAdded =
+        result.upsertedCount;
     }
+
+  } catch (error) {
+
+    console.log(
+      `Insert failed for ${company.name}`
+    );
+
+    console.log(
+      error.message
+    );
+    if (!company.jobBoardType) {
+
+  console.log(
+    `${company.name}: missing jobBoardType`
   );
 
-  return {
-    success: false,
-    jobsAdded: 0,
-  };
+ return {
+  success: false,
+  jobsAdded: 0,
+  company: company.name,
+};
 }
+
+    await CrawlStat.findByIdAndUpdate(
+      crawlStat._id,
+      {
+        completedAt: new Date(),
+        status: "FAILED",
+      }
+    );
+
+    return {
+  success: false,
+  jobsAdded: 0,
+  company: company.name,
+};
+  }
 
   await CrawlStat.findByIdAndUpdate(
     crawlStat._id,
@@ -306,17 +331,14 @@ try {
   );
 
   console.log(
-    `${jobsAdded} new jobs stored`
-  );
-
-  console.log(
-    `${company.name}: ${jobs.length} jobs`
+    `========== END ${company.name} ==========\n`
   );
 
   return {
-    success: true,
-    jobsAdded,
-  };
+  success: true,
+  jobsAdded,
+  company: company.name,
+};
 }
 const runDiscovery = async () => {
 
@@ -361,12 +383,16 @@ const runDiscovery = async () => {
   console.log(
     `Loaded ${companies.length} companies`
   );
+  console.log(
+  "Starting loop"
+);
 
   let totalJobsAdded = 0;
 
   let totalCompaniesProcessed = 0;
 
   let totalCompaniesFailed = 0;
+  const failedCompanies = [];
 
   const batchSize = 1;
 
@@ -381,26 +407,38 @@ const runDiscovery = async () => {
         i,
         i + batchSize
       );
-
+      console.log(
+  `Batch ${i}`
+);
     const results =
       await Promise.all(
         batch.map(processCompany)
       );
-
+console.log(
+  `Batch ${i} completed`
+);
     for (const result of results) {
 
       totalCompaniesProcessed++;
 
       totalJobsAdded +=
         result.jobsAdded;
+if (!result.success) {
+  totalCompaniesFailed++;
 
-      if (!result.success) {
-
-        totalCompaniesFailed++;
-
-      }
+  failedCompanies.push(
+    result.company
+  );
+}
     }
   }
+  console.log(
+  "All companies processed"
+);
+
+console.log(
+  "Updating RunStat"
+);
 
   await RunStat.findByIdAndUpdate(
     runStat._id,
@@ -421,6 +459,9 @@ const runDiscovery = async () => {
         "SUCCESS",
     }
   );
+  console.log(
+  "RunStat updated"
+);
 
   console.log(
     "Discovery completed"
@@ -433,5 +474,14 @@ const runDiscovery = async () => {
   console.log(
     `${totalCompaniesFailed} companies failed`
   );
+  if (failedCompanies.length) {
+  console.log(
+    "\nFailed Companies:"
+  );
+
+  console.table(
+    failedCompanies
+  );
+}
 };
 export default runDiscovery;

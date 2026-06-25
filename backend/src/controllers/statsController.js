@@ -15,12 +15,25 @@ export const getStats = async (
       yesterday.getDate() - 1
     );
 
-   const newJobsToday =
-  await Job.countDocuments({
-    lastSeenAt: {
-      $gte: yesterday,
-    },
-  });
+    const totalJobs =
+      await Job.countDocuments();
+
+    const activeJobs =
+      await Job.countDocuments({
+        status: "ACTIVE",
+      });
+
+    const expiredJobs =
+      await Job.countDocuments({
+        status: "EXPIRED",
+      });
+
+    const newJobsToday =
+      await Job.countDocuments({
+        lastSeenAt: {
+          $gte: yesterday,
+        },
+      });
 
     const lastRun =
       await RunStat.findOne()
@@ -29,8 +42,11 @@ export const getStats = async (
         });
 
     res.json({
-      totalJobs:
-        await Job.countDocuments(),
+      totalJobs,
+
+      activeJobs,
+
+      expiredJobs,
 
       newJobsToday,
 
@@ -52,4 +68,5 @@ export const getStats = async (
     });
 
   }
+
 };

@@ -53,6 +53,7 @@ $(".job-openings li.job").each(
 
       description: "",
     });
+    
   }
 );
 

@@ -61,8 +61,7 @@ const collectIbmJobs =
         jobType:
           "Full Time",
 
-        postedDate:
-          new Date(),
+       postedDate: null,
           
       };
     });

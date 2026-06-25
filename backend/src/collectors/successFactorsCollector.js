@@ -46,12 +46,12 @@ console.log(company);
 
         jobType: "Full Time",
 
-        postedDate:
-          data?.unifiedStandardStart
-            ? new Date(
-                data.unifiedStandardStart
-              )
-            : new Date(),
+       postedDate:
+  data?.unifiedStandardStart
+    ? new Date(
+        data.unifiedStandardStart
+      )
+    : null,
       };
     });
   };

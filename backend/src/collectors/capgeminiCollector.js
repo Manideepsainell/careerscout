@@ -42,12 +42,9 @@ const collectCapgeminiJobs =
         "Full Time",
 
       postedDate:
-        job.updated_at
-          ? new Date(
-              job.updated_at
-            )
-          : new Date(),
-
+  job.updated_at
+    ? new Date(job.updated_at)
+    : null,
     }));
   };
 

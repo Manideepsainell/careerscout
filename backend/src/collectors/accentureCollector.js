@@ -56,12 +56,9 @@ const collectAccentureJobs =
     "Full Time",
 
   postedDate:
-    job.updateDate
-      ? new Date(
-          job.updateDate
-        )
-      : new Date(),
-
+  job.updateDate
+    ? new Date(job.updateDate)
+    : null,
 }));
   };
 
