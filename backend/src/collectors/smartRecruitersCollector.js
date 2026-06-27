@@ -7,8 +7,24 @@ const collectSmartRecruitersJobs = async (
     `Smart Recruiter collector running for ${company.name}`
   );
 
-  const endpoint =
-    `https://api.smartrecruiters.com/v1/companies/${company.companyId}/postings`;
+let companyId = company.companyId;
+
+if (!companyId && company.openPositionsUrl) {
+  companyId = new URL(company.openPositionsUrl)
+    .pathname
+    .split("/")
+    .filter(Boolean)
+    .pop();
+}
+
+if (!companyId) {
+  throw new Error(
+    `${company.name}: missing SmartRecruiters company ID`
+  );
+}
+
+const endpoint =
+  `https://api.smartrecruiters.com/v1/companies/${companyId}/postings`;
 
   console.log(endpoint);
 
@@ -22,6 +38,7 @@ const collectSmartRecruitersJobs = async (
   console.log(
     `Retrieved ${jobs.length} jobs`
   );
+ 
 
   return jobs.map((job) => ({
     title: job.name,
@@ -47,8 +64,10 @@ const collectSmartRecruitersJobs = async (
       "SMARTRECRUITERS",
 
     jobUrl:
-      job.ref,
-      postedDate: null,
+      `${company.openPositionsUrl.replace(/\/$/, "")}/${job.id}`,
+      postedDate: job.releasedDate
+  ? new Date(job.releasedDate)
+  : null,
   }));
 };
 

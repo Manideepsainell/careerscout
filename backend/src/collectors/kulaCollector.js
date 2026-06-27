@@ -22,16 +22,23 @@ const collectKulaJobs = async (company) => {
   console.log(
     `${jobs.length} jobs found`
   );
-
+console.dir(jobs[0], { depth: null });
   return jobs.map((job) => ({
     title: job.title,
 
     company: company._id,
 
     location:
-      job.offices?.[0]?.location ||
-      "Not Specified",
+  job.ats_job?.offices?.[0]?.location ||
+  "Not Specified",
+  jobType:
+  job.ats_job?.employment_type || "",
 
+department:
+  job.ats_job?.ats_department?.name || "",
+
+workplace:
+  job.ats_job?.workplace || "",
     source: "KULA",
 
     externalJobId: String(job.id),

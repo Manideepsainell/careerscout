@@ -11,32 +11,25 @@ const collectOracleJobs = async (
     `Oracle collector running for ${company.name}`
   );
 
- const endpoint =
-  buildOracleJobsEndpoint(
-    company.openPositionsUrl
-  );
-
-
 let offset = 0;
 let allJobs = [];
 
 while (true) {
+
   const endpoint =
     buildOracleJobsEndpoint(
-      company.openPositionsUrl,
+      company,
       offset
     );
 
   const response =
     await axios.get(endpoint);
 
-  const jobs =
-    response.data.items?.[0]
-      ?.requisitionList || [];
+  const search =
+    response.data.items?.[0];
 
-  console.log(
-    `Offset ${offset}: ${jobs.length}`
-  );
+  const jobs =
+    search?.requisitionList || [];
 
   if (!jobs.length) {
     break;
@@ -44,13 +37,29 @@ while (true) {
 
   allJobs.push(...jobs);
 
-  if (jobs.length < 200) {
+  const totalJobs =
+    search.TotalJobsCount;
+
+  const limit =
+    search.Limit;
+
+  console.log(
+    `${company.name}: ${allJobs.length}/${totalJobs}`
+  );
+
+  offset += limit;
+
+  if (offset >= totalJobs) {
     break;
   }
-
-  offset += 200;
 }
+const parsed = new URL(company.openPositionsUrl);
+
+const siteName = parsed.pathname.split("/")[5];
+   console.log(company.name);
+console.log(company.oracleConfig);
 return allJobs.map((job) => ({
+ 
   title: job.Title,
   company: company._id,
 
@@ -62,7 +71,7 @@ return allJobs.map((job) => ({
 
   externalJobId: job.Id,
 
-  jobUrl: `https://careers.oracle.com/en/sites/jobsearch/job/${job.Id}`,
+ jobUrl: `${parsed.origin}/hcmUI/CandidateExperience/en/sites/${siteName}/job/${job.Id}`,
 
   description:
     job.ShortDescriptionStr || "",

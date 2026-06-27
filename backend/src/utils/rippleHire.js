@@ -19,8 +19,8 @@ const getRippleHireJobs = async (
     token,
     source: "CAREERSITE",
     pagesize: pageSize,
-    function: "IT Application Services",
-    geo: "IND"
+    
+
   }),
   lang: "en"
 });

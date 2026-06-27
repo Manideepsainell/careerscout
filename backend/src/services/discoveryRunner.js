@@ -112,17 +112,21 @@ if (!company.jobBoardType) {
 
 }
 
-if (!company.openPositionsUrl) {
-
+if (
+  !company.openPositionsUrl &&
+  !company.careersUrl &&
+  !company.companyId &&
+  !company.slug
+) {
   console.log(
-    `${company.name}: missing openPositionsUrl`
+    `${company.name}: missing collector configuration`
   );
 
   return {
-  success: false,
-  jobsAdded: 0,
-  company: company.name,
-};
+    success: false,
+    jobsAdded: 0,
+    company: company.name,
+  };
 
 }
   console.log(

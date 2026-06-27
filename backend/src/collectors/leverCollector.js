@@ -7,14 +7,30 @@ const collectLeverJobs =
     console.log(
       `Lever collector running for ${company.name}`
     );
-console.log(
-  "Slug:",
-  company.slug
-);
-    const jobs =
-  await getLeverJobs(
-    company.slug
+
+let slug = company.slug;
+
+if (!slug && company.openPositionsUrl) {
+  slug = new URL(company.openPositionsUrl)
+    .pathname
+    .split("/")
+    .filter(Boolean)
+    .pop();
+}
+
+if (!slug) {
+  throw new Error(
+    `${company.name}: missing Lever slug`
   );
+}
+
+if (!slug) {
+  throw new Error(
+    `${company.name}: missing Lever slug`
+  );
+}
+
+const jobs = await getLeverJobs(slug);
 
     console.log(
       `Retrieved ${jobs.length} jobs`
@@ -43,6 +59,14 @@ ${job.lists
   ?.map((list) => list.content)
   .join("\n\n") || ""}
 `,
+department:
+  job.categories?.department || "",
+
+team:
+  job.categories?.team || "",
+
+workplace:
+  job.workplaceType || "",
 
       jobType:
         job.categories?.commitment ||

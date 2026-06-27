@@ -7,7 +7,9 @@ const collectFreshteamJobs = async (
   console.log(
     `Freshteam collector running for ${company.name}`
   );
-
+const baseUrl = new URL(
+  company.openPositionsUrl
+).origin;
   const response = await axios.get(
     company.openPositionsUrl
   );
@@ -21,23 +23,20 @@ $("a.row, a.heading").each(
       .find(".job-title")
       .text()
       .trim();
+let location = "Not Specified";
+let jobType = "";
 
-    let location = "";
+if ($(el).find(".location-info").length) {
+  const info = $(el)
+    .find(".location-info")
+    .text()
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
 
-    if ($(el).find(".location-info").length) {
-      location = $(el)
-        .find(".location-info")
-        .text()
-        .replace(/\s+/g, " ")
-        .trim();
-    } else {
-      location = $(el)
-        .find(".job-desc")
-        .text()
-        .replace(/\s+/g, " ")
-        .trim();
-    }
-
+  location = info[0] || "Not Specified";
+  jobType = info[1] || "";
+}
     const href = $(el).attr("href");
 
     jobs.push({
@@ -46,6 +45,7 @@ $("a.row, a.heading").each(
       company: company._id,
 
       location,
+      jobType,
 
       source: "FRESHTEAM",
 
@@ -53,9 +53,13 @@ $("a.row, a.heading").each(
         href.split("/")[2],
 
       jobUrl:
-        `https://${company.slug}.freshteam.com${href}`,
+  `${baseUrl}${href}`,
 
-      description: "",
+     description: $(el)
+  .find(".job-desc")
+  .text()
+  .replace(/\s+/g, " ")
+  .trim(),
 
       postedDate: null,
     });
@@ -66,6 +70,7 @@ $("a.row, a.heading").each(
   console.log(
     `${jobs.length} jobs found`
   );
+
 
   return jobs;
 };

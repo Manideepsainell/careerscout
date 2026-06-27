@@ -31,6 +31,14 @@ const collectRippleHireJobs =
 
       source:
         "RIPPLEHIRE",
+      experience:
+  job.jobMinExp != null && job.jobMaxExp != null
+    ? `${job.jobMinExp}-${job.jobMaxExp} Years`
+    : job.jobMinExp != null
+      ? `${job.jobMinExp}+ Years`
+      : job.jobMaxExp != null
+        ? `Up to ${job.jobMaxExp} Years`
+        : "",
 
       externalJobId:
         String(job.jobSeq),

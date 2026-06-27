@@ -25,23 +25,32 @@ const endpoint =
   console.log(
     `Retrieved ${response.data.jobs.length} jobs`
   );
+  
+  return response.data.jobs.map((job) => ({
+  title: job.title,
 
-  return response.data.jobs.map(
-    (job) => ({
-      title: job.title,
+  company: company._id,
 
-      company: company._id,
+  location:
+    job.location?.name ||
+    "Not Specified",
 
-      location: job.location?.name,
+  externalJobId:
+    String(job.id),
 
-      externalJobId: String(job.id),
+  source:
+    "GREENHOUSE",
 
-      source: "GREENHOUSE",
+  jobUrl:
+    job.absolute_url,
 
-      jobUrl: job.absolute_url,
-       postedDate: null,
-    })
-  );
+  postedDate:
+    job.first_published
+      ? new Date(job.first_published)
+      : job.updated_at
+      ? new Date(job.updated_at)
+      : null,
+}));
 };
 
 export default collectGreenHouseJobs;

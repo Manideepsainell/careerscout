@@ -15,35 +15,44 @@ const collectZohoRecruitJobs =
       `Retrieved ${jobs.length} jobs`
     );
 
-    return jobs.map((job) => ({
-      title:
-        job.Posting_Title ||
-        job.Job_Opening_Name,
 
-      company:
-        company._id,
+   return jobs.map((job) => ({
+  title:
+    job.Posting_Title,
 
-      location:
-        job.Country1 ||
-        "India",
+  company:
+    company._id,
 
-      source:
-        "ZOHO_RECRUIT",
+  location:
+    [
+      job.City,
+      job.State,
+      job.Country,
+    ]
+      .filter(Boolean)
+      .join(", ") ||
+    "Not Specified",
 
-      externalJobId:
-        String(job.id),
+  source:
+    "ZOHO_RECRUIT",
 
-      jobUrl:
-        job.$url,
+  externalJobId:
+    job.id,
 
-      description:
-        job.Job_Description || "",
+  jobUrl:
+    job.$url,
 
-      jobType:
-        job.Job_Type ||
-        "Not Specified",
-        postedDate: null,
-    }));
+  description:
+    job.Job_Description || "",
+
+  jobType:
+    job.Job_Type || "",
+
+  postedDate:
+    job.Date_Opened
+      ? new Date(job.Date_Opened)
+      : null,
+}));
   };
 
 export default collectZohoRecruitJobs;

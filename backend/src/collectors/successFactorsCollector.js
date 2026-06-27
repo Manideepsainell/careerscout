@@ -3,22 +3,25 @@ import getSuccessFactorsJobs
 
 const collectSuccessFactorsJobs =
   async (company) => {
-    console.log("COMPANY");
-console.log(company);
+
 
     console.log(
       `SuccessFactors collector running for ${company.name}`
     );
+    const baseUrl = new URL(
+  company.openPositionsUrl
+).origin;
 
-    const jobs =
-     await getSuccessFactorsJobs(
-  company.openPositionsUrl,
-  company.categoryId ?? 0
-);
+   const jobs =
+  await getSuccessFactorsJobs(
+    company.openPositionsUrl,
+    company.categoryId ?? 0,
+    company.locationFilter || ""
+  );
     console.log(
       `Retrieved ${jobs.length} jobs`
     );
-
+console.dir(jobs[0], { depth: null });
     return jobs.map((job) => {
 
       const data = job.response;
@@ -40,7 +43,7 @@ console.log(company);
           String(data?.id),
 
         jobUrl:
-          `https://careers.hcltech.com/job/${data?.urlTitle}/${data?.id}-en_US`,
+  `${baseUrl}/job/${data?.urlTitle}/${data?.id}-en_US`,
 
         description: "",
 

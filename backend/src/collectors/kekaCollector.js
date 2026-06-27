@@ -14,6 +14,7 @@ const collectKekaJobs =
     console.log(
       `Retrieved ${jobs.length} jobs`
     );
+    console.dir(jobs[0], { depth: null });
 
     return jobs.map((job) => ({
       title:
@@ -23,11 +24,14 @@ const collectKekaJobs =
         company._id,
 
       location:
-        job.location ||
-        "Not Specified",
+  job.jobLocations?.[0]?.name ||
+  "Not Specified",
 
       source:
         "KEKA",
+        
+department:
+  job.departmentName || "",
 
       externalJobId:
         String(job.id),
@@ -43,7 +47,9 @@ const collectKekaJobs =
 
       jobUrl:
         company.careersUrl,
-        postedDate: null,
+        postedDate: job.publishedOn
+  ? new Date(job.publishedOn)
+  : null,
     }));
   };
 
