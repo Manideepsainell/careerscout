@@ -9,12 +9,7 @@ const collectInfosysJobs =
         company.openPositionsUrl
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
-console.log(
-  "FIRST INFOSYS JOB:"
-);
+  
 
 
     return jobs.map((job) => ({
@@ -48,6 +43,11 @@ console.log(
 
       jobType:
         "Full Time",
+        minExperience:
+  job.minExperienceLevel ?? null,
+
+maxExperience:
+  job.maxExperienceLevel ?? null,
 
       postedDate:
   job.createdOn

@@ -6,7 +6,7 @@ export async function searchJobs({
   pageNumber = 1,
 }) {
   const token = await getToken();
-
+const pageSize=25;
   const response = await axios.post(
     "https://us-galaxy.api.csod.com/rec-job-search/external/jobs",
     {
@@ -14,7 +14,7 @@ export async function searchJobs({
       careerSitePageId,
 
       pageNumber,
-      pageSize: 25,
+      pageSize: pageSize,
 
       cultureId: 1,
       cultureName: "en-US",

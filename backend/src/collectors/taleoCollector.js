@@ -4,18 +4,13 @@ import getTaleoJobs
 const collectTaleoJobs =
   async (company) => {
 
-    console.log(
-      `Taleo collector running for ${company.name}`
-    );
+    
 
     const jobs =
       await getTaleoJobs(
         company.careersUrl
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
     return jobs.map((job) => ({
       title: job.title,

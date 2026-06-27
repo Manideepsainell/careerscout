@@ -9,9 +9,7 @@ const collectCapgeminiJobs =
         company.openPositionsUrl
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
+   
 
     return jobs.map((job) => ({
 
@@ -30,9 +28,9 @@ const collectCapgeminiJobs =
 
       externalJobId:
         String(job.id),
-
-      jobUrl:
-        company.careersUrl,
+jobUrl:
+  job.apply_job_url ||
+  company.careersUrl,
 
       description:
         job.description || "",

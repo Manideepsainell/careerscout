@@ -4,9 +4,7 @@ import getPeopleTechJobs
 const collectPeopleTechJobs =
   async (company) => {
 
-    console.log(
-      `PeopleTech collector running for ${company.name}`
-    );
+   
 
     const jobs =
       await getPeopleTechJobs(

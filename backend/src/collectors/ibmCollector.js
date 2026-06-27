@@ -9,16 +9,7 @@ const collectIbmJobs =
         company.openPositionsUrl
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
-    console.log(
-  JSON.stringify(
-    jobs[0],
-    null,
-    2
-  )
-);
+  
 
     return jobs.map((job) => {
 
@@ -37,10 +28,13 @@ const collectIbmJobs =
 
         company:
           company._id,
-
-        location:
-          data.field_keyword_17 ||
-          "Not Specified",
+location: data.field_keyword_19 || "Not Specified",
+workMode: data.field_keyword_17 || null,
+department: data.field_keyword_08 || null,
+experienceLevel: data.field_keyword_18 || null,
+postedDate: data.dcdate
+  ? new Date(data.dcdate)
+  : null,
 
         source:
           "IBM",
@@ -61,7 +55,6 @@ const collectIbmJobs =
         jobType:
           "Full Time",
 
-       postedDate: null,
           
       };
     });

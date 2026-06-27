@@ -1,10 +1,7 @@
 import axios from "axios";
 
 const collectKulaJobs = async (company) => {
-  console.log(
-    `Kula collector running for ${company.name}`
-  );
-
+  
   const response = await axios.get(
     "https://careers.kula.ai/api/internal/ats_job_posts",
     {
@@ -19,10 +16,7 @@ const collectKulaJobs = async (company) => {
 
   const jobs = response.data.data || [];
 
-  console.log(
-    `${jobs.length} jobs found`
-  );
-console.dir(jobs[0], { depth: null });
+  
   return jobs.map((job) => ({
     title: job.title,
 

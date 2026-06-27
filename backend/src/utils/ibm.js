@@ -1,77 +1,85 @@
 import axios from "axios";
 
-const getIbmJobs = async (
-  careersUrl
-) => {
+const getIbmJobs = async (careersUrl) => {
+  try {
+    let from = 0;
+    const size = 100;
 
- try {
+    let allJobs = [];
 
-  const response =
-    await axios.post(
-      careersUrl,
-     {
-  appId: "careers",
+    while (true) {
+      const response = await axios.post(careersUrl, {
+        appId: "careers",
 
-  scopes: ["careers2"],
+        scopes: ["careers2"],
 
-  size: 100,
-from: 100,
-  lang: "zz",
+        size,
+        from,
 
-  sm: {
-    query: "",
-    lang: "zz",
-  },
+        lang: "zz",
 
-  query: {
-    bool: {
-      must: [],
-    },
-  },
+        sm: {
+          query: "",
+          lang: "zz",
+        },
 
-  sort: [
-    { _score: "desc" },
-    { pageviews: "desc" },
-  ],
+        query: {
+          bool: {
+            must: [],
+          },
+        },
 
-  _source: [
-    "_id",
-    "title",
-    "url",
-    "description",
-    "language",
-    "entitled",
-    "field_keyword_17",
-    "field_keyword_08",
-    "field_keyword_18",
-    "field_keyword_19",
-  ],
-}
-    );
-    console.log(
-  JSON.stringify(
-    response.data,
-    null,
-    2
-  ).slice(0, 5000)
-);
+        sort: [
+          { dcdate: "desc" },
+          { _score: "desc" },
+        ],
 
-  return (
-    response.data?.hits?.hits || []
-  );
+        _source: [
+          "_id",
+          "title",
+          "url",
+          "description",
+          "language",
+          "entitled",
+          "field_keyword_17",
+          "field_keyword_08",
+          "field_keyword_18",
+          "field_keyword_19",
+          "dcdate",
+        ],
+      });
 
-} catch (error) {
+      const jobs =
+        response.data?.hits?.hits || [];
 
-  console.log(
-    JSON.stringify(
-      error.response?.data,
-      null,
-      2
-    )
-  );
+      const totalJobs =
+        response.data?.hits?.total?.value || 0;
 
-  throw error;
-}
+      if (!jobs.length) {
+        break;
+      }
+
+      allJobs.push(...jobs);
+
+     
+
+      if (
+        allJobs.length >= totalJobs
+      ) {
+        break;
+      }
+
+      from += size;
+    }
+
+    return allJobs;
+
+  } catch (error) {
+
+   
+
+    throw error;
+  }
 };
 
 export default getIbmJobs;

@@ -27,9 +27,7 @@ const getEpamJobs = async () => {
     const jobs =
       response.data?.jobs || [];
 
-    console.log(
-      `From ${from}: ${jobs.length} jobs`
-    );
+    
 
     if (jobs.length === 0) {
       break;

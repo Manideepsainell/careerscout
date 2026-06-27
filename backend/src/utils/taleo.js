@@ -6,7 +6,7 @@ const getTaleoJobs = async (careersUrl) => {
   let allJobs = [];
 
   while (currentPage <= 3) {
-    console.log(`Fetching page ${currentPage}`);
+   
 
     const response = await axios.get(
       `${careersUrl}/search-jobs/results`,
@@ -48,8 +48,12 @@ const getTaleoJobs = async (careersUrl) => {
     );
 
    const html = response.data.results;
+   
 const $ = cheerio.load(html);
 
+
+$("a").slice(0, 20).each((i, el) => {
+});
     const jobs = [];
 
     $("a").each((i, el) => {
@@ -82,15 +86,17 @@ if (!isIndia) {
   return;
 }
 
-      jobs.push({
-       title: rawText
-  .split(/\d{7}/)[0]
-  .trim(),
-        url: `https://careers.unitedhealthgroup.com${href}`,
-      });
+   const baseUrl = new URL(careersUrl).origin;
+
+jobs.push({
+  title: rawText
+    .split(/\d{7}/)[0]
+    .trim(),
+  url: new URL(href, baseUrl).toString(),
+});
     });
 
-    console.log(`Retrieved ${jobs.length} jobs`);
+
 
     if (jobs.length === 0) {
       break;

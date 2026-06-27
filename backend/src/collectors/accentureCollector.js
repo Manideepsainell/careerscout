@@ -4,18 +4,11 @@ import getAccentureJobs
 const collectAccentureJobs =
   async (company) => {
 
-    console.log(
-      `Accenture collector running for ${company.name}`
-    );
 
     const jobs =
       await getAccentureJobs(
         company.openPositionsUrl
       );
-
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
    return jobs.map((job) => ({
 

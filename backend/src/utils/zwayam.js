@@ -11,7 +11,7 @@ const getZwayamJobs = async (
   let allJobs = [];
 
   while (true) {
-    console.log(`Fetching from ${start}`);
+   
 
     const form = new FormData();
 
@@ -55,13 +55,6 @@ Referer: `https://${domain}/`,
 
 const jobs =
   response.data?.data?.data || [];
-    //   console.log(
-    //     `Retrieved ${jobs.length}`
-    //   );
-   
-  console.log(
-  `Retrieved ${jobs.length}`
-);
       if (jobs.length === 0) {
         break;
       }
@@ -70,15 +63,7 @@ const jobs =
 
       start += jobs.length;
     } catch (error) {
-      console.log(
-        "STATUS:",
-        error.response?.status
-      );
-
-      console.log(
-        "DATA:",
-        error.response?.data
-      );
+      
 
       throw error;
     }

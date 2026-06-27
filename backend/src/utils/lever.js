@@ -8,12 +8,7 @@ export const getLeverJobs = async (companyName) => {
 
     return response.data;
   } catch (error) {
-    console.log("\nLever API failed");
-    console.log("Slug:", companyName);
-    console.log("Status:", error.response?.status);
-    console.log("Message:", error.message);
-    console.dir(error.response?.data, { depth: null });
-
+   
     throw error;
   }
 };

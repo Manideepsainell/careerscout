@@ -4,18 +4,12 @@ import getDarwinboxJobs
 const collectDarwinboxJobs =
   async (company) => {
 
-    console.log(
-      `Darwinbox collector running for ${company.name}`
-    );
 
   const jobs =
   await getDarwinboxJobs(
     company.openPositionsUrl
   );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
     return jobs.map((job) => ({
       title:

@@ -4,19 +4,13 @@ import getRippleHireJobs
 const collectRippleHireJobs =
   async (company) => {
 
-    console.log(
-      `RippleHire collector running for ${company.name}`
-    );
-
+    
     const jobs =
       await getRippleHireJobs(
   company.openPositionsUrl,
   company.rippleHireToken
 );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
     return jobs.map((job) => ({
       title:

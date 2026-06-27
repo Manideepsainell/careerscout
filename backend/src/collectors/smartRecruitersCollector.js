@@ -3,9 +3,7 @@ import axios from "axios";
 const collectSmartRecruitersJobs = async (
   company
 ) => {
-  console.log(
-    `Smart Recruiter collector running for ${company.name}`
-  );
+  
 
 let companyId = company.companyId;
 
@@ -26,7 +24,7 @@ if (!companyId) {
 const endpoint =
   `https://api.smartrecruiters.com/v1/companies/${companyId}/postings`;
 
-  console.log(endpoint);
+
 
   const response = await axios.get(
     endpoint
@@ -35,10 +33,7 @@ const endpoint =
   const jobs =
     response.data.content || [];
 
-  console.log(
-    `Retrieved ${jobs.length} jobs`
-  );
- 
+  
 
   return jobs.map((job) => ({
     title: job.name,

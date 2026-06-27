@@ -5,9 +5,7 @@ import {
 const collectEightfoldJobs = async (
   company
 ) => {
-  console.log(
-    `Eightfold collector running for ${company.name}`
-  );
+  
 let allPositions = [];
 let start = 0;
 const baseUrl =
@@ -15,7 +13,6 @@ const baseUrl =
     ? new URL(company.careersUrl).origin
     : `https://${company.domain.split(".")[0]}.eightfold.ai`;
 
-    console.log("Base URL:", baseUrl);
 while (true) {
  const data = await searchJobs({
   baseUrl,
@@ -33,9 +30,7 @@ while (true) {
 
   allPositions.push(...positions);
 
-  console.log(
-    `Fetched ${allPositions.length} jobs`
-  );
+
 
   start += 10;
 }

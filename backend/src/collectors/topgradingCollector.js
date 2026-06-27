@@ -11,9 +11,7 @@ const collectTopGradingJobs = async (company) => {
     response.data
   );
 
-  console.log(
-    $(".job-openings li.job").length
-  );
+  
   const jobs = [];
 
 $(".job-openings li.job").each(

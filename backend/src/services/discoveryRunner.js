@@ -104,12 +104,13 @@ if (!company.jobBoardType) {
     `${company.name}: missing jobBoardType`
   );
 
-  return {
+ return {
   success: false,
-  jobsAdded: 0,
   company: company.name,
+  collector: null,
+  jobsFetched: 0,
+  jobsAdded: 0,
 };
-
 }
 
 if (
@@ -122,11 +123,13 @@ if (
     `${company.name}: missing collector configuration`
   );
 
-  return {
-    success: false,
-    jobsAdded: 0,
-    company: company.name,
-  };
+ return {
+  success: false,
+  company: company.name,
+  collector: company.jobBoardType,
+  jobsFetched: 0,
+  jobsAdded: 0,
+};
 
 }
   console.log(
@@ -162,10 +165,12 @@ if (
       }
     );
 
-    return {
+ return {
   success: false,
-  jobsAdded: 0,
   company: company.name,
+  collector: company.jobBoardType,
+  jobsFetched: 0,
+  jobsAdded: 0,
 };
 
   }
@@ -202,10 +207,12 @@ if (
       }
     );
 
-    return {
+  return {
   success: false,
-  jobsAdded: 0,
   company: company.name,
+  collector: company.jobBoardType,
+  jobsFetched: 0,
+  jobsAdded: 0,
 };
   }
 
@@ -297,18 +304,7 @@ if (
     console.log(
       error.message
     );
-    if (!company.jobBoardType) {
-
-  console.log(
-    `${company.name}: missing jobBoardType`
-  );
-
- return {
-  success: false,
-  jobsAdded: 0,
-  company: company.name,
-};
-}
+ 
 
     await CrawlStat.findByIdAndUpdate(
       crawlStat._id,
@@ -318,12 +314,17 @@ if (
       }
     );
 
-    return {
+   return {
   success: false,
-  jobsAdded: 0,
   company: company.name,
+  collector: company.jobBoardType,
+  jobsFetched: 0,
+  jobsAdded: 0,
 };
-  }
+
+
+ }
+
 
   await CrawlStat.findByIdAndUpdate(
     crawlStat._id,
@@ -340,11 +341,17 @@ if (
 
   return {
   success: true,
-  jobsAdded,
   company: company.name,
+  collector: company.jobBoardType,
+  jobsFetched: jobs.length,
+  jobsAdded,
 };
 }
 const runDiscovery = async () => {
+  let totalJobsFetched = 0;
+
+const successfulCollectors = [];
+const failedCollectors = [];
 
   console.log(
     "Discovery Runner Started"
@@ -434,6 +441,16 @@ if (!result.success) {
     result.company
   );
 }
+totalJobsFetched += result.jobsFetched;
+
+if (result.success) {
+  successfulCollectors.push(result.collector);
+} else {
+  failedCollectors.push({
+    company: result.company,
+    collector: result.collector
+  });
+}
     }
   }
   console.log(
@@ -471,21 +488,25 @@ console.log(
     "Discovery completed"
   );
 
-  console.log(
-    `${totalJobsAdded} jobs added`
-  );
+ console.log("\n========== DISCOVERY SUMMARY ==========\n");
 
-  console.log(
-    `${totalCompaniesFailed} companies failed`
-  );
-  if (failedCompanies.length) {
-  console.log(
-    "\nFailed Companies:"
-  );
+console.log(`Companies Loaded     : ${companies.length}`);
+console.log(`Successful           : ${totalCompaniesProcessed - totalCompaniesFailed}`);
+console.log(`Failed               : ${totalCompaniesFailed}`);
 
-  console.table(
-    failedCompanies
-  );
+console.log(`Jobs Fetched         : ${totalJobsFetched}`);
+console.log(`New Jobs Added       : ${totalJobsAdded}`);
+
+console.log(`Companies Crwaled      : ${successfulCollectors.length + failedCollectors.length}`);
+
+if (failedCollectors.length) {
+  console.log("\nFailed Collectors:");
+  console.table(failedCollectors);
 }
+console.log(
+  `Insert Rate          : ${totalJobsAdded}/${totalJobsFetched}`
+);
+
+console.log("\n=======================================\n");
 };
 export default runDiscovery;

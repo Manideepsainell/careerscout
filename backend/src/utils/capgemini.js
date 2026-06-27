@@ -3,8 +3,8 @@ import axios from "axios";
 const getCapgeminiJobs = async (
   careersUrl
 ) => {
-
-  let page = 1;
+const paageSize=11;
+  let page = pageSize;
 
   let allJobs = [];
 
@@ -25,15 +25,17 @@ const getCapgeminiJobs = async (
     const jobs =
       response.data?.data || [];
 
-    console.log(
-      `Page ${page}: ${jobs.length}`
-    );
 
     if (jobs.length === 0) {
       break;
     }
 
     allJobs.push(...jobs);
+    const totalJobs = response.data?.total ?? response.data?.count;
+
+if (allJobs.length >= totalJobs) {
+  break;
+}
 
     if (jobs.length < 11) {
       break;

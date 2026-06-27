@@ -4,16 +4,12 @@ import getKekaJobs
 const collectKekaJobs =
   async (company) => {
 
-    console.log(
-      `Keka collector running for ${company.name}`
-    );
+   
 
     const jobs =
   await getKekaJobs(company);
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
+   
     console.dir(jobs[0], { depth: null });
 
     return jobs.map((job) => ({

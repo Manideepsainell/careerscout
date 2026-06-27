@@ -6,25 +6,21 @@ import {
 const collectGreenHouseJobs = async (
   company
 ) => {
-  console.log(
-    `GH collector running for ${company.name}`
-  );
-
+  
+try{
 const endpoint =
   buildGreenhouseJobsEndpoint(
     company.openPositionsUrl ||
     company.careersUrl
   );
 
-  console.log(endpoint);
+
 
   const response = await axios.get(
     endpoint
   );
 
-  console.log(
-    `Retrieved ${response.data.jobs.length} jobs`
-  );
+ 
   
   return response.data.jobs.map((job) => ({
   title: job.title,
@@ -51,6 +47,14 @@ const endpoint =
       ? new Date(job.updated_at)
       : null,
 }));
+}
+catch (error) {
+    console.error(
+      `${company.name}:`,
+      error.response?.data || error.message
+    );
+    throw error;
+  }
 };
 
 export default collectGreenHouseJobs;

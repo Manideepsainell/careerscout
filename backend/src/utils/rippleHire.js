@@ -58,10 +58,13 @@ console.dir(response.data, {
     }
 
     allJobs.push(...jobs);
+const totalJobs =
+  response.data?.totalJobCount || 0;
 
-    console.log(
-      `Page ${page}: ${jobs.length} jobs`
-    );
+if (allJobs.length >= totalJobs) {
+  break;
+}
+    
 
     page++;
   }

@@ -51,9 +51,7 @@ const parseWorkdayPostedDate = (
 const collectWorkdayJobs = async (
   company
 ) => {
-  console.log(
-    `WORKDAY collector running for ${company.name}`
-  );
+  
 let endpoint =
   buildWorkdayJobsEndpoint(
     company.careersUrl
@@ -76,9 +74,7 @@ while (true) {
   ) {
     try {
 
-      console.log(
-        `${company.name}: ${endpoint}`
-      );
+     
 
       response = await axios.post(
         endpoint,
@@ -101,25 +97,12 @@ while (true) {
 
     } catch (error) {
 
-      console.log(
-        `${company.name}: attempt ${attempt} failed`
-      );
-
-      console.log(
-        error.response?.status
-      );
-
-      console.log(
-        error.response?.data
-      );
-
+      
       if (
         attempt === 1 &&
         company.openPositionsUrl
       ) {
-        console.log(
-          `${company.name}: trying openPositionsUrl fallback`
-        );
+       
 
         endpoint =
           buildWorkdayJobsEndpoint(
@@ -136,9 +119,7 @@ while (true) {
   }
 
   if (!response) {
-    console.log(
-      `${company.name}: stopping at offset ${offset}`
-    );
+    
 
     break;
   }
@@ -151,17 +132,9 @@ while (true) {
   if (
     !Array.isArray(jobPostings)
   ) {
-    console.log(
-      `${company.name}: invalid response`
-    );
+    
 
-    console.log(
-      JSON.stringify(
-        response.data,
-        null,
-        2
-      )
-    );
+  
 
     break;
   }
@@ -180,19 +153,13 @@ while (true) {
 
   offset += jobPostings.length;
 
-  console.log(
-    `${company.name}: fetched ${allPostings.length}/${total}`
-  );
-
+  
   if (
     allPostings.length >= total
   ) {
     break;
   }
 }
-console.log(
-  `${company.name} total jobs: ${allPostings.length}`
-);
 
 const jobs =
   allPostings.map(
@@ -225,9 +192,7 @@ const jobs =
     })
   );
 
-console.log(
-  `Retrieved ${jobs.length} jobs`
-);
+
 
 
   return jobs;

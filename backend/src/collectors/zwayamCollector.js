@@ -4,9 +4,7 @@ import getZwayamJobs
 const collectZwayamJobs =
   async (company) => {
 
-    console.log(
-      `Zwayam collector running for ${company.name}`
-    );
+  
 
     const jobs =
       await getZwayamJobs(
@@ -15,10 +13,7 @@ const collectZwayamJobs =
         company.domain
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
-
+    
     return jobs.map((job) => {
 
       const data =

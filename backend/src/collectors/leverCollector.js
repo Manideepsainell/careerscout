@@ -4,9 +4,7 @@ import { getLeverJobs }
 const collectLeverJobs =
   async (company) => {
 
-    console.log(
-      `Lever collector running for ${company.name}`
-    );
+  
 
 let slug = company.slug;
 
@@ -18,11 +16,7 @@ if (!slug && company.openPositionsUrl) {
     .pop();
 }
 
-if (!slug) {
-  throw new Error(
-    `${company.name}: missing Lever slug`
-  );
-}
+
 
 if (!slug) {
   throw new Error(
@@ -32,9 +26,7 @@ if (!slug) {
 
 const jobs = await getLeverJobs(slug);
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
+   
 
     return jobs.map((job) => ({
       title: job.text,

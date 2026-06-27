@@ -24,9 +24,7 @@ const get10kCodersJobs = async () => {
     const jobs =
       response.data?.data?.items || [];
 
-    console.log(
-      `Page ${page}: ${jobs.length}`
-    );
+    
 
     if (jobs.length === 0) {
       break;

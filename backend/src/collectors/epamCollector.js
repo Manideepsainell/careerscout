@@ -4,23 +4,13 @@ import getEpamJobs
 const collectEpamJobs =
   async (company) => {
 
-    console.log(
-      `EPAM collector running for ${company.name}`
-    );
+    
 
     const jobs =
       await getEpamJobs();
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
-console.log(
-  JSON.stringify(
-    jobs[0],
-    null,
-    2
-  )
-);
+    
+
     return jobs.map((job) => ({
       title:
         job.name,
@@ -29,12 +19,10 @@ console.log(
         company._id,
 
       location:
-        `${job.city || ""}${
-          job.city && job.country
-            ? ", "
-            : ""
-        }${job.country || ""}` ||
-        "Not Specified",
+  [job.city, job.country]
+    .filter(Boolean)
+    .join(", ") ||
+  "Not Specified",
 
       source:
         "EPAM",

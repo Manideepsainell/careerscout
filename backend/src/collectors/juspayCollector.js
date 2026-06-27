@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const collectJuspayJobs = async (company) => {
-  console.log(
-    `Juspay collector running for ${company.name}`
-  );
+
 
   const response = await axios.get(
     company.openPositionsUrl
@@ -12,14 +10,8 @@ const collectJuspayJobs = async (company) => {
 const jobs =
   (response.data?.allJobs || [])
     .filter(job => job.opening_status === true);
-  console.log(
-    `Retrieved ${jobs.length} jobs`
-  );
-console.log(
-  "Retrieved",
-  jobs.length,
-  "jobs"
-);
+ 
+
   return jobs.map((job) => ({
     title:
       job.job_title ||

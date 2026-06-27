@@ -1,7 +1,4 @@
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 async function collectAtlassianJobs(company) {
   const response = await axios.get(
@@ -14,6 +11,7 @@ async function collectAtlassianJobs(company) {
         job.category
       )
   );
+ 
 
   return relevantJobs.map((job) => ({
     title: job.title,
@@ -22,13 +20,13 @@ async function collectAtlassianJobs(company) {
     source: "CUSTOM",
     externalJobId: String(job.id),
     jobUrl: job.applyUrl,
-    description: `${job.overview}
-
-${job.responsibilities}
-
-${job.qualifications}`,
-    jobType: job.type || "Full Time",
-    postedDate: null,
+   description: [
+  job.overview,
+  job.responsibilities,
+  job.qualifications,
+]
+  .filter(Boolean)
+  .join("\n\n"),
   }));
 }
 

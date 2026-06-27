@@ -9,9 +9,7 @@ const collectMastechJobs =
         company.openPositionsUrl
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
+
 
     return jobs.map((job) => ({
 
@@ -40,8 +38,7 @@ const collectMastechJobs =
       jobType:
         "Full Time",
 
-      postedDate:
-        new Date(),
+      postedDate: null,
 
     }));
   };

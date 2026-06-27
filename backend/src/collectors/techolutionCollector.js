@@ -4,18 +4,11 @@ import getTecholutionJobs
 const collectTecholutionJobs =
   async (company) => {
 
-    console.log(
-      `Techolution collector running for ${company.name}`
-    );
 
     const jobs =
       await getTecholutionJobs(
         company.openPositionsUrl
       );
-
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
     return jobs.map((job) => ({
       title:

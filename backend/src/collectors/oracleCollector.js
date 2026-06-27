@@ -7,9 +7,7 @@ import {
 const collectOracleJobs = async (
   company
 ) => {
-  console.log(
-    `Oracle collector running for ${company.name}`
-  );
+ 
 
 let offset = 0;
 let allJobs = [];
@@ -43,9 +41,7 @@ while (true) {
   const limit =
     search.Limit;
 
-  console.log(
-    `${company.name}: ${allJobs.length}/${totalJobs}`
-  );
+  
 
   offset += limit;
 
@@ -56,8 +52,7 @@ while (true) {
 const parsed = new URL(company.openPositionsUrl);
 
 const siteName = parsed.pathname.split("/")[5];
-   console.log(company.name);
-console.log(company.oracleConfig);
+   
 return allJobs.map((job) => ({
  
   title: job.Title,

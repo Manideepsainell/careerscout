@@ -4,9 +4,7 @@ import * as cheerio from "cheerio";
 const collectTrakstarJobs = async (
   company
 ) => {
-  console.log(
-    `Trakstar collector running for ${company.name}`
-  );
+  
 
   const response = await axios.get(
     company.openPositionsUrl
@@ -61,10 +59,7 @@ const collectTrakstarJobs = async (
     });
   });
 
-  console.log(
-    `${jobs.length} jobs found`
-  );
-
+ 
   return jobs;
 };
 

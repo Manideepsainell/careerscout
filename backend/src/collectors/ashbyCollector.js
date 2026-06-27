@@ -17,9 +17,7 @@ query ApiJobBoardWithTeams(
 `;
 
 const collectAshbyJobs = async (company) => {
-  console.log(
-    `Ashby collector running for ${company.name}`
-  );
+  
 
   const slug = company.slug;
 
@@ -48,9 +46,7 @@ const collectAshbyJobs = async (company) => {
     response.data.data?.jobBoard
       ?.jobPostings || [];
 
-  console.log(
-    `${jobs.length} jobs found`
-  );
+  
 
   return jobs.map((job) => ({
     title: job.title,

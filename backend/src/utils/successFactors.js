@@ -11,10 +11,7 @@ let totalPages = null;
 const pageSize = 10;
   while (true) {
     try {
-      console.log(
-        "REQUEST PAGE:",
-        pageNumber
-      );
+      
 
       const response =
         await axios.post(
@@ -42,19 +39,7 @@ if (totalPages === null) {
     pageSize
   );
 
-  console.log(
-    `Total Jobs: ${response.data?.totalJobs}`
-  );
-
-  console.log(
-    `Total Pages: ${totalPages}`
-  );
 }
-      console.log(
-        "RESPONSE PAGE:",
-        pageNumber,
-        jobs.length
-      );
 
    if (jobs.length === 0) {
   break;
@@ -63,9 +48,6 @@ if (totalPages === null) {
 allJobs.push(...jobs);
 
 if (pageNumber >= totalPages - 1) {
-  console.log(
-    "Reached last page"
-  );
 
   break;
 }
@@ -74,18 +56,6 @@ pageNumber++;
 
   
     } catch (error) {
-      console.log(
-        "FAILED PAGE:",
-        pageNumber
-      );
-
-     console.dir(error.response?.data, {
-  depth: null
-});
-
-      console.log(
-  `Stopped at page ${pageNumber}`
-);
 
 break;
     }

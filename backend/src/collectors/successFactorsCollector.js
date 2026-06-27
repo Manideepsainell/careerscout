@@ -5,9 +5,7 @@ const collectSuccessFactorsJobs =
   async (company) => {
 
 
-    console.log(
-      `SuccessFactors collector running for ${company.name}`
-    );
+   
     const baseUrl = new URL(
   company.openPositionsUrl
 ).origin;
@@ -18,10 +16,7 @@ const collectSuccessFactorsJobs =
     company.categoryId ?? 0,
     company.locationFilter || ""
   );
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
-console.dir(jobs[0], { depth: null });
+   
     return jobs.map((job) => {
 
       const data = job.response;

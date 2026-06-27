@@ -4,9 +4,7 @@ import * as cheerio from "cheerio";
 const collectFreshteamJobs = async (
   company
 ) => {
-  console.log(
-    `Freshteam collector running for ${company.name}`
-  );
+  
 const baseUrl = new URL(
   company.openPositionsUrl
 ).origin;
@@ -66,11 +64,6 @@ if ($(el).find(".location-info").length) {
   }
 );
  
-
-  console.log(
-    `${jobs.length} jobs found`
-  );
-
 
   return jobs;
 };

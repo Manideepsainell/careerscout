@@ -7,11 +7,9 @@ const collectVirtusaJobs =
     const jobs =
       await getVirtusaJobs();
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
-
+    
     return jobs.map((job) => ({
+
       title:
         job.title,
 
@@ -19,31 +17,43 @@ const collectVirtusaJobs =
         company._id,
 
       location:
-        `${job.city || ""}${
-          job.city && job.country
-            ? ", "
-            : ""
-        }${job.country || ""}`,
+        [
+          job.city,
+          job.state,
+          job.country,
+        ]
+          .filter(Boolean)
+          .join(", ") ||
+        "Not Specified",
 
       source:
         "VIRTUSA",
 
       externalJobId:
-        job.careerCtaLink,
+        String(
+          job.contestNumber ||
+          job.careerCtaLink
+        ),
 
       jobUrl:
         `https://www.virtusa.com${job.careerCtaLink}`,
 
       description:
-        job.descriptionExternalHTML || "",
+        job.descriptionExternalHTML ||
+        "",
+
+      jobType:
+        job.jobType ||
+        job.jobSchedule ||
+        "Full Time",
 
       experience:
         job.yearsOfExperience,
 
       postedDate:
-  job.postedDate
-    ? new Date(job.postedDate)
-    : null,
+        job.postedDate
+          ? new Date(job.postedDate)
+          : null,
     }));
   };
 

@@ -52,9 +52,7 @@ const getDarwinboxJobs = async (
       const jobs =
         response.data?.data || [];
 
-      console.log(
-        `Page ${page}: ${jobs.length} jobs`
-      );
+      
 
       if (!jobs.length) {
         break;
@@ -70,30 +68,7 @@ const getDarwinboxJobs = async (
 
     } catch (error) {
 
-      console.log(
-        `Failed on page ${page}`
-      );
-
-      console.log(
-        "Status:",
-        error.response?.status
-      );
-
-      console.log(
-        "Response Data:"
-      );
-
-      console.log(
-        error.response?.data
-      );
-
-      console.log(
-        "Response Headers:"
-      );
-
-      console.log(
-        error.response?.headers
-      );
+    
 
       break;
     }

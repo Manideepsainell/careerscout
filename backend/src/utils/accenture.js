@@ -12,10 +12,6 @@ const getAccentureJobs = async (
 
   while (true) {
 
-    console.log(
-      "START INDEX:",
-      startIndex
-    );
 
    const formData = new FormData();
 
@@ -99,6 +95,7 @@ formData.append(
   ""
 );
 
+try{
 const response =
   await axios.post(
     careersUrl,
@@ -114,28 +111,27 @@ const response =
     const totalJobs =
       response.data?.totalHits?.total;
 
-    console.log(
-      "TOTAL JOBS:",
-      totalJobs
-    );
+  
     if (allJobs.length >= 1000) {
-  console.log("Safety stop reached");
+ 
   break;
 }
 
-    console.log(
-      `PAGE JOBS: ${jobs.length}`
-    );
 
     if (jobs.length === 0) {
       break;
     }
 
     allJobs.push(...jobs);
+  }
+  catch (error) {
+   
+    throw error;
+}
 
-    if (jobs.length < pageSize) {
-      break;
-    }
+  if (allJobs.length >= totalJobs) {
+  break;
+}
 
     startIndex += pageSize;
 

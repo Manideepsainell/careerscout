@@ -31,13 +31,6 @@ const getPeopleTechJobs = async (
       }
     );
 
-  console.log(
-    `Retrieved ${
-      response.data?.data?.length ||
-      response.data?.length ||
-      0
-    } jobs`
-  );
 
   return (
     response.data?.data ||

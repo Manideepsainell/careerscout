@@ -4,10 +4,7 @@ import { searchJobs }
 const collectCornerstoneJobs =
   async (company) => {
 
-    console.log(
-      `Cornerstone collector running for ${company.name}`
-    );
-
+    
     let allJobs = [];
     let pageNumber = 1;
 
@@ -31,9 +28,7 @@ const collectCornerstoneJobs =
 
       allJobs.push(...jobs);
 
-      console.log(
-        `Fetched ${allJobs.length} jobs`
-      );
+      
 
       const totalCount =
         data.totalCount || 0;

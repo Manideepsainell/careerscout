@@ -4,16 +4,10 @@ import get10kCodersJobs
 const collect10kCodersJobs =
   async (company) => {
 
-    console.log(
-      `10K Coders collector running for ${company.name}`
-    );
-
+    
     const jobs =
       await get10kCodersJobs();
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
     return jobs.map((job) => ({
 

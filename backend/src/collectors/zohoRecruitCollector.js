@@ -2,18 +2,13 @@ import getZohoRecruitJobs from "../utils/zohoRecruit.js";
 
 const collectZohoRecruitJobs =
   async (company) => {
-    console.log(
-      `Zoho Recruit collector running for ${company.name}`
-    );
+   
 
     const jobs =
       await getZohoRecruitJobs(
         company.openPositionsUrl
       );
 
-    console.log(
-      `Retrieved ${jobs.length} jobs`
-    );
 
 
    return jobs.map((job) => ({
