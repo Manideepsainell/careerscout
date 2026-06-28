@@ -2,63 +2,23 @@ import Job from "../models/Job.js";
 import CustomError from "../utils/customError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import getJobTier
-from "../utils/jobTierCalculator.js";
+from "../intelligence/jobTierCalculator.js";
+import getLocationTier
+from "../intelligence/locationTier.js";
 import getFreshnessScore
-from "../utils/freshnessScorer.js";
+from "../intelligence/freshnessScorer.js";
+
 const calculateScore = (job) => {
   let score = 0;
   const reasons = [];
 
  const title =
   (job.title || "").toLowerCase();
-const location =
-  (job.location || "").toLowerCase();
 
 const experience =
   (job.experience || "").toLowerCase();;
-  const usKeywords = [
-  "united states",
-  "usa",
-  "us",
-  "new york",
-  "california",
-  "san francisco",
-  "massachusetts",
-  "texas",
-  "florida",
-  "washington",
-  "seattle",
-  "chicago",
-  "boston",
-  "idaho",
-  "arlington",
-];
-const foreignCountries = [
-  "taiwan",
-  "singapore",
-  "japan",
-  "malaysia",
-  "china",
-  "korea",
-  "canada",
-  "germany",
-  "france",
-  "ireland",
-  "poland",
-  "argentina",
-  "brazil",
-  "mexico",
-  "norway",
-  "slovakia",
-  "sweden",
-  "netherlands",
-  "australia",
-  "united kingdom",
-  "uk",
-  "spain",
-  "italy",
-
-];
+  const locationTier =
+  getLocationTier(job.location);
   // Role Match
 if (job.eligibilityLevel === "ENTRY_LEVEL") {
   score += 80;
@@ -190,92 +150,42 @@ if (job.experienceBand === "JUNIOR") {
   reasons.push("Junior profile");
 }
 
-if (job.experienceBand === "MID") {
+if (job.experienceBand === "MID_LEVEL") {
   score += 5;
   reasons.push("Mid profile");
 }
   // Location Match
-  if (
-  foreignCountries.some(country =>
-    location.includes(country)
-  )
-) {
-  score -= 150;
+  switch (locationTier) {
 
-  reasons.push(
-    "Outside preferred geography"
-  );
-}
-if (
-  location.includes("USA") ||
-  location.includes("United States") ||
-  location.includes("Canada") ||
-  location.includes("Argentina") ||
-  location.includes("Vilnius")
-) {
-  score -= 150;
-}
-if (location.includes("hyderabad")) {
-  score += 40;
-  reasons.push("Hyderabad location");
-}
+  case "TIER_1":
+    score += 40;
+    reasons.push("Remote / Hybrid");
+    break;
 
-if (location.includes("remote")) {
-  score += 20;
-  reasons.push("Remote opportunity");
-}
+  case "TIER_2":
+    score += 35;
+    reasons.push("Hyderabad location");
+    break;
 
-if (
-  location.includes("bangalore") ||
-  location.includes("bengaluru")
-) {
-  score += 20;
-  reasons.push("Bangalore location");
-}
+  case "TIER_3":
+    score += 30;
+    reasons.push("Preferred location");
+    break;
 
-if (location.includes("pune")) {
-  score += 20;
-  reasons.push("Pune location");
-}
+  case "TIER_4":
+    score += 20;
+    reasons.push("Acceptable location");
+    break;
 
-if (location.includes("noida")) {
-  score += 20;
-  reasons.push("Noida location");
-}
+  case "TIER_5":
+    score += 10;
+    reasons.push("Other India");
+    break;
 
-
-if (location.includes("chennai")) {
-  score += 20;
-  reasons.push("Chennai location");
-}
-if (
-  location.includes("gurgaon") ||
-  location.includes("gurugram")
-) {
-  score += 20;
-  reasons.push("Gurgaon location");
-}
-
-if (
-  usKeywords.some(keyword =>
-    location.includes(keyword)
-  )
-) {
-  score -= 80;
-  reasons.push("Outside preferred geography");
-}
-if (job.company?.priority === "HIGH") {
-  score += 20;
-  reasons.push("High priority company");
-}
-
-if (job.company?.priority === "MEDIUM") {
-  score += 10;
-  reasons.push("Medium priority company");
-}
-if (job.company?.category === "Product") {
-  score += 10;
-  reasons.push("Product company");
+  case "OUTSIDE_INDIA":
+    score -= 80;
+    reasons.push("Outside preferred geography");
+    break;
 }
   //Role Match
   
@@ -317,37 +227,42 @@ if (job.eligibilityLevel === "STAFF") {
 if (job.eligibilityLevel === "PRINCIPAL") {
   score -= 200;
 }
-const freshnessScore =
-  getFreshnessScore(job);
+switch (job.freshness) {
 
-score += freshnessScore;
-if (freshnessScore === 30) {
-  reasons.push("Posted within 3 days");
-}
+  case "TODAY":
+    score += 40;
+    break;
 
-if (freshnessScore === 20) {
-  reasons.push("Posted within 7 days");
-}
+  case "VERY_FRESH":
+    score += 35;
+    break;
 
-if (freshnessScore === 10) {
-  reasons.push("Posted within 14 days");
-}
+  case "FRESH":
+    score += 25;
+    break;
 
-if (freshnessScore === 5) {
-  reasons.push("Posted within 30 days");
-}
-if (!job.postedDate) {
-  score -= 30;
+  case "RECENT":
+    score += 15;
+    break;
 
-  reasons.push(
-    "Unknown posting date"
-  );
+  case "ACTIVE":
+    score += 5;
+    break;
+
+  case "OLD":
+    score -= 10;
+    break;
+
+  case "STALE":
+    score -= 30;
+    break;
 }
 return {
   score,
   reasons,
 };
 };
+
 const normalizeTitle = (title) => {
   return title
     .toLowerCase()

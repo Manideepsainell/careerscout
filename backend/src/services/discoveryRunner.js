@@ -31,8 +31,8 @@ import collectZohoRecruitJobs
   from "../collectors/zohoRecruitCollector.js";
 import collectDarwinboxJobs from "../collectors/darwinboxCollector.js";
 import collectPeopleTechJobs from "../collectors/peopletechCollector.js";
-import categorizeRole from "../utils/jobCategorizer.js";
-import getEligibilityLevel from "../utils/eligibilityTagger.js";
+import categorizeRole from "../intelligence/jobCategorizer.js";
+import getEligibilityLevel from "../intelligence/eligibilityTagger.js";
 import collectZwayamJobs
   from "../collectors/zwayamCollector.js";
 import collectTecholutionJobs from "../collectors/techolutionCollector.js";
@@ -177,24 +177,33 @@ if (
 
   let jobs = [];
 
-  try {
+ const start = Date.now();
 
-    console.log(
-      `Fetching jobs for ${company.name}`
+try {
+
+  jobs =
+    await withTimeout(
+      collector(company),
+      120000
     );
 
-    jobs =
-      await withTimeout(
-        collector(company),
-        120000
-      );
+  const elapsed =
+    ((Date.now() - start) / 1000).toFixed(1);
 
-    console.log(
-      `Fetched ${jobs.length} jobs`
-    );
+  console.log(
+    `${company.name} completed in ${elapsed}s`
+  );
 
-  } catch (error) {
+} catch (error) {
 
+  const elapsed =
+    ((Date.now() - start) / 1000).toFixed(1);
+
+  console.log(
+    `${company.name} failed after ${elapsed}s`
+  );
+
+  throw error;
     console.log(
       `${company.name}: ${error.message}`
     );

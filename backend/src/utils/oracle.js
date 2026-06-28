@@ -13,7 +13,6 @@ const buildOracleJobsEndpoint = (
   company,
   offset = 0
 ) => {
-
   const config =
     company.oracleConfig || {};
 

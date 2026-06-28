@@ -54,9 +54,9 @@ const collectWorkdayJobs = async (
   
 let endpoint =
   buildWorkdayJobsEndpoint(
+    company.openPositionsUrl ||
     company.careersUrl
   );
-
 const limit = 20;
 
 let offset = 0;
@@ -65,6 +65,7 @@ let total = 0;
 const allPostings = [];
 
 while (true) {
+ 
   let response = null;
 
   for (
@@ -74,7 +75,7 @@ while (true) {
   ) {
     try {
 
-     
+
 
       response = await axios.post(
         endpoint,
@@ -92,7 +93,6 @@ while (true) {
           },
         }
       );
-
       break;
 
     } catch (error) {
@@ -141,6 +141,11 @@ while (true) {
 
   if (offset === 0) {
     total = responseTotal;
+    console.log(
+      `Total jobs: ${responseTotal}`
+    );
+
+
   }
 
   if (!jobPostings.length) {
@@ -150,6 +155,25 @@ while (true) {
   allPostings.push(
     ...jobPostings
   );
+  const maxJobs =
+  company.workdayConfig?.maxJobs;
+
+if (maxJobs) {
+  const remaining =
+    maxJobs - allPostings.length;
+
+  allPostings.push(
+    ...jobPostings.slice(0, remaining)
+  );
+
+  if (
+    allPostings.length >= maxJobs
+  ) {
+    break;
+  }
+} else {
+  allPostings.push(...jobPostings);
+}
 
   offset += jobPostings.length;
 

@@ -7,74 +7,90 @@ import {
 const collectOracleJobs = async (
   company
 ) => {
- 
+  let offset = 0;
+  let allJobs = [];
 
-let offset = 0;
-let allJobs = [];
+  while (true) {
+    const endpoint =
+      buildOracleJobsEndpoint(
+        company,
+        offset
+      );
 
-while (true) {
+    const response =
+      await axios.get(endpoint);
 
-  const endpoint =
-    buildOracleJobsEndpoint(
-      company,
-      offset
-    );
+    const search =
+      response.data.items?.[0];
 
-  const response =
-    await axios.get(endpoint);
+    const jobs =
+      search?.requisitionList || [];
 
-  const search =
-    response.data.items?.[0];
-
-  const jobs =
-    search?.requisitionList || [];
-
-  if (!jobs.length) {
-    break;
-  }
-
-  allJobs.push(...jobs);
-
-  const totalJobs =
-    search.TotalJobsCount;
-
-  const limit =
-    search.Limit;
-
+    if (!jobs.length) {
+      break;
+    }
   
+    const maxJobs =
+      company.oracleConfig?.maxJobs;
 
-  offset += limit;
+    if (maxJobs) {
+      const remaining =
+        maxJobs - allJobs.length;
 
-  if (offset >= totalJobs) {
-    break;
+      allJobs.push(
+        ...jobs.slice(0, remaining)
+      );
+
+      if (
+        allJobs.length >= maxJobs
+      ) {
+        break;
+      }
+    } else {
+      allJobs.push(...jobs);
+    }
+
+    const totalJobs =
+      search.TotalJobsCount || 0;
+
+    const limit =
+      search.Limit || 25;
+
+    offset += limit;
+
+    if (offset >= totalJobs) {
+      break;
+    }
   }
-}
-const parsed = new URL(company.openPositionsUrl);
 
-const siteName = parsed.pathname.split("/")[5];
-   
-return allJobs.map((job) => ({
- 
-  title: job.Title,
-  company: company._id,
+  const parsed = new URL(
+    company.openPositionsUrl
+  );
 
-  location:
-    job.PrimaryLocation ||
-    "Not Specified",
+  const siteName =
+    parsed.pathname.split("/")[5];
 
-  source: "ORACLE",
+  return allJobs.map((job) => ({
+    title: job.Title,
+    company: company._id,
 
-  externalJobId: job.Id,
+    location:
+      job.PrimaryLocation ||
+      "Not Specified",
 
- jobUrl: `${parsed.origin}/hcmUI/CandidateExperience/en/sites/${siteName}/job/${job.Id}`,
+    source: "ORACLE",
 
-  description:
-    job.ShortDescriptionStr || "",
-postedDate:
-  job.PostedDate
-    ? new Date(job.PostedDate)
-    : null,
-}));
+    externalJobId: job.Id,
+
+    jobUrl: `${parsed.origin}/hcmUI/CandidateExperience/en/sites/${siteName}/job/${job.Id}`,
+
+    description:
+      job.ShortDescriptionStr || "",
+
+    postedDate: job.PostedDate
+      ? new Date(job.PostedDate)
+      : null,
+  }));
 };
 
 export default collectOracleJobs;

@@ -83,6 +83,18 @@ jobBoardType: {
 slug: {
   type: String
 },
+oracleConfig: {
+  type: mongoose.Schema.Types.Mixed,
+  default: {},
+},
+workdayConfig: {
+  type: mongoose.Schema.Types.Mixed,
+  default: {},
+},
+successFactorsConfig: {
+  type: mongoose.Schema.Types.Mixed,
+  default: {},
+},
     category: {
       type: String,
       enum: ["Startup", "Product", "SaaS", "Service", "Enterprise"],

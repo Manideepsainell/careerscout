@@ -9,7 +9,7 @@ const getAccentureJobs = async (
   const pageSize = 12;
 
   let allJobs = [];
-
+let totalJobs = null;
   while (true) {
 
 
@@ -112,17 +112,20 @@ const response =
       response.data?.totalHits?.total;
 
   
-    if (allJobs.length >= 1000) {
- 
+    allJobs.push(...jobs);
+
+if (
+  totalJobs &&
+  allJobs.length >= totalJobs
+) {
   break;
 }
 
-
-    if (jobs.length === 0) {
-      break;
-    }
-
-    allJobs.push(...jobs);
+if (
+  allJobs.length >= 1000
+) {
+  break;
+}
   }
   catch (error) {
    

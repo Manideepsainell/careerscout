@@ -10,13 +10,13 @@ const collectSuccessFactorsJobs =
   company.openPositionsUrl
 ).origin;
 
-   const jobs =
+  const jobs =
   await getSuccessFactorsJobs(
     company.openPositionsUrl,
     company.categoryId ?? 0,
-    company.locationFilter || ""
+    company.locationFilter || "",
+    company.successFactorsConfig?.maxJobs
   );
-   
     return jobs.map((job) => {
 
       const data = job.response;

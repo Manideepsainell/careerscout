@@ -3,16 +3,17 @@ import axios from "axios";
 const getSuccessFactorsJobs = async (
   careersUrl,
   categoryId,
-  location = ""
-) =>  {
+  location = "",
+  maxJobs
+) => {
   let pageNumber = 0;
   let allJobs = [];
-let totalPages = null;
-const pageSize = 10;
+
+  let totalPages = null;
+  const pageSize = 10;
+
   while (true) {
     try {
-      
-
       const response =
         await axios.post(
           careersUrl,
@@ -33,31 +34,44 @@ const pageSize = 10;
 
       const jobs =
         response.data?.jobSearchResult || [];
-if (totalPages === null) {
-  totalPages = Math.ceil(
-    (response.data?.totalJobs || 0) /
-    pageSize
-  );
 
-}
+      if (totalPages === null) {
+        totalPages = Math.ceil(
+          (response.data?.totalJobs || 0) /
+            pageSize
+        );
+      }
 
-   if (jobs.length === 0) {
-  break;
-}
+      if (!jobs.length) {
+        break;
+      }
 
-allJobs.push(...jobs);
+      if (maxJobs) {
+        const remaining =
+          maxJobs - allJobs.length;
 
-if (pageNumber >= totalPages - 1) {
+        allJobs.push(
+          ...jobs.slice(0, remaining)
+        );
 
-  break;
-}
+        if (
+          allJobs.length >= maxJobs
+        ) {
+          break;
+        }
+      } else {
+        allJobs.push(...jobs);
+      }
 
-pageNumber++;
+      if (
+        pageNumber >= totalPages - 1
+      ) {
+        break;
+      }
 
-  
+      pageNumber++;
     } catch (error) {
-
-break;
+      break;
     }
   }
 

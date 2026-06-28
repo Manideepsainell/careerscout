@@ -3,42 +3,49 @@ const getJobTier = (
   eligibilityLevel
 ) => {
 
+  // Best fit
   if (
-    ["BACKEND", "FULLSTACK"].includes(
-      roleCategory
-    ) &&
+    [
+      "BACKEND",
+      "FULLSTACK",
+    ].includes(roleCategory) &&
     [
       "INTERNSHIP",
       "ENTRY_LEVEL",
       "GENERAL",
       "MID_LEVEL",
-    ].includes(
-      eligibilityLevel
-    )
+    ].includes(eligibilityLevel)
   ) {
     return "TIER_1";
   }
 
+  // Very good fit
   if (
-    roleCategory ===
-      "GENERAL_SOFTWARE" &&
+    [
+      "GENERAL_SOFTWARE",
+      "FRONTEND",
+      "AI_ML",
+      "MOBILE",
+    ].includes(roleCategory) &&
     [
       "INTERNSHIP",
       "ENTRY_LEVEL",
       "GENERAL",
       "MID_LEVEL",
-    ].includes(
-      eligibilityLevel
-    )
+    ].includes(eligibilityLevel)
   ) {
     return "TIER_2";
   }
 
+  // Relevant but senior
   if (
     [
       "BACKEND",
       "FULLSTACK",
       "GENERAL_SOFTWARE",
+      "FRONTEND",
+      "AI_ML",
+      "MOBILE",
     ].includes(roleCategory) &&
     [
       "SENIOR",
@@ -46,9 +53,7 @@ const getJobTier = (
       "PRINCIPAL",
       "LEAD",
       "MANAGER",
-    ].includes(
-      eligibilityLevel
-    )
+    ].includes(eligibilityLevel)
   ) {
     return "TIER_3";
   }
