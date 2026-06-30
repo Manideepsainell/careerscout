@@ -14,8 +14,8 @@ import collectCornerstoneJobs from "../collectors/cornerstoneCollector.js";
 import collectWorkdayJobs from "../collectors/workday/workdayCollector.js";
 import collectGreenhouseJobs from "../collectors/greenhouseCollector.js";
 import collectSmartRecruitersJobs from "../collectors/smartRecruitersCollector.js";
-import collectOracleJobs from "../collectors/oracleCollector.js";
-import collectEightfoldJobs from "../collectors/eightfoldCollector.js";
+import collectOracleJobs from "../collectors/oracle/oracleCollector.js";
+import collectEightfoldJobs from "../collectors/eightfold/eightfoldCollector.js";
 import collectAtlassianJobs from "../collectors/atlassianCollector.js";
 import collectRippleHireJobs
   from "../collectors/rippleHireCollector.js";
@@ -51,7 +51,7 @@ import collectIbmJobs from "../collectors/ibmCollector.js";
 import collectMastechJobs
   from "../collectors/mastechCollector.js";
 import collect10kCodersJobs from "../collectors/tenkCollector.js";
-import collectAshbyJobs from "../collectors/ashbyCollector.js";
+import collectAshbyJobs from "../collectors/ashby/ashbyCollector.js";
 import collectKulaJobs from "../collectors/kulaCollector.js";
 import collectFreshteamJobs from "../collectors/freshteamCollector.js";
 import collectTrakstarJobs from "../collectors/trakstarCollector.js";

@@ -23,7 +23,7 @@ const buildGreenhouseJobsEndpoint = (
       .pop();
   }
 
-  return `https://boards-api.greenhouse.io/v1/boards/${slug}/jobs`;
+ return `https://boards-api.greenhouse.io/v1/boards/${slug}/jobs?content=true`;
 };
 
 export {

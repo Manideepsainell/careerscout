@@ -4,31 +4,32 @@ import { getLeverJobs }
 const collectLeverJobs =
   async (company) => {
 
-  
+    let slug = company.slug;
 
-let slug = company.slug;
+    if (
+      !slug &&
+      company.openPositionsUrl
+    ) {
+      slug = new URL(
+        company.openPositionsUrl
+      )
+        .pathname
+        .split("/")
+        .filter(Boolean)
+        .pop();
+    }
 
-if (!slug && company.openPositionsUrl) {
-  slug = new URL(company.openPositionsUrl)
-    .pathname
-    .split("/")
-    .filter(Boolean)
-    .pop();
-}
+    if (!slug) {
+      throw new Error(
+        `${company.name}: missing Lever slug`
+      );
+    }
 
-
-
-if (!slug) {
-  throw new Error(
-    `${company.name}: missing Lever slug`
-  );
-}
-
-const jobs = await getLeverJobs(slug);
-
-   
+    const jobs =
+      await getLeverJobs(slug);
 
     return jobs.map((job) => ({
+
       title: job.text,
 
       company: company._id,
@@ -36,39 +37,53 @@ const jobs = await getLeverJobs(slug);
       location:
         job.categories?.location ||
         "Not Specified",
+        
 
       source: "LEVER",
 
-      externalJobId: job.id,
+      externalJobId:
+        job.id,
 
       jobUrl:
         job.hostedUrl || "",
 
-      description: `
-${job.descriptionPlain || ""}
+      description: [
+        job.descriptionPlain,
+        ...(job.lists || [])
+          .map(list => list.content)
+      ]
+        .filter(Boolean)
+        .join("\n\n"),
 
-${job.lists
-  ?.map((list) => list.content)
-  .join("\n\n") || ""}
-`,
-department:
-  job.categories?.department || "",
+      department:
+        job.categories?.department || "",
 
-team:
-  job.categories?.team || "",
+      team:
+        job.categories?.team || "",
 
-workplace:
-  job.workplaceType || "",
+      workplace:
+        job.workplaceType || "",
 
       jobType:
         job.categories?.commitment ||
-        "Full Time",
+        "",
 
-  postedDate:
-  job.createdAt
-    ? new Date(job.createdAt)
-    : null,
+      primaryLocation:
+        job.categories?.location || "",
+
+      secondaryLocations:
+        job.additionalLocations || [],
+
+      hasMultipleLocations:
+        (job.additionalLocations?.length || 0) > 0,
+
+      postedDate:
+        job.createdAt
+          ? new Date(job.createdAt)
+          : null,
+
     }));
+ 
   };
 
 export default collectLeverJobs;

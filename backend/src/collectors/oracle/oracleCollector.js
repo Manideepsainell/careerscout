@@ -2,8 +2,8 @@ import axios from "axios";
 
 import {
   buildOracleJobsEndpoint,
-} from "../utils/oracle.js";
-
+  buildOracleDetailUrl,
+} from "../../utils/oracle.js";
 const collectOracleJobs = async (
   company
 ) => {
@@ -16,7 +16,7 @@ const collectOracleJobs = async (
         company,
         offset
       );
-
+console.log(endpoint);
     const response =
       await axios.get(endpoint);
 
@@ -69,7 +69,8 @@ const collectOracleJobs = async (
 
   const siteName =
     parsed.pathname.split("/")[5];
-
+console.log(company.name);
+console.log(allJobs.map(job => job.Title));
   return allJobs.map((job) => ({
     title: job.Title,
     company: company._id,
@@ -83,7 +84,10 @@ const collectOracleJobs = async (
     externalJobId: job.Id,
 
     jobUrl: `${parsed.origin}/hcmUI/CandidateExperience/en/sites/${siteName}/job/${job.Id}`,
-
+detailUrl: buildOracleDetailUrl(
+  company,
+  job.Id
+),
     description:
       job.ShortDescriptionStr || "",
 

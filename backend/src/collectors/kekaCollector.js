@@ -12,41 +12,52 @@ const collectKekaJobs =
    
     console.dir(jobs[0], { depth: null });
 
-    return jobs.map((job) => ({
-      title:
-        job.title,
+   return jobs.map((job) => ({
+  title: job.title,
 
-      company:
-        company._id,
+  company: company._id,
 
-      location:
-  job.jobLocations?.[0]?.name ||
-  "Not Specified",
+  location:
+    job.jobLocations?.[0]?.name ||
+    "Not Specified",
 
-      source:
-        "KEKA",
-        
-department:
-  job.departmentName || "",
+  source: "KEKA",
 
-      externalJobId:
-        String(job.id),
+  department:
+    job.departmentName || "",
 
-      description:
-        job.description || "",
+  externalJobId:
+    String(job.id),
 
-      experience:
-        job.experience || "",
+  description:
+    job.description || "",
 
-      jobType:
-        job.employmentType || "",
+  experience:
+    job.experience || "",
 
-      jobUrl:
-        company.careersUrl,
-        postedDate: job.publishedOn
-  ? new Date(job.publishedOn)
-  : null,
-    }));
+  jobType:
+    String(job.jobType || ""),
+
+  salary:
+    job.salaryRangeFormat || "",
+
+  primaryLocation:
+    job.jobLocations?.[0]?.name || "",
+
+  secondaryLocations:
+    job.jobLocations?.slice(1) || [],
+
+  hasMultipleLocations:
+    (job.jobLocations?.length || 0) > 1,
+
+  jobUrl:
+    company.careersUrl,
+
+  postedDate:
+    job.publishedOn
+      ? new Date(job.publishedOn)
+      : null,
+}));
   };
 
 export default collectKekaJobs;

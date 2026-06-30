@@ -19,9 +19,7 @@ const endpoint =
   const response = await axios.get(
     endpoint
   );
-
- 
-  
+console.log(Object.keys(response.data.jobs[0]));
   return response.data.jobs.map((job) => ({
   title: job.title,
 
@@ -31,14 +29,11 @@ const endpoint =
     job.location?.name ||
     "Not Specified",
 
-  externalJobId:
-    String(job.id),
+  externalJobId: String(job.id),
 
-  source:
-    "GREENHOUSE",
+  source: "GREENHOUSE",
 
-  jobUrl:
-    job.absolute_url,
+  jobUrl: job.absolute_url,
 
   postedDate:
     job.first_published
@@ -46,6 +41,23 @@ const endpoint =
       : job.updated_at
       ? new Date(job.updated_at)
       : null,
+
+  description:
+    job.content || "",
+
+  experience:
+    "Not Specified",
+
+  jobType: "",
+
+  salary: "",
+
+  primaryLocation:
+    job.location?.name || "",
+
+  secondaryLocations: [],
+
+  hasMultipleLocations: false,
 }));
 }
 catch (error) {

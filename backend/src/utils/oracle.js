@@ -98,8 +98,26 @@ const buildOracleJobsEndpoint = (
 
   return `${parsed.origin}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.workLocation,requisitionList.otherWorkLocations,requisitionList.secondaryLocations,flexFieldsFacet.values,requisitionList.requisitionFlexFields&finder=findReqs;facetsList=LOCATIONS%3BWORK_LOCATIONS%3BWORKPLACE_TYPES%3BTITLES%3BCATEGORIES%3BORGANIZATIONS%3BPOSTING_DATES%3BFLEX_FIELDS,${finderParams.join(",")}`;
 };
+const buildOracleDetailUrl = (
+  company,
+  jobId
+) => {
 
+  const parsed =
+    new URL(
+      company.openPositionsUrl
+    );
+
+  const siteNumber =
+    company.oracleConfig?.siteNumber ||
+    extractSiteNumber(
+      company.openPositionsUrl
+    );
+
+  return `${parsed.origin}/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;Id="${jobId}",siteNumber=${siteNumber}`;
+};
 export {
   extractSiteNumber,
   buildOracleJobsEndpoint,
+  buildOracleDetailUrl,
 };

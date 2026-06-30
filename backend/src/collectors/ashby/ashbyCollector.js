@@ -17,36 +17,28 @@ query ApiJobBoardWithTeams(
 `;
 
 const collectAshbyJobs = async (company) => {
-  
-
   const slug = company.slug;
 
   const response = await axios.post(
     company.openPositionsUrl,
     {
-      operationName:
-        "ApiJobBoardWithTeams",
+      operationName: "ApiJobBoardWithTeams",
 
       variables: {
-        organizationHostedJobsPageName:
-          slug,
+        organizationHostedJobsPageName: slug,
       },
 
       query,
     },
     {
       headers: {
-        "Content-Type":
-          "application/json",
+        "Content-Type": "application/json",
       },
     }
   );
 
   const jobs =
-    response.data.data?.jobBoard
-      ?.jobPostings || [];
-
-  
+    response.data.data?.jobBoard?.jobPostings || [];
 
   return jobs.map((job) => ({
     title: job.title,
@@ -59,10 +51,12 @@ const collectAshbyJobs = async (company) => {
 
     source: "ASHBY",
 
-    externalJobId:
-      job.id,
+    externalJobId: job.id,
 
     jobUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
+
+    detailUrl:
+      "https://jobs.ashbyhq.com/api/non-user-graphql",
 
     description: "",
 
