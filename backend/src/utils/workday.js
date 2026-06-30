@@ -1,3 +1,4 @@
+
 const extractWorkdayInfo = (url) => {
   const parsed = new URL(url);
 
@@ -21,6 +22,19 @@ const buildWorkdayJobsEndpoint = (url) => {
 
   return `https://${hostname}/wday/cxs/${tenant}/${siteName}/jobs`;
 };
+const buildWorkdayDetailUrl = (
+  url,
+  externalPath
+) => {
+  const parsed = new URL(url);
+
+  const hostname = parsed.hostname;
+
+  const { tenant, siteName } =
+    extractWorkdayInfo(url);
+
+  return `https://${hostname}/wday/cxs/${tenant}/${siteName}${externalPath}`;
+};
 const buildWorkdayJobUrl = (
   careersUrl,
   externalPath
@@ -36,4 +50,5 @@ export {
   extractWorkdayInfo,
   buildWorkdayJobsEndpoint,
   buildWorkdayJobUrl,
+  buildWorkdayDetailUrl,
 };

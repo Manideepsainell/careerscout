@@ -5,11 +5,13 @@ import dotenv from "dotenv";
 dotenv.config();
 import withTimeout
   from "../utils/withTimeout.js";
+  import enrichCollectorDetails
+  from "../collectors/shared/enrichCollectorDetails.js";
 // imports ...
 import CrawlStat from "../models/CrawlStat.js";
 import RunStat from "../models/RunStat.js";
 import collectCornerstoneJobs from "../collectors/cornerstoneCollector.js";
-import collectWorkdayJobs from "../collectors/workdayCollector.js";
+import collectWorkdayJobs from "../collectors/workday/workdayCollector.js";
 import collectGreenhouseJobs from "../collectors/greenhouseCollector.js";
 import collectSmartRecruitersJobs from "../collectors/smartRecruitersCollector.js";
 import collectOracleJobs from "../collectors/oracleCollector.js";
@@ -33,6 +35,8 @@ import collectDarwinboxJobs from "../collectors/darwinboxCollector.js";
 import collectPeopleTechJobs from "../collectors/peopletechCollector.js";
 import categorizeRole from "../intelligence/jobCategorizer.js";
 import getEligibilityLevel from "../intelligence/eligibilityTagger.js";
+import enrichJob
+  from "../intelligence/enrichJob.js";
 import collectZwayamJobs
   from "../collectors/zwayamCollector.js";
 import collectTecholutionJobs from "../collectors/techolutionCollector.js";
@@ -51,7 +55,7 @@ import collectAshbyJobs from "../collectors/ashbyCollector.js";
 import collectKulaJobs from "../collectors/kulaCollector.js";
 import collectFreshteamJobs from "../collectors/freshteamCollector.js";
 import collectTrakstarJobs from "../collectors/trakstarCollector.js";
-
+import buildJobUpdate from "../utils/buildJobUpdate.js";
 const collectors = {
   WORKDAY: collectWorkdayJobs,
   GREENHOUSE: collectGreenhouseJobs,
@@ -225,23 +229,30 @@ try {
 };
   }
 
-  const jobsToInsert = [];
+const detailedJobs =
+  await enrichCollectorDetails(
+    jobs,
+    company
+  );
 
-  for (const job of jobs) {
+const jobsToInsert = [];
 
-    if (!job.title) {
-      continue;
-    }
+for (let job of detailedJobs) {
 
-    job.roleCategory =
-      categorizeRole(job.title);
-
-    job.eligibilityLevel =
-      getEligibilityLevel(job.title);
-
-    jobsToInsert.push(job);
+  if (!job.title) {
+    continue;
   }
 
+  job = enrichJob(job);
+
+  job.roleCategory =
+    categorizeRole(job.title);
+
+  job.eligibilityLevel =
+    getEligibilityLevel(job.title);
+
+  jobsToInsert.push(job);
+}
   let jobsAdded = 0;
 
   try {
@@ -251,6 +262,10 @@ try {
       console.log(
         `Writing ${jobsToInsert.length} jobs`
       );
+const debugJob = jobsToInsert.find(
+  job => job.title === "IP Release Principal Engineer"
+);
+
 
       const operations =
         jobsToInsert.map((job) => ({
@@ -261,31 +276,13 @@ try {
                 job.externalJobId,
             },
 
-            update: {
-              $set: {
-                title: job.title,
-                location: job.location,
-                jobType: job.jobType,
-                experience: job.experience,
-                salary: job.salary,
-                source: job.source,
-                jobUrl: job.jobUrl,
-                description: job.description,
-                score: job.score,
-                roleCategory: job.roleCategory,
-                eligibilityLevel:
-                  job.eligibilityLevel,
-                experienceBand:
-                  job.experienceBand,
-                status: "ACTIVE",
-                postedDate: job.postedDate,
-                lastSeenAt: new Date(),
-              },
+           update: {
+  $set: buildJobUpdate(job),
 
-              $setOnInsert: {
-                createdAt: new Date(),
-              },
-            },
+  $setOnInsert: {
+    createdAt: new Date(),
+  },
+},
 
             upsert: true,
           },

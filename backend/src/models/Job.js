@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
+const METADATA_SOURCES = [
+  "",
+  "STRUCTURED",
+  "DESCRIPTION",
+  "TITLE",
+];
 const jobSchema = new mongoose.Schema(
   {
     title: {
@@ -17,21 +23,95 @@ const jobSchema = new mongoose.Schema(
       type: String,
       default: "Not Specified",
     },
+    primaryLocation: {
+  type: String,
+  default: "",
+},
 
+secondaryLocations: {
+  type: [String],
+  default: [],
+},
+
+hasMultipleLocations: {
+  type: Boolean,
+  default: false,
+},
+department: {
+  type: String,
+  default: "",
+},
+
+team: {
+  type: String,
+  default: "",
+},
+
+businessUnit: {
+  type: String,
+  default: "",
+},
     jobType: {
       type: String,
       default: "Full Time",
     },
+    workMode: {
+  type: String,
+  default: "",
+},
+
+workModeSource: {
+  type: String,
+  default: "",
+},
+
+workModeConfidence: {
+  type: Number,
+  default: null,
+},
 
     experience: {
       type: String,
       default: "Not Specified",
     },
+    experienceYearsMin: {
+  type: Number,
+  default: null,
+},
+
+experienceYearsMax: {
+  type: Number,
+  default: null,
+},
+
+experienceSource: {
+  type: String,
+  default: "",
+},
+
+experienceConfidence: {
+  type: Number,
+  default: null,
+},
 
     salary: {
       type: String,
       default: "Not Disclosed",
     },
+    salaryMin: {
+  type: Number,
+  default: null,
+},
+
+salaryMax: {
+  type: Number,
+  default: null,
+},
+
+salaryCurrency: {
+  type: String,
+  default: "",
+},
 
     source: {
   type: String,
@@ -50,7 +130,76 @@ externalJobId: {
       type: String,
       default: "",
     },
+    skills: {
+  type: [String],
+  default: [],
+},
 
+skillsSource: {
+  type: String,
+  default: "",
+},
+
+skillsConfidence: {
+  type: Number,
+  default: null,
+},
+educationLevel: {
+  type: String,
+  default: "",
+},
+
+educationSource: {
+  type: String,
+  default: "",
+},
+
+educationConfidence: {
+  type: Number,
+  default: null,
+},
+techCategories: {
+  type: [String],
+  default: [],
+},
+
+techCategoriesSource: {
+  type: String,
+  default: "",
+},
+
+techCategoriesConfidence: {
+  type: Number,
+  default: null,
+},
+hiringProgram: {
+  type: String,
+  default: "",
+},
+
+hiringProgramSource: {
+  type: String,
+  default: "",
+},
+
+hiringProgramConfidence: {
+  type: Number,
+  default: null,
+},
+supportRole: {
+  type: String,
+  default: "",
+},
+
+supportRoleSource: {
+  type: String,
+  default: "",
+},
+
+supportRoleConfidence: {
+  type: Number,
+  default: null,
+},
     score: {
       type: Number,
       default: 0,

@@ -2,8 +2,8 @@ import axios from "axios";
 import {
   buildWorkdayJobsEndpoint,
   buildWorkdayJobUrl,
-} from "../utils/workday.js";
-
+  buildWorkdayDetailUrl,
+} from "../../utils/workday.js";
 const sleep = (ms) =>
   new Promise((resolve) =>
     setTimeout(resolve, ms)
@@ -184,38 +184,51 @@ if (maxJobs) {
     break;
   }
 }
+const jobs = allPostings.map((posting) => ({
+  title: posting.title,
 
-const jobs =
-  allPostings.map(
-    (posting) => ({
-      title: posting.title,
+  company: company._id,
 
-      company: company._id,
+  location: posting.locationsText,
 
-      location:
-        posting.locationsText,
+  externalJobId:
+    posting.externalPath?.split("/").pop() || "",
 
-      externalJobId:
-        posting.externalPath
-          ?.split("/")
-          .pop() || "",
+  source: "WORKDAY",
 
-      source: "WORKDAY",
-
-      jobUrl:
-  buildWorkdayJobUrl(
-    company.careersUrl ||
-    company.openPositionsUrl,
+  jobUrl: buildWorkdayJobUrl(
+    company.careersUrl || company.openPositionsUrl,
     posting.externalPath
   ),
 
-      postedDate:
-        parseWorkdayPostedDate(
-          posting.postedOn
-        ),
-    })
-  );
+  postedDate: parseWorkdayPostedDate(
+    posting.postedOn
+  ),
 
+  // -------------------------
+  // Metadata
+  // -------------------------
+
+  experience: "Not Specified",
+
+  description: "",
+
+  jobType: posting.timeType || "",
+
+  salary: "",
+
+  primaryLocation: posting.locationsText || "",
+
+  secondaryLocations: [],
+
+  hasMultipleLocations:
+    (posting.additionalLocations?.length || 0) > 0,
+detailUrl: buildWorkdayDetailUrl(
+  company.openPositionsUrl || company.careersUrl,
+  posting.externalPath
+),
+
+}));
 
 
 
