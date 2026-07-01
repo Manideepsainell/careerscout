@@ -19,7 +19,7 @@ const endpoint =
   const response = await axios.get(
     endpoint
   );
-console.log(Object.keys(response.data.jobs[0]));
+
   return response.data.jobs.map((job) => ({
   title: job.title,
 

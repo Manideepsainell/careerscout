@@ -21,11 +21,19 @@ const collectKulaJobs = async (company) => {
     title: job.title,
 
     company: company._id,
+location:
+  job.ats_job?.offices?.[0]?.location || "Not Specified",
 
-    location:
-  job.ats_job?.offices?.[0]?.location ||
-  "Not Specified",
-  jobType:
+primaryLocation:
+  job.ats_job?.offices?.[0]?.location || "",
+
+secondaryLocations:
+  job.ats_job?.offices?.slice(1).map(o => o.location) || [],
+
+hasMultipleLocations:
+  (job.ats_job?.offices?.length || 0) > 1,
+
+jobType:
   job.ats_job?.employment_type || "",
 
 department:
@@ -33,14 +41,9 @@ department:
 
 workplace:
   job.ats_job?.workplace || "",
-    source: "KULA",
 
-    externalJobId: String(job.id),
-
-    jobUrl: `https://careers.kula.ai/${company.slug}`,
-
-    description:
-      job.ats_job?.job_description || "",
+description:
+  job.ats_job?.job_description || "",
 
     postedDate: null,
   }));

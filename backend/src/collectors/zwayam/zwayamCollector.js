@@ -1,5 +1,5 @@
 import getZwayamJobs
-  from "../utils/zwayam.js";
+  from "../../utils/zwayam.js";
 
 const collectZwayamJobs =
   async (company) => {

@@ -18,7 +18,7 @@ import collectOracleJobs from "../collectors/oracle/oracleCollector.js";
 import collectEightfoldJobs from "../collectors/eightfold/eightfoldCollector.js";
 import collectAtlassianJobs from "../collectors/atlassianCollector.js";
 import collectRippleHireJobs
-  from "../collectors/rippleHireCollector.js";
+  from "../collectors/rippleHire/ripplehireCollector.js";
 import collectLeverJobs
   from "../collectors/leverCollector.js";
   import collectJuspayJobs
@@ -30,7 +30,7 @@ import collectTaleoJobs
 import collectTopGradingJobs from "../collectors/topgradingCollector.js";
 import collectKekaJobs from "../collectors/kekaCollector.js";
 import collectZohoRecruitJobs
-  from "../collectors/zohoRecruitCollector.js";
+  from "../collectors/zoho/zohoRecruitCollector.js";
 import collectDarwinboxJobs from "../collectors/darwinboxCollector.js";
 import collectPeopleTechJobs from "../collectors/peopletechCollector.js";
 import categorizeRole from "../intelligence/jobCategorizer.js";
@@ -38,7 +38,7 @@ import getEligibilityLevel from "../intelligence/eligibilityTagger.js";
 import enrichJob
   from "../intelligence/enrichJob.js";
 import collectZwayamJobs
-  from "../collectors/zwayamCollector.js";
+  from "../collectors/zwayam/zwayamCollector.js";
 import collectTecholutionJobs from "../collectors/techolutionCollector.js";
 import collectEpamJobs from "../collectors/epamCollector.js";
 import collectVirtusaJobs from "../collectors/virtusaCollector.js";
@@ -287,12 +287,15 @@ const debugJob = jobsToInsert.find(
             upsert: true,
           },
         }));
+console.log("Before bulkWrite");
+
 
       const result =
         await Job.bulkWrite(
           operations
         );
 
+console.log("After bulkWrite");
       console.log(
         "bulkWrite completed"
       );

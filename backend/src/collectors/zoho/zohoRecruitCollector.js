@@ -1,4 +1,4 @@
-import getZohoRecruitJobs from "../utils/zohoRecruit.js";
+import getZohoRecruitJobs from "../../utils/zohoRecruit.js";
 
 const collectZohoRecruitJobs =
   async (company) => {

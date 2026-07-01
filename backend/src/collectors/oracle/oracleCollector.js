@@ -16,7 +16,7 @@ const collectOracleJobs = async (
         company,
         offset
       );
-console.log(endpoint);
+
     const response =
       await axios.get(endpoint);
 
@@ -69,8 +69,8 @@ console.log(endpoint);
 
   const siteName =
     parsed.pathname.split("/")[5];
-console.log(company.name);
-console.log(allJobs.map(job => job.Title));
+
+
   return allJobs.map((job) => ({
     title: job.Title,
     company: company._id,
