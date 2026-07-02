@@ -19,49 +19,63 @@ query ApiJobBoardWithTeams(
 const collectAshbyJobs = async (company) => {
   const slug = company.slug;
 
-  const response = await axios.post(
-    company.openPositionsUrl,
-    {
-      operationName: "ApiJobBoardWithTeams",
+  try {
+    const response = await axios.post(
+      company.openPositionsUrl,
+      {
+        operationName: "ApiJobBoardWithTeams",
 
-      variables: {
-        organizationHostedJobsPageName: slug,
-      },
+        variables: {
+          organizationHostedJobsPageName: slug,
+        },
 
-      query,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
+        query,
       },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        timeout: 20000,
+      }
+    );
+
+    const jobs =
+      response.data.data?.jobBoard?.jobPostings || [];
+
+    return jobs.map((job) => ({
+      title: job.title,
+
+      company: company._id,
+
+      location:
+        job.locationName ||
+        "Not Specified",
+
+      source: "ASHBY",
+
+      externalJobId: job.id,
+
+      jobUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
+
+      detailUrl:
+        "https://jobs.ashbyhq.com/api/non-user-graphql",
+
+      description: "",
+
+      postedDate: null,
+    }));
+
+  } catch (error) {
+
+    if (error.response?.status === 429) {
+      console.log(
+        `Ashby rate limited: ${company.name}`
+      );
+      return [];
     }
-  );
 
-  const jobs =
-    response.data.data?.jobBoard?.jobPostings || [];
-
-  return jobs.map((job) => ({
-    title: job.title,
-
-    company: company._id,
-
-    location:
-      job.locationName ||
-      "Not Specified",
-
-    source: "ASHBY",
-
-    externalJobId: job.id,
-
-    jobUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
-
-    detailUrl:
-      "https://jobs.ashbyhq.com/api/non-user-graphql",
-
-    description: "",
-
-    postedDate: null,
-  }));
+    throw error;
+  }
 };
 
 export default collectAshbyJobs;

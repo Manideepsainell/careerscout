@@ -196,7 +196,6 @@ try {
   );
 
 } catch (error) {
-
   const elapsed =
     ((Date.now() - start) / 1000).toFixed(1);
 
@@ -204,10 +203,8 @@ try {
     `${company.name} failed after ${elapsed}s`
   );
 
-  throw error;
-    console.log(
-      `${company.name}: ${error.message}`
-    );
+  console.error(error.message);
+
 
     await CrawlStat.findByIdAndUpdate(
       crawlStat._id,
@@ -225,13 +222,49 @@ try {
   jobsAdded: 0,
 };
   }
+console.log("Starting enrichment");
 
-const detailedJobs =
-  await enrichCollectorDetails(
-    jobs,
-    company
+let detailedJobs;
+
+try {
+  console.log("Starting enrichment");
+
+  detailedJobs =
+    await withTimeout(
+      enrichCollectorDetails(
+        jobs,
+        company
+      )
+    );
+
+  console.log("Finished enrichment");
+
+} catch (error) {
+
+  console.log(
+    `${company.name} enrichment failed`
   );
 
+  console.error(error.message);
+
+  await CrawlStat.findByIdAndUpdate(
+    crawlStat._id,
+    {
+      completedAt: new Date(),
+      status: "FAILED",
+    }
+  );
+
+  return {
+    success: false,
+    company: company.name,
+    collector: company.jobBoardType,
+    jobsFetched: jobs.length,
+    jobsAdded: 0,
+  };
+}
+
+console.log("Finished enrichment");
 const jobsToInsert = [];
 
 for (let job of detailedJobs) {
@@ -260,9 +293,7 @@ job = enrichJob(job);
       console.log(
         `Writing ${jobsToInsert.length} jobs`
       );
-const debugJob = jobsToInsert.find(
-  job => job.title === "IP Release Principal Engineer"
-);
+
 
 
       const operations =
@@ -285,18 +316,13 @@ const debugJob = jobsToInsert.find(
             upsert: true,
           },
         }));
-console.log("Before bulkWrite");
+
 
 
       const result =
         await Job.bulkWrite(
           operations
         );
-
-console.log("After bulkWrite");
-      console.log(
-        "bulkWrite completed"
-      );
 
       jobsAdded =
         result.upsertedCount;
@@ -353,7 +379,7 @@ console.log("After bulkWrite");
   jobsFetched: jobs.length,
   jobsAdded,
 };
-}
+ }
 const runDiscovery = async () => {
   let totalJobsFetched = 0;
 

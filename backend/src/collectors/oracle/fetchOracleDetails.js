@@ -34,9 +34,10 @@ const fetchOracleDetails = async (
         item.PrimaryLocation ||
         job.primaryLocation,
 
-      secondaryLocations:
-        item.secondaryLocations || [],
-
+    secondaryLocations:
+  (item.secondaryLocations || [])
+    .map(location => location.Name)
+    .filter(Boolean),
       hasMultipleLocations:
         (item.secondaryLocations?.length || 0) > 0,
 

@@ -25,24 +25,32 @@ const enrichCollectorDetails = async (
         i,
         i + BATCH_SIZE
       );
+      console.log(
+  `Batch ${i / BATCH_SIZE + 1}/${Math.ceil(jobs.length / BATCH_SIZE)}`
+);
 
-    await Promise.all(
-
+    await Promise.allSettled(
       batch.map(async (job) => {
+        try {
+          const details =
+            await fetchDetails(
+              job,
+              company
+            );
 
-        const details =
-          await fetchDetails(
+          Object.assign(
             job,
-            company
+            details
           );
 
-        Object.assign(
-          job,
-          details
-        );
+        } catch (err) {
 
+          console.error(
+            `Failed to enrich "${job.title}" (${company.name}): ${err.message}`
+          );
+
+        }
       })
-
     );
 
   }

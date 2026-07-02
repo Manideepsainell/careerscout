@@ -13,52 +13,52 @@ const collectZwayamJobs =
         company.domain
       );
 
-    
-    return jobs.map((job) => {
+    return jobs.map(({ _source: job }) => ({
+  title:
+    job.jobTitle || "Untitled",
 
-      const data =
-        job._source || {};
+  company:
+    company._id,
 
-      return {
-        title:
-          data.jobTitle,
+  location:
+    job.location ||
+    job.city ||
+    "Not Specified",
 
-        company:
-          company._id,
+  source:
+    "ZWAYAM",
 
-        location:
-          data.location ||
-          data.text1 ||
-          "India",
+  externalJobId:
+    String(job.id),
 
-        source:
-          "ZWAYAM",
+  jobUrl:
+    `https://${company.domain}/${job.jobUrl}?id=${job.id}`,
 
-        externalJobId:
-          String(
-            data.id
-          ),
+  description:
+    job.shortDescription || "",
 
-        jobUrl:
-          `https://${company.domain}/job/${data.jobUrl}`,
+  department:
+    job.departmentName || "",
 
-        description:
-          data.shortDescription ||
-          "",
+  jobType:
+    job.jobType === "J"
+      ? "Full Time"
+      : "",
 
-        jobType:
-          data.jobType === "J"
-            ? "Full Time"
-            : "Other",
+  experience:
+    job.experienceUIField ||
+    job.minYrsOfExperience ||
+    "",
 
-       postedDate:
-  data.createdDate
-    ? new Date(
-        data.createdDate
-      )
-    : null,
-      };
-    });
+  postedDate:
+    job.createdDate
+      ? new Date(job.createdDate)
+      : null,
+
+  skills:
+    job.jdSkillsKnownList ||
+    [],
+}));
   };
 
 export default collectZwayamJobs;

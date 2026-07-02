@@ -13,6 +13,9 @@ const fetchWorkdayDetails = async (
       });
     
 
+
+const start = Date.now();
+
     const info =
       response.data.jobPostingInfo;
 

@@ -89,6 +89,7 @@ oracleConfig: {
 },
 workdayConfig: {
   type: mongoose.Schema.Types.Mixed,
+  maxJobs:250,
   default: {},
 },
 successFactorsConfig: {
