@@ -9,12 +9,10 @@ const normalizeStructuredExperience = (experience) => {
 
     // Normalize separators
     .replace(/[–—]/g, "-")
-
-    // Remove common words
-    .replace(/\byears?\b/g, "")
-    .replace(/\byrs?\b/g, "")
-    .replace(/\bexperience\b/g, "")
-
+// Remove common words
+.replace(/\byears?\b/g, "")
+.replace(/\byrs?\b/g, "")
+.replace(/\bexperience\b:?/g, "")
     // Normalize "to"
     .replace(/\bto\b/g, "-")
 

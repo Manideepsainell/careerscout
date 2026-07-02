@@ -33,7 +33,6 @@ const endpoint =
   const jobs =
     response.data.content || [];
 
-  
 
   return jobs.map((job) => ({
     title: job.name,
@@ -57,6 +56,18 @@ const endpoint =
 
     source:
       "SMARTRECRUITERS",
+      department:
+  job.department?.label || "",
+
+team:
+  job.function?.label || "",
+
+workplace:
+  job.location?.remote
+    ? "REMOTE"
+    : job.location?.hybrid
+      ? "HYBRID"
+      : "ONSITE",
 
     jobUrl:
       `${company.openPositionsUrl.replace(/\/$/, "")}/${job.id}`,

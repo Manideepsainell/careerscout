@@ -11,39 +11,46 @@ const jobs =
   (response.data?.allJobs || [])
     .filter(job => job.opening_status === true);
  
+return jobs.map((job) => ({
 
-  return jobs.map((job) => ({
-    title:
-      job.job_title ||
-      "Untitled",
+  title:
+    job.job_title || "Untitled",
 
-    company: company._id,
+  company:
+    company._id,
 
-    location:
-      job.job_location ||
-      "Not Specified",
+  location:
+    job.job_location ||
+    "Not Specified",
 
-    source: "CUSTOM",
+  source:
+    "CUSTOM",
 
-    externalJobId:
-      String(job.job_id),
+  externalJobId:
+    String(job.job_id),
 
-    jobUrl:
-      `https://joinus.juspay.in/jobs/${job.job_id}`,
+  jobUrl:
+    `https://joinus.juspay.in/jobs/${job.job_id}`,
 
-    description:
-      job.job_description_career ||
-      "",
+  description:
+    job.job_description_career || "",
 
-    jobType:
-      job.job_type ||
-      "Full Time",
+  jobType:
+    job.job_type || "Full Time",
 
-     postedDate:
-  job.created_at
-    ? new Date(job.created_at)
-    : null,
-  }));
+  department:
+    job.category || "",
+
+  experience:
+    job.experience_year != null
+      ? String(job.experience_year)
+      : "",
+
+  postedDate:
+    job.created_at
+      ? new Date(job.created_at)
+      : null,
+}));
 };
 
 export default collectJuspayJobs;

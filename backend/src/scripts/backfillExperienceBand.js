@@ -14,9 +14,7 @@ const backfill = async () => {
 
   const jobs = await Job.find();
 
-  console.log(
-    `Found ${jobs.length} jobs`
-  );
+
 
   let updated = 0;
 
@@ -34,16 +32,11 @@ const backfill = async () => {
     updated++;
 
     if (updated % 100 === 0) {
-      console.log(
-        `Updated ${updated}`
-      );
+      
     }
   }
 
-  console.log(
-    `Finished updating ${updated} jobs`
-  );
-
+  
   process.exit(0);
 };
 

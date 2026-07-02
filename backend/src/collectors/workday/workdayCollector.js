@@ -141,9 +141,7 @@ while (true) {
 
   if (offset === 0) {
     total = responseTotal;
-    console.log(
-      `Total jobs: ${responseTotal}`
-    );
+   
 
 
   }

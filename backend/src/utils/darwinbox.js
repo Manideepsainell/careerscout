@@ -1,80 +1,49 @@
-import axios from "axios";
+import { chromium } from "playwright";
 
 const getDarwinboxJobs = async (
-  baseUrl,
+  openPositionsUrl,
   companyId = "main"
 ) => {
+  const browser = await chromium.launch({
+  headless: false,
+});
 
-  const allJobs = [];
+  try {
+    const page = await browser.newPage();
 
-  let page = 1;
+    await page.goto(openPositionsUrl, {
+      waitUntil: "networkidle",
+      timeout: 60000,
+    });
+  
 
-  while (true) {
+    const result = await page.evaluate(
+      async ({ companyId }) => {
+        const response = await fetch(
+          `/ms/candidateapi/job/alljobs?companyId=${companyId}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              companyId,
+              page: 1,
+              sort_option: "new",
+              limit: 10,
+            }),
+          }
+        );
 
-    try {
+        return response.json();
+      },
+      { companyId }
+    );
 
-      const response = await axios.post(
-        `${baseUrl}/ms/candidateapi/job/alljobs?companyId=${companyId}`,
-        {
-          companyId,
-          page,
-          sort_option: "new",
-          limit: 10,
-        },
-        {
-          headers: {
-            Accept:
-              "application/json, text/plain, */*",
-
-            "Accept-Language":
-              "en",
-
-            "Content-Type":
-              "application/json",
-
-            Origin: baseUrl,
-
-            Referer:
-              `${baseUrl}/ms/candidatev2/main/careers/allJobs`,
-
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
-
-            "sec-fetch-site":
-              "same-origin",
-
-            "sec-fetch-mode":
-              "cors",
-          },
-        }
-      );
-
-      const jobs =
-        response.data?.data || [];
-
-      
-
-      if (!jobs.length) {
-        break;
-      }
-
-      allJobs.push(...jobs);
-
-      if (jobs.length < 10) {
-        break;
-      }
-
-      page++;
-
-    } catch (error) {
-
-    
-
-      break;
-    }
+    return result.data || [];
+  } finally {
+    await browser.close();
   }
-
-  return allJobs;
 };
 
 export default getDarwinboxJobs;

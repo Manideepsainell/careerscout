@@ -16,10 +16,11 @@ const collectTopGradingJobs = async (company) => {
 
 $(".job-openings li.job").each(
   (_, element) => {
-    const title = $(element)
-      .find("h2")
-      .text()
-      .trim();
+   const title = $(element)
+  .find("h2")
+  .text()
+  .replace(/\s*\(Ref:\d+\)\s*$/, "")
+  .trim();
 
     const location = $(element)
       .find("p")
@@ -54,6 +55,7 @@ $(".job-openings li.job").each(
     
   }
 );
+const firstJob = $(".job-openings li.job").first();
 
 return jobs;
 };

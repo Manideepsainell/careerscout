@@ -378,7 +378,7 @@ else if (
     ],
   };
 }
-console.log("FILTER:", filter);
+;
 
 const jobs = await Job.find(filter)
   .sort(sortOption)
@@ -427,10 +427,7 @@ if (req.query.excludeSenior === "true") {
       job.experienceBand !== "SENIOR"
   );
 }
-console.log(
-  "SORT MODE:",
-  req.query.sort
-);
+
 
 if (req.query.sort === "recommended") {
 
@@ -456,18 +453,12 @@ if (req.query.sort === "recommended") {
       companyCount[companyName]++;
     }
   }
-console.log(
-  diversifiedJobs
-    .slice(0, 20)
-    .map(job => job.company?.name)
-);
+
   filteredJobs = diversifiedJobs;
 }
 else {
 
-  console.log(
-    "LATEST SORT"
-  );
+  
 
   filteredJobs.sort(
     (a, b) =>

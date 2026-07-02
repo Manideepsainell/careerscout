@@ -10,37 +10,40 @@ const collectTecholutionJobs =
         company.openPositionsUrl
       );
 
-    return jobs.map((job) => ({
-      title:
-        job.roleName,
+  return jobs.map((job) => ({
+  title: job.roleName,
 
-      company:
-        company._id,
+  company: company._id,
 
-      location:
-        job.locations ||
-        "Not Specified",
+  location:
+    job.locations || "Not Specified",
 
-      source:
-        "TECHOLUTION",
+  source: "TECHOLUTION",
 
-      externalJobId:
-        String(job.id),
+  externalJobId: String(job.id),
 
-      jobUrl:
-        "https://hire.techolution.com",
+  jobUrl:
+    `https://hire.techolution.com/careers/${job.id}`,
 
-      description:
-        job.roleDescription || "",
+  description:
+    job.roleDescription || "",
 
-      jobType:
-        job.employmentType,
+  jobType:
+    job.employmentType || "Full Time",
 
-      postedDate:
-  job.createdAt
-    ? new Date(job.createdAt)
-    : null,
-    }));
+  experience:
+    job.positionStatus || "",
+
+  skills: [
+    ...(job.skills?.foundationalSkills || []),
+    ...(job.skills?.advancedSkills || []),
+  ],
+
+  postedDate:
+    job.createdAt
+      ? new Date(job.createdAt)
+      : null,
+}));
   };
 
 export default collectTecholutionJobs;

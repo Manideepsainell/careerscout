@@ -16,50 +16,56 @@ const collectTrakstarJobs = async (
 
   const jobs = [];
 
-  $("a").each((_, el) => {
-    const href = $(el).attr("href");
+$("a[href^='/jobs/']").each((_, el) => {
+  const title = $(el)
+    .find(".js-job-list-opening-name")
+    .text()
+    .replace(/^\d+\s*-\s*/, "")
+    .trim();
 
-    if (
-      !href ||
-      !href.startsWith("/jobs/")
-    ) {
-      return;
-    }
+  const location = $(el)
+    .find(".js-job-list-opening-loc")
+    .text()
+    .replace(/\s+/g, " ")
+    .trim();
 
-    const title = $(el)
-      .text()
-      .replace(/\s+/g, " ")
-      .trim();
+  const jobType = $(el)
+    .find(".js-job-list-opening-meta span")
+    .first()
+    .text()
+    .trim();
 
-    if (!title) {
-      return;
-    }
+  const href = $(el).attr("href");
 
-    jobs.push({
-      title,
+  jobs.push({
+    title,
 
-      company: company._id,
+    company: company._id,
 
-      location: "Not Specified",
+    location:
+      location || "Not Specified",
 
-      source: "TRAKSTAR",
+    jobType:
+      jobType || "Full Time",
 
-      externalJobId:
-        href.split("/")[2],
+    source: "TRAKSTAR",
 
-      jobUrl:
-        company.openPositionsUrl.replace(
-          /\/$/,
-          ""
-        ) + href,
+    externalJobId:
+      href.split("/")[2],
 
-      description: "",
+    jobUrl:
+      company.openPositionsUrl.replace(/\/$/, "") +
+      href,
 
-      postedDate: null,
-    });
+    description: "",
+
+    postedDate: null,
   });
+});
 
- 
+const firstJob = $("a[href^='/jobs/']").first();
+
+
   return jobs;
 };
 

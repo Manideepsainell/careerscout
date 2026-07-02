@@ -8,53 +8,55 @@ const collectVirtusaJobs =
       await getVirtusaJobs();
 
     
-    return jobs.map((job) => ({
+   return jobs.map((job) => ({
 
-      title:
-        job.title,
+  title: job.title,
 
-      company:
-        company._id,
+  company: company._id,
 
-      location:
-        [
-          job.city,
-          job.state,
-          job.country,
-        ]
-          .filter(Boolean)
-          .join(", ") ||
-        "Not Specified",
+  location:
+    [
+      job.city,
+      job.state,
+      job.country,
+    ]
+      .filter(Boolean)
+      .join(", ") ||
+    "Not Specified",
 
-      source:
-        "VIRTUSA",
+  source: "VIRTUSA",
 
-      externalJobId:
-        String(
-          job.contestNumber ||
-          job.careerCtaLink
-        ),
+  externalJobId:
+    String(
+      job.contestNumber ||
+      job.careerCtaLink
+    ),
 
-      jobUrl:
-        `https://www.virtusa.com${job.careerCtaLink}`,
+  jobUrl:
+    `https://www.virtusa.com${job.careerCtaLink}`,
 
-      description:
-        job.descriptionExternalHTML ||
-        "",
+  description:
+    job.descriptionExternalHTML || "",
 
-      jobType:
-        job.jobType ||
-        job.jobSchedule ||
-        "Full Time",
+  jobType:
+    job.employeeStatus ||
+    job.jobSchedule ||
+    "Full Time",
 
-      experience:
-        job.yearsOfExperience,
+  experience:
+    job.yearsOfExperience,
 
-      postedDate:
-        job.postedDate
-          ? new Date(job.postedDate)
-          : null,
-    }));
+  department:
+    job.category || "",
+
+  team:
+    job.jobField || "",
+
+  postedDate:
+    job.postedDate
+      ? new Date(job.postedDate)
+      : null,
+}));
   };
 
 export default collectVirtusaJobs;

@@ -55,17 +55,17 @@ businessUnit: {
       type: String,
       default: "Full Time",
     },
-    workMode: {
+    workplace: {
   type: String,
   default: "",
 },
 
-workModeSource: {
+workplaceSource: {
   type: String,
   default: "",
 },
 
-workModeConfidence: {
+workplaceConfidence: {
   type: Number,
   default: null,
 },

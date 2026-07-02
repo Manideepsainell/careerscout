@@ -25,8 +25,6 @@ import collectLeverJobs
   from "../collectors/juspayCollector.js";
   import collectSuccessFactorsJobs
   from "../collectors/successFactorsCollector.js";
-import collectTaleoJobs
-  from "../collectors/taleoCollector.js";
 import collectTopGradingJobs from "../collectors/topgradingCollector.js";
 import collectKekaJobs from "../collectors/kekaCollector.js";
 import collectZohoRecruitJobs
@@ -48,8 +46,7 @@ import collectInfosysJobs from "../collectors/infosysCollector.js";
 import collectCapgeminiJobs
   from "../collectors/capgeminiCollector.js";
 import collectIbmJobs from "../collectors/ibmCollector.js";
-import collectMastechJobs
-  from "../collectors/mastechCollector.js";
+
 import collect10kCodersJobs from "../collectors/tenkCollector.js";
 import collectAshbyJobs from "../collectors/ashby/ashbyCollector.js";
 import collectKulaJobs from "../collectors/kulaCollector.js";
@@ -65,7 +62,7 @@ const collectors = {
   SUCCESSFACTORS: collectSuccessFactorsJobs,
   RIPPLEHIRE: collectRippleHireJobs,
   ZWAYAM: collectZwayamJobs,
-  TALEO: collectTaleoJobs,
+
   CORNERSTONE: collectCornerstoneJobs,
   TOPGRADING: collectTopGradingJobs,
   ZOHO_RECRUIT: collectZohoRecruitJobs,
@@ -82,7 +79,7 @@ const collectors = {
   TRAKSTAR: collectTrakstarJobs,
   CAPGEMINI: collectCapgeminiJobs,
   IBM: collectIbmJobs,
-  MASTECH: collectMastechJobs,
+
   KULA: collectKulaJobs,
   "10KCODERS": collect10kCodersJobs,
 
@@ -243,7 +240,8 @@ for (let job of detailedJobs) {
     continue;
   }
 
-  job = enrichJob(job);
+job = enrichJob(job);
+
 
   job.roleCategory =
     categorizeRole(job.title);

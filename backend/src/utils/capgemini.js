@@ -52,9 +52,7 @@ while (true) {
 
   page++;
 }
-console.log(
-  `Page: ${page}, Total fetched: ${allJobs.length}`
-);
+
   return allJobs;
 };
 

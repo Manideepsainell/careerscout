@@ -20,43 +20,44 @@ const collectIbmJobs =
         data.url?.match(
           /jobId=(\d+)/
         )?.[1];
+return {
+  title: data.title,
 
-      return {
+  company: company._id,
 
-        title:
-          data.title,
+  location:
+    data.field_keyword_19 ||
+    "Not Specified",
 
-        company:
-          company._id,
-location: data.field_keyword_19 || "Not Specified",
-workMode: data.field_keyword_17 || null,
-department: data.field_keyword_08 || null,
-experienceLevel: data.field_keyword_18 || null,
-postedDate: data.dcdate
-  ? new Date(data.dcdate)
-  : null,
+  department:
+    data.field_keyword_08 ||
+    "",
 
-        source:
-          "IBM",
+  workplace:
+    data.field_keyword_17 ||
+    "",
 
-        externalJobId:
-          String(
-            jobId ||
-            data.url
-          ),
+  experience:
+    data.field_keyword_18 ||
+    "",
 
-        jobUrl:
-          data.url,
+  postedDate: data.dcdate
+    ? new Date(data.dcdate)
+    : null,
 
-        description:
-          data.description ||
-          "",
+  source: "IBM",
 
-        jobType:
-          "Full Time",
+  externalJobId: String(
+    jobId || data.url
+  ),
 
-          
-      };
+  jobUrl: data.url,
+
+  description:
+    data.description || "",
+
+  jobType: "Full Time",
+};
     });
   };
 

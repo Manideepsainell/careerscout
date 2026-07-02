@@ -4,19 +4,18 @@ import getSuccessFactorsJobs
 const collectSuccessFactorsJobs =
   async (company) => {
 
-
-   
     const baseUrl = new URL(
-  company.openPositionsUrl
-).origin;
+      company.openPositionsUrl
+    ).origin;
 
-  const jobs =
-  await getSuccessFactorsJobs(
-    company.openPositionsUrl,
-    company.categoryId ?? 0,
-    company.locationFilter || "",
-    company.successFactorsConfig?.maxJobs
-  );
+    const jobs =
+      await getSuccessFactorsJobs(
+        company.openPositionsUrl,
+        company.categoryId ?? 0,
+        company.locationFilter || "",
+        company.successFactorsConfig?.maxJobs
+      );
+
     return jobs.map((job) => {
 
       const data = job.response;
@@ -25,31 +24,37 @@ const collectSuccessFactorsJobs =
         title:
           data?.unifiedStandardTitle,
 
-        company: company._id,
+        company:
+          company._id,
 
         location:
+          data?.sfstd_jobLocation_obj?.[0] ||
           data?.custprimecity ||
           data?.custCountryRegion?.[0] ||
           "India",
 
-        source: "SUCCESSFACTORS",
+        source:
+          "SUCCESSFACTORS",
 
         externalJobId:
           String(data?.id),
 
         jobUrl:
-  `${baseUrl}/job/${data?.urlTitle}/${data?.id}-en_US`,
+          `${baseUrl}/job/${data?.urlTitle}/${data?.id}-en_US`,
 
-        description: "",
+        description:
+          "",
 
-        jobType: "Full Time",
+        jobType:
+          "Full Time",
 
-       postedDate:
-  data?.unifiedStandardStart
-    ? new Date(
-        data.unifiedStandardStart
-      )
-    : null,
+        team:
+          data?.custRMKMappingPicklist?.[0] || "",
+
+        postedDate:
+          data?.unifiedStandardStart
+            ? new Date(data.unifiedStandardStart)
+            : null,
       };
     });
   };

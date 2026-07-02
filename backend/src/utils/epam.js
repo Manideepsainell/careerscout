@@ -12,20 +12,20 @@ const getEpamJobs = async () => {
       await axios.get(
         "https://careers.epam.com/api/jobs/v2/search/careers-i18n",
         {
-          params: {
-            from,
-            lang: "en",
-            size,
-            sortBy:
-              "relevance;relocation=asc",
-            websiteLocale:
-              "en-us",
-          },
+         params: {
+  facets: "country=4060741400035606931",
+  from,
+  lang: "en",
+  size,
+  sortBy: "relevance;relocation=asc",
+  websiteLocale: "en-us",
+}
         }
       );
 
-    const jobs =
-      response.data?.jobs || [];
+
+const jobs =
+  response.data?.data?.jobs || [];
 
     
 
@@ -38,7 +38,8 @@ const getEpamJobs = async () => {
     from += size;
   }
 
-  return allJobs;
+return allJobs;
+ 
 };
 
 export default getEpamJobs;

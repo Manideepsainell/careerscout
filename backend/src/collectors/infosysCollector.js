@@ -10,51 +10,49 @@ const collectInfosysJobs =
       );
 
   
+return jobs.map((job) => ({
 
+  title: job.postingTitle,
 
-    return jobs.map((job) => ({
+  company: company._id,
 
-      title:
-        job.postingTitle,
+  location:
+    job.location || "India",
 
-      company:
-        company._id,
+  source: "INFOSYS",
 
-      location:
-        job.location ||
-        "India",
+  externalJobId: String(
+    job.requisitionId ||
+    job.postingId ||
+    job.publicationId
+  ),
 
-      source:
-        "INFOSYS",
+  jobUrl:
+    company.careersUrl,
 
-      externalJobId:
-        String(
-          job.requisitionId ||
-          job.postingId ||
-          job.publicationId
-        ),
+  description:
+    job.rolesResponsibilities || "",
 
-      jobUrl:
-        company.careersUrl,
+  jobType:
+    "Full Time",
 
-      description:
-        job.rolesResponsibilities ||
-        "",
+  experience:
+    `${job.minExperienceLevel}-${job.maxExperienceLevel}`,
 
-      jobType:
-        "Full Time",
-        minExperience:
-  job.minExperienceLevel ?? null,
+  department:
+    job.functionalArea || "",
 
-maxExperience:
-  job.maxExperienceLevel ?? null,
+  team:
+    job.unit || "",
 
-      postedDate:
-  job.createdOn
-    ? new Date(job.createdOn)
-    : null,
+  educationLevel:
+    job.educationalRequirement || "",
 
-    }));
+  postedDate:
+    job.createdOn
+      ? new Date(job.createdOn)
+      : null,
+}));
   };
 
 export default collectInfosysJobs;

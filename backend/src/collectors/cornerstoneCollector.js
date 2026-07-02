@@ -42,43 +42,55 @@ const collectCornerstoneJobs =
       pageNumber++;
     }
 
-    return allJobs.map((job) => ({
-      title:
-        job.displayJobTitle,
+return allJobs.map((job) => ({
 
-      company:
-        company._id,
+  title:
+    job.displayJobTitle,
 
-      location:
-        job.locations
-          ?.map(
-            (loc) =>
-              loc.city ||
-              loc.locationName
-          )
-          .filter(Boolean)
-          .join(", ") ||
-        "Not Specified",
+  company:
+    company._id,
 
-      source: "CORNERSTONE",
+  location:
+    job.locations
+      ?.map(
+        (loc) =>
+          loc.city ||
+          loc.locationName
+      )
+      .filter(Boolean)
+      .join(", ") ||
+    "Not Specified",
 
-      externalJobId:
-        String(
-          job.requisitionId
-        ),
+  source:
+    "CORNERSTONE",
 
-      jobUrl:
-        company.careersUrl,
+  externalJobId:
+    String(job.requisitionId),
 
-      description:
-        job.externalDescription ||
-        "",
+  jobUrl:
+    company.careersUrl,
 
-      postedDate:
-  job.postingEffectiveDate
-    ? new Date(job.postingEffectiveDate)
-    : null,
-    }));
+  description:
+    job.externalDescription || "",
+
+  jobType:
+    "Full Time",
+
+  department:
+    job.jobCategory || "",
+
+  workplace:
+    job.externalDescription?.includes("#LI-Onsite")
+      ? "ONSITE"
+      : job.externalDescription?.toLowerCase().includes("hybrid")
+        ? "HYBRID"
+        : "",
+
+  postedDate:
+    job.postingEffectiveDate
+      ? new Date(job.postingEffectiveDate)
+      : null,
+}));
   };
 
 export default collectCornerstoneJobs;

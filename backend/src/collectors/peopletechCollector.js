@@ -12,32 +12,46 @@ const collectPeopleTechJobs =
       );
 
     
+return jobs.map((job) => ({
+  title: job.name,
 
-    return jobs.map((job) => ({
-      title: job.name,
+  company: company._id,
 
-      company: company._id,
+  location:
+    job.jobLocation ||
+    "Not Specified",
 
-      location:
-        job.jobLocation ||
-        "Not Specified",
+  source: "PEOPLETECH",
 
-      source: "PEOPLETECH",
+  externalJobId: String(job.id),
 
-      externalJobId:
-        String(job.id),
+  jobUrl:
+    "https://peopletech.com/careers",
 
-      jobUrl:
-        "https://peopletech.com/careers",
+  description:
+    job.description || "",
 
-      description:
-        job.description || "",
+  department:
+    job.operationId === 2
+      ? "IT"
+      : "",
 
-      postedDate:
-  job.createdOn
-    ? new Date(job.createdOn)
-    : null,
-    }));
+  experience:
+    String(job.experienceLevel),
+
+  educationLevel:
+    job.qualification?.name || "",
+
+  skills:
+    (job.skills || []).map(
+      s => s.skill?.name
+    ),
+
+  postedDate:
+    job.createdOn
+      ? new Date(job.createdOn)
+      : null,
+}));
 };
 
 export default collectPeopleTechJobs;
