@@ -11,6 +11,7 @@ const collectOracleJobs = async (
   let allJobs = [];
 
   while (true) {
+    
     const endpoint =
       buildOracleJobsEndpoint(
         company,

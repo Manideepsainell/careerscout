@@ -43,10 +43,10 @@ const collectKekaJobs =
 
   primaryLocation:
     job.jobLocations?.[0]?.name || "",
-
-  secondaryLocations:
-    job.jobLocations?.slice(1) || [],
-
+secondaryLocations:
+    job.jobLocations
+        ?.slice(1)
+        .map(location => location.name) || [],
   hasMultipleLocations:
     (job.jobLocations?.length || 0) > 1,
 

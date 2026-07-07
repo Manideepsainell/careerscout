@@ -42,28 +42,35 @@ const collectAshbyJobs = async (company) => {
     const jobs =
       response.data.data?.jobBoard?.jobPostings || [];
 
-    return jobs.map((job) => ({
-      title: job.title,
+   const maxJobs =
+  company.ashbyConfig?.maxJobs;
 
-      company: company._id,
+const collectedJobs = maxJobs
+  ? jobs.slice(0, maxJobs)
+  : jobs;
 
-      location:
-        job.locationName ||
-        "Not Specified",
+return collectedJobs.map((job) => ({
+  title: job.title,
 
-      source: "ASHBY",
+  company: company._id,
 
-      externalJobId: job.id,
+  location:
+    job.locationName ||
+    "Not Specified",
 
-      jobUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
+  source: "ASHBY",
 
-      detailUrl:
-        "https://jobs.ashbyhq.com/api/non-user-graphql",
+  externalJobId: job.id,
 
-      description: "",
+  jobUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,
 
-      postedDate: null,
-    }));
+  detailUrl:
+    "https://jobs.ashbyhq.com/api/non-user-graphql",
+
+  description: "",
+
+  postedDate: null,
+}));
 
   } catch (error) {
 

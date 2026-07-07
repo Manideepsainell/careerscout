@@ -150,9 +150,7 @@ while (true) {
     break;
   }
 
-  allPostings.push(
-    ...jobPostings
-  );
+ 
   const maxJobs =
   company.workdayConfig?.maxJobs;
 
@@ -227,8 +225,6 @@ detailUrl: buildWorkdayDetailUrl(
 ),
 
 }));
-
-
 
   return jobs;
 };

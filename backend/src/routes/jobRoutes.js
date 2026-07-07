@@ -6,7 +6,7 @@ import {
 } from "../controllers/jobController.js";
 import {
   refresh10kJobs
-} from "../controllers/tenkController.js";
+} from "../controllers/tenKController.js";
 
 const router = express.Router();
 

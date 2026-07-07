@@ -3,13 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB
-  from "../config/db.js";
+  from "../../../config/db.js";
 
 import Company
-  from "../models/Company.js";
+  from "../../../models/Company.js";
 
 import collectJuspayJobs
-  from "../collectors/juspayCollector.js";
+  from "../../../collectors/juspayCollector.js";
 
 await connectDB();
 

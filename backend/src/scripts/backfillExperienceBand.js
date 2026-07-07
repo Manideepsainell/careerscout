@@ -1,43 +1,34 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import 'dotenv/config';
+import mongoose from 'mongoose';
 
-import Job from "../models/Job.js";
-import connectDB from "../config/db.js";
+import Job from '../models/Job.js';
+import getExperienceBand from '../intelligence/getExperienceBand.js';
 
-import getExperienceBand
-from "../utils/getExperienceBand.js";
+try {
+  await mongoose.connect(process.env.MONGO_URI);
 
-dotenv.config();
+  console.log('Connected to MongoDB');
 
-const backfill = async () => {
-  await connectDB();
-
-  const jobs = await Job.find();
-
-
+  const jobs = await Job.find({});
 
   let updated = 0;
 
   for (const job of jobs) {
-    const experienceBand =
-      getExperienceBand(job.title);
+    const newBand = getExperienceBand(job.title);
 
-    await Job.findByIdAndUpdate(
-      job._id,
-      {
-        experienceBand,
-      }
-    );
+    if (job.experienceBand !== newBand) {
+      job.experienceBand = newBand;
 
-    updated++;
+      await job.save();
 
-    if (updated % 100 === 0) {
-      
+      updated++;
     }
   }
 
-  
-  process.exit(0);
-};
+  console.log(`Updated ${updated} jobs`);
 
-backfill();
+  process.exit(0);
+} catch (err) {
+  console.error(err);
+  process.exit(1);
+}

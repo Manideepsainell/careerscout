@@ -2,7 +2,6 @@ import connectDB from "../config/db.js";
 import Company from "../models/Company.js";
 import collectEightfoldJobs from "../collectors/eightfoldCollector.js";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 const testEightfold = async () => {

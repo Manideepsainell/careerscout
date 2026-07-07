@@ -1,6 +1,8 @@
 import {
   searchJobs,
 } from "../../utils/eightfold.js";
+
+
 const collectEightfoldJobs = async (
   company
 ) => {
@@ -31,18 +33,31 @@ const collectEightfoldJobs = async (
       break;
     }
 
-    allPositions.push(
-      ...positions
-    );
+   const maxJobs =
+  company.eightfoldConfig?.maxJobs;
+
+if (maxJobs) {
+  const remaining =
+    maxJobs - allPositions.length;
+
+  allPositions.push(
+    ...positions.slice(0, remaining)
+  );
+
+  if (allPositions.length >= maxJobs) {
+    break;
+  }
+} else {
+  allPositions.push(...positions);
+}
 
     start += 10;
   }
 
+
   return allPositions.map(
     (job) => ({
-
       title: job.name,
-
       company: company._id,
 
       location:
@@ -58,17 +73,14 @@ const collectEightfoldJobs = async (
         `${baseUrl}${job.positionUrl}`,
 
       detailUrl:
-`${baseUrl}/api/pcsx/position_details?position_id=${job.id}&domain=${company.domain}&hl=en`,
+        `${baseUrl}/api/pcsx/position_details?position_id=${job.id}&domain=${company.domain}&hl=en`,
 
       description: "",
 
       postedDate:
         job.postedTs
-          ? new Date(
-              job.postedTs * 1000
-            )
+          ? new Date(job.postedTs * 1000)
           : null,
-
     })
   );
 };

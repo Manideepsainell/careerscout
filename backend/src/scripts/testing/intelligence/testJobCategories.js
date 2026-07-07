@@ -1,6 +1,6 @@
-import connectDB from "../config/db.js";
-import Job from "../models/Job.js";
-import categorizeRole from "../utils/jobCategorizer.js";
+import connectDB from "../../../config/db.js";
+import Job from "../../../models/Job.js";
+import categorizeRole from "../../../intelligence/jobCategorizer.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -15,12 +15,12 @@ const main = async () => {
     $options: "i",
   },
 })
-  .select("title")
+  .select("title description")
   .limit(100);
 
   for (const job of jobs) {
     console.log(
-      `${job.title} -> ${categorizeRole(job.title)}`
+      `${job.title} -> ${categorizeRole(job.title, job.description)}`
     );
   }
 

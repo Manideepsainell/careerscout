@@ -1,7 +1,6 @@
-import Company from "../models/Company.js";
-import collectAtlassianJobs from "../collectors/atlassianCollector.js";
-import connectDB from "../config/db.js";
-
+import Company from "../../../models/Company.js";
+import collectAtlassianJobs from "../../../collectors/atlassianCollector.js";
+import connectDB from "../../../config/db.js";
 await connectDB();
 
 const company =

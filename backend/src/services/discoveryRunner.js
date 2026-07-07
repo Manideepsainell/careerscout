@@ -25,6 +25,7 @@ import collectLeverJobs
   from "../collectors/juspayCollector.js";
   import collectSuccessFactorsJobs
   from "../collectors/successFactorsCollector.js";
+
 import collectTopGradingJobs from "../collectors/topgradingCollector.js";
 import collectKekaJobs from "../collectors/kekaCollector.js";
 import collectZohoRecruitJobs
@@ -46,7 +47,8 @@ import collectInfosysJobs from "../collectors/infosysCollector.js";
 import collectCapgeminiJobs
   from "../collectors/capgeminiCollector.js";
 import collectIbmJobs from "../collectors/ibmCollector.js";
-
+import collectMastechJobs
+  from "../collectors/mastechCollector.js";
 import collect10kCodersJobs from "../collectors/tenkCollector.js";
 import collectAshbyJobs from "../collectors/ashby/ashbyCollector.js";
 import collectKulaJobs from "../collectors/kulaCollector.js";
@@ -62,7 +64,7 @@ const collectors = {
   SUCCESSFACTORS: collectSuccessFactorsJobs,
   RIPPLEHIRE: collectRippleHireJobs,
   ZWAYAM: collectZwayamJobs,
-
+  TALEO: collectTaleoJobs,
   CORNERSTONE: collectCornerstoneJobs,
   TOPGRADING: collectTopGradingJobs,
   ZOHO_RECRUIT: collectZohoRecruitJobs,
@@ -79,7 +81,7 @@ const collectors = {
   TRAKSTAR: collectTrakstarJobs,
   CAPGEMINI: collectCapgeminiJobs,
   IBM: collectIbmJobs,
-
+  MASTECH: collectMastechJobs,
   KULA: collectKulaJobs,
   "10KCODERS": collect10kCodersJobs,
 
@@ -196,6 +198,7 @@ try {
   );
 
 } catch (error) {
+
   const elapsed =
     ((Date.now() - start) / 1000).toFixed(1);
 
@@ -203,8 +206,10 @@ try {
     `${company.name} failed after ${elapsed}s`
   );
 
-  console.error(error.message);
-
+  throw error;
+    console.log(
+      `${company.name}: ${error.message}`
+    );
 
     await CrawlStat.findByIdAndUpdate(
       crawlStat._id,
@@ -222,49 +227,13 @@ try {
   jobsAdded: 0,
 };
   }
-console.log("Starting enrichment");
 
-let detailedJobs;
-
-try {
-  console.log("Starting enrichment");
-
-  detailedJobs =
-    await withTimeout(
-      enrichCollectorDetails(
-        jobs,
-        company
-      )
-    );
-
-  console.log("Finished enrichment");
-
-} catch (error) {
-
-  console.log(
-    `${company.name} enrichment failed`
+const detailedJobs =
+  await enrichCollectorDetails(
+    jobs,
+    company
   );
 
-  console.error(error.message);
-
-  await CrawlStat.findByIdAndUpdate(
-    crawlStat._id,
-    {
-      completedAt: new Date(),
-      status: "FAILED",
-    }
-  );
-
-  return {
-    success: false,
-    company: company.name,
-    collector: company.jobBoardType,
-    jobsFetched: jobs.length,
-    jobsAdded: 0,
-  };
-}
-
-console.log("Finished enrichment");
 const jobsToInsert = [];
 
 for (let job of detailedJobs) {
@@ -273,11 +242,10 @@ for (let job of detailedJobs) {
     continue;
   }
 
-job = enrichJob(job);
-
+  job = enrichJob(job);
 
   job.roleCategory =
-    categorizeRole(job.title);
+    categorizeRole(job.title, job.description);
 
   job.eligibilityLevel =
     getEligibilityLevel(job.title);
@@ -293,7 +261,9 @@ job = enrichJob(job);
       console.log(
         `Writing ${jobsToInsert.length} jobs`
       );
-
+const debugJob = jobsToInsert.find(
+  job => job.title === "IP Release Principal Engineer"
+);
 
 
       const operations =
@@ -316,13 +286,18 @@ job = enrichJob(job);
             upsert: true,
           },
         }));
-
+console.log("Before bulkWrite");
 
 
       const result =
         await Job.bulkWrite(
           operations
         );
+
+console.log("After bulkWrite");
+      console.log(
+        "bulkWrite completed"
+      );
 
       jobsAdded =
         result.upsertedCount;
@@ -379,7 +354,7 @@ job = enrichJob(job);
   jobsFetched: jobs.length,
   jobsAdded,
 };
- }
+}
 const runDiscovery = async () => {
   let totalJobsFetched = 0;
 

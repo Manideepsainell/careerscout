@@ -1,6 +1,6 @@
 import {
   parseStructuredExperience,
-} from "../../src/intelligence/parsers/experienceParser.js";
+} from "../../intelligence/parsers/experienceParser.js";
 
 const tests = [
   {

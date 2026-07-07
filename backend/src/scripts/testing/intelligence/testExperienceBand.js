@@ -1,4 +1,4 @@
-import getExperienceBand from "../utils/getExperienceBand.js";
+import getExperienceBand from "../../../intelligence/getExperienceBand.js";
 const titles = [
   "Software Development Engineer - II",
   "Senior Backend Engineer",

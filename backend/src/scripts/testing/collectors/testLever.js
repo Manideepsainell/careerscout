@@ -3,14 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB
-  from "../config/db.js";
+  from "../../../config/db.js";
 
 import Company
-  from "../models/Company.js";
+  from "../../../models/Company.js";
 
 import collectLeverJobs
-  from "../collectors/leverCollector.js";
-
+  from "../../../collectors/leverCollector.js";
 await connectDB();
 
 const company =

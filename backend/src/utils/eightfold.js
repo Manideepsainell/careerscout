@@ -4,23 +4,20 @@ export async function searchJobs({
   baseUrl,
   domain,
   start = 0,
-}) {
-  const response = await axios.get(
-    `${baseUrl}/api/pcsx/search`,
-    {
-     params: {
-  domain,
-  query: "",
-  location: "India",
-  filter_include_remote: 1,
-  start,
-  sort_by: "hot",
-}
-    }
-  );
-
+}) { 
+ 
+    const response = await axios.get( `${baseUrl}/api/pcsx/search`, {
+    params: {
+      domain,
+      query: "",
+      location: "",
+      start,
+      sort_by: "timestamp",
+    },
+  });
   return response.data.data;
 }
+
 export async function getJobDetails({
   baseUrl,
   domain,

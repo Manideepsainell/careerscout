@@ -1,4 +1,24 @@
-const categorizeRole = (title = "") => {
+// Multi-word or punctuated keywords (e.g. "node.js", "full-stack",
+// "machine learning") are safe to match as plain substrings - they're
+// specific enough that false collisions are very unlikely.
+// Single-word keywords need word-boundary matching instead, otherwise
+// short ones collide with ordinary English words - e.g. "soc" matches
+// inside "associate", and "ios" matches inside "scenarios"/"studios"/
+// "ratios", silently miscategorizing completely unrelated jobs.
+const hasKeyword = (text, keyword) => {
+  if (/[\s.\-]/.test(keyword)) {
+    return text.includes(keyword);
+  }
+
+  const escaped = keyword.replace(
+    /[.*+?^${}()|[\]\\]/g,
+    "\\$&"
+  );
+
+  return new RegExp(`\\b${escaped}\\b`).test(text);
+};
+
+const categorizeRole = (title = "", description = "") => {
   const normalizedTitle =
     title.toLowerCase();
 
@@ -229,8 +249,7 @@ const categorizeRole = (title = "") => {
 
   // HR
   if (
-    hrKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    hrKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "HR";
@@ -238,8 +257,7 @@ const categorizeRole = (title = "") => {
 
   // SALES
   if (
-    salesKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    salesKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "SALES";
@@ -247,8 +265,7 @@ const categorizeRole = (title = "") => {
 
   // MARKETING
   if (
-    marketingKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    marketingKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "MARKETING";
@@ -256,8 +273,7 @@ const categorizeRole = (title = "") => {
 
   // PRODUCT
   if (
-    productKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    productKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "PRODUCT";
@@ -265,8 +281,7 @@ const categorizeRole = (title = "") => {
 
   // AI / ML
   if (
-    aiKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    aiKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "AI_ML";
@@ -274,8 +289,7 @@ const categorizeRole = (title = "") => {
 
   // SECURITY
   if (
-    securityKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    securityKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "SECURITY";
@@ -283,8 +297,7 @@ const categorizeRole = (title = "") => {
 
   // DEVOPS
   if (
-    devopsKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    devopsKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "DEVOPS";
@@ -292,8 +305,7 @@ const categorizeRole = (title = "") => {
 
   // DATA ENGINEERING
   if (
-    dataKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    dataKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "DATA_ENGINEERING";
@@ -301,8 +313,7 @@ const categorizeRole = (title = "") => {
 
   // EMBEDDED / VLSI
   if (
-    embeddedKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    embeddedKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "EMBEDDED";
@@ -310,8 +321,7 @@ const categorizeRole = (title = "") => {
 
   // HARDWARE
   if (
-    hardwareKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    hardwareKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "HARDWARE";
@@ -319,8 +329,7 @@ const categorizeRole = (title = "") => {
 
   // QA
   if (
-    qaKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    qaKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "QA";
@@ -328,8 +337,7 @@ const categorizeRole = (title = "") => {
 
   // MOBILE
   if (
-    mobileKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    mobileKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "MOBILE";
@@ -337,8 +345,7 @@ const categorizeRole = (title = "") => {
 
   // FRONTEND
   if (
-    frontendKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    frontendKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "FRONTEND";
@@ -346,8 +353,7 @@ const categorizeRole = (title = "") => {
 
   // FULLSTACK
   if (
-    fullStackKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    fullStackKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "FULLSTACK";
@@ -355,17 +361,80 @@ const categorizeRole = (title = "") => {
 
   // BACKEND
   if (
-    backendKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    backendKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "BACKEND";
   }
 
+  // Title is generic ("Software Engineer", "Member of Technical Staff", etc.)
+  // or matched nothing so far. Many real backend/fullstack/etc roles are
+  // posted under exactly these generic titles, so fall back to scanning the
+  // job description for the same technical signals before giving up.
+  const normalizedDescription =
+    (description || "").toLowerCase();
+
+  if (normalizedDescription) {
+    // AI / ML
+    if (
+      aiKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "AI_ML";
+    }
+
+    // DEVOPS
+    if (
+      devopsKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "DEVOPS";
+    }
+
+    // DATA ENGINEERING
+    if (
+      dataKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "DATA_ENGINEERING";
+    }
+
+    // MOBILE
+    if (
+      mobileKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "MOBILE";
+    }
+
+    // FRONTEND
+    if (
+      frontendKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "FRONTEND";
+    }
+
+    // FULLSTACK
+    if (
+      fullStackKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "FULLSTACK";
+    }
+
+    // BACKEND
+    if (
+      backendKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
+      )
+    ) {
+      return "BACKEND";
+    }
+  }
+
   // GENERAL SOFTWARE
   if (
-    generalSoftwareKeywords.some(keyword =>
-      normalizedTitle.includes(keyword)
+    generalSoftwareKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
     )
   ) {
     return "GENERAL_SOFTWARE";

@@ -1,5 +1,5 @@
 import getRippleHireJobs
-  from "../utils/rippleHire.js";
+  from "../../utils/rippleHire.js";
 
 const jobs =
   await getRippleHireJobs(

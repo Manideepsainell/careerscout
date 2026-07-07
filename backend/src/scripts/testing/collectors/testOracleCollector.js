@@ -1,9 +1,10 @@
 import dotenv from "dotenv";
 
-import connectDB from "../config/db.js";
-import Company from "../models/Company.js";
+import connectDB from "../../../config/db.js";
+import Company from "../../../models/Company.js";
 
-import collectOracleJobs from "../collectors/oracleCollector.js";
+import collectOracleJobs
+  from "../../../collectors/oracle/oracleCollector.js";
 
 dotenv.config();
 

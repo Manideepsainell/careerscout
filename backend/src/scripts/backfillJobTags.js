@@ -3,10 +3,10 @@ import connectDB from "../config/db.js";
 import Job from "../models/Job.js";
 
 import categorizeRole
-from "../utils/jobCategorizer.js";
+from "../intelligence/jobCategorizer.js";
 
 import getEligibilityLevel
-from "../utils/eligibilityTagger.js";
+from "../intelligence/eligibilityTagger.js";
 
 dotenv.config();
 
@@ -20,26 +20,32 @@ const main = async () => {
   );
 
   let updatedCount = 0;
+for (const job of jobs) {
+  const roleCategory = categorizeRole(
+    job.title,
+    job.description
+  );
 
-  for (const job of jobs) {
-        job.roleCategory =
-      categorizeRole(job.title);
+  const eligibilityLevel = getEligibilityLevel(
+    job.title
+  );
 
-    job.eligibilityLevel =
-      getEligibilityLevel(job.title);
-
-    await job.save();
-
-    updatedCount++;
-        if (
-      updatedCount % 100 === 0
-    ) {
-      console.log(
-        `${updatedCount} jobs updated`
-      );
+  await Job.updateOne(
+    { _id: job._id },
+    {
+      $set: {
+        roleCategory,
+        eligibilityLevel,
+      },
     }
-      }
+  );
 
+  updatedCount++;
+
+  if (updatedCount % 100 === 0) {
+    console.log(`${updatedCount} jobs updated`);
+  }
+}
   console.log(
     `Backfilled ${updatedCount} jobs`
   );

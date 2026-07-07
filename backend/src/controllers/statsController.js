@@ -41,6 +41,22 @@ export const getStats = async (
           completedAt: -1,
         });
 
+    const roleCategoryBreakdown =
+      await Job.aggregate([
+        {
+          $match: { status: "ACTIVE" },
+        },
+        {
+          $group: {
+            _id: "$roleCategory",
+            count: { $sum: 1 },
+          },
+        },
+        {
+          $sort: { count: -1 },
+        },
+      ]);
+
     res.json({
       totalJobs,
 
@@ -58,6 +74,8 @@ export const getStats = async (
 
       companiesFailed:
         lastRun?.companiesFailed || 0,
+
+      roleCategoryBreakdown,
     });
 
   } catch (error) {

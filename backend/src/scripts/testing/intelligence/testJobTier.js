@@ -1,5 +1,5 @@
 import getJobTier
-from "../utils/jobTierCalculator.js";
+from "../../../intelligence/jobTierCalculator.js";
 
 console.log(
   getJobTier(

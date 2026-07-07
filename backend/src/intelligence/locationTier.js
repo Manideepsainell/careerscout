@@ -4,47 +4,9 @@ const getLocationTier = (
   const text =
     location.toLowerCase();
 
-  // Remote
-  if (
-    text.includes("remote") ||
-    text.includes("work from home") ||
-    text.includes("wfh") ||
-    text.includes("anywhere in india") ||
-    text.includes("hybrid")
-  ) {
-    return "TIER_1";
-  }
-
-  // Hyderabad (Top preference)
-  if (
-    text.includes("hyderabad")
-  ) {
-    return "TIER_2";
-  }
-
-  // Preferred cities
-  if (
-    text.includes("chennai") ||
-    text.includes("pune") ||
-    text.includes("noida") ||
-    text.includes("gurgaon") ||
-    text.includes("gurugram")
-  ) {
-    return "TIER_3";
-  }
-
-  // Acceptable cities
-  if (
-    text.includes("bangalore") ||
-    text.includes("bengaluru") ||
-    text.includes("mumbai") ||
-    text.includes("delhi") ||
-    text.includes("navi mumbai")
-  ) {
-    return "TIER_4";
-  }
-
-  // Outside India
+  // Outside India — checked first, so a foreign remote/hybrid role
+  // (e.g. "Remote - United States", "London, UK - Hybrid") is correctly
+  // excluded instead of being scored as our best tier below.
   const outsideIndia = [
     "united states",
     "usa",
@@ -88,6 +50,46 @@ const getLocationTier = (
     )
   ) {
     return "OUTSIDE_INDIA";
+  }
+
+  // Remote
+  if (
+    text.includes("remote") ||
+    text.includes("work from home") ||
+    text.includes("wfh") ||
+    text.includes("anywhere in india") ||
+    text.includes("hybrid")
+  ) {
+    return "TIER_1";
+  }
+
+  // Hyderabad (Top preference)
+  if (
+    text.includes("hyderabad")
+  ) {
+    return "TIER_2";
+  }
+
+  // Preferred cities
+  if (
+    text.includes("chennai") ||
+    text.includes("pune") ||
+    text.includes("noida") ||
+    text.includes("gurgaon") ||
+    text.includes("gurugram")
+  ) {
+    return "TIER_3";
+  }
+
+  // Acceptable cities
+  if (
+    text.includes("bangalore") ||
+    text.includes("bengaluru") ||
+    text.includes("mumbai") ||
+    text.includes("delhi") ||
+    text.includes("navi mumbai")
+  ) {
+    return "TIER_4";
   }
 
   // India but not preferred

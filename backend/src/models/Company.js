@@ -57,7 +57,6 @@ jobBoardType: {
     "RIPPLEHIRE",
     "DARWINBOX",
     "SUCCESSFACTORS",
-    "TALEO",
     "ORACLE",
     "CORNERSTONE",
     "LINKEDIN",
@@ -85,11 +84,21 @@ slug: {
 },
 oracleConfig: {
   type: mongoose.Schema.Types.Mixed,
+  maxJobs:200,
   default: {},
 },
 workdayConfig: {
   type: mongoose.Schema.Types.Mixed,
   maxJobs:250,
+  default: {},
+},
+eightfoldConfig: {
+  type: mongoose.Schema.Types.Mixed,
+  maxJobs:250,
+  default: {},
+},
+ashbyConfig: {
+  type: mongoose.Schema.Types.Mixed,
   default: {},
 },
 successFactorsConfig: {

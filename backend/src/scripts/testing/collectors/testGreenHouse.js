@@ -1,6 +1,6 @@
-import connectDB from "../config/db.js";
-import Company from "../models/Company.js";
-import collectGreenHouseJobs from "../collectors/greenhouseCollector.js";
+import connectDB from "../../../config/db.js";
+import Company from "../../../models/Company.js";
+import collectGreenHouseJobs from "../../../collectors/greenhouseCollector.js";
 import dotenv from "dotenv";
 
 dotenv.config();
