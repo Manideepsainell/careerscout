@@ -19,16 +19,18 @@ const collectEightfoldJobs = async (
 
   while (true) {
 
-    const data =
-      await searchJobs({
-        baseUrl,
-        domain: company.domain,
-        start,
-      });
+   const data =
+  await searchJobs({
+    baseUrl,
+    domain: company.domain,
+    start,
+  });
 
-    const positions =
-      data.positions || [];
+console.log(company.name);
+console.log(data);
 
+const positions =
+  data?.positions || [];
     if (!positions.length) {
       break;
     }

@@ -1,23 +1,26 @@
 import axios from "axios";
 
 const fetchZohoRecruitDetails = async (job) => {
+
+  if (!job.jobUrl) {
+    return {};
+  }
+
   const response = await axios.get(job.jobUrl);
 
   const html = response.data;
 
- const match = html.match(
-  /var jobs = JSON\.parse\('([\s\S]*?)'\);/
-);
+  const match = html.match(
+    /var jobs = JSON\.parse\('([\s\S]*?)'\);/
+  );
 
-if (!match) return {};
+  if (!match) return {};
 
-const encoded = match[1];
+  const encoded = match[1];
 
-// Let JS decode the string literal
-const decoded = Function(`return '${encoded}'`)();
+  const decoded = Function(`return '${encoded}'`)();
 
-// Now this is valid JSON
-const [data] = JSON.parse(decoded);
+  const [data] = JSON.parse(decoded);
 
   return {
     description: data.Job_Description || "",
@@ -29,13 +32,13 @@ const [data] = JSON.parse(decoded);
     department:
       data.Department_Name?.name || "",
 
-    workplace: data.Remote_Job
-      ? "REMOTE"
-      : "ONSITE",
+    workplace:
+      data.Remote_Job ? "REMOTE" : "ONSITE",
 
-    postedDate: data.Date_Opened
-      ? new Date(data.Date_Opened)
-      : null,
+    postedDate:
+      data.Date_Opened
+        ? new Date(data.Date_Opened)
+        : null,
   };
 };
 

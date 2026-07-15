@@ -6,7 +6,7 @@ from "../intelligence/jobTierCalculator.js";
 import getLocationTier
 from "../intelligence/locationTier.js";
 import getFreshnessScore
-from "../intelligence/freshnessScorer.js";
+from "../intelligence/getFreshnessScore.js";
 
 const calculateScore = (job) => {
   let score = 0;
@@ -227,36 +227,10 @@ if (job.eligibilityLevel === "STAFF") {
 if (job.eligibilityLevel === "PRINCIPAL") {
   score -= 200;
 }
-switch (job.freshness) {
+const freshnessScore =
+  getFreshnessScore(job.postedDate);
 
-  case "TODAY":
-    score += 40;
-    break;
-
-  case "VERY_FRESH":
-    score += 35;
-    break;
-
-  case "FRESH":
-    score += 25;
-    break;
-
-  case "RECENT":
-    score += 15;
-    break;
-
-  case "ACTIVE":
-    score += 5;
-    break;
-
-  case "OLD":
-    score -= 10;
-    break;
-
-  case "STALE":
-    score -= 30;
-    break;
-}
+score += freshnessScore;
 return {
   score,
   reasons,

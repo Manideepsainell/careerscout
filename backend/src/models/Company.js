@@ -101,6 +101,10 @@ ashbyConfig: {
   type: mongoose.Schema.Types.Mixed,
   default: {},
 },
+taleoConfig: {
+  type: mongoose.Schema.Types.Mixed,
+  default: {},
+},
 successFactorsConfig: {
   type: mongoose.Schema.Types.Mixed,
   default: {},

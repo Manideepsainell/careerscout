@@ -63,6 +63,17 @@ const categorizeRole = (title = "", description = "") => {
     "deep learning",
     "data scientist",
     "applied scientist",
+    "rag",
+"langchain",
+"langgraph",
+"hugging face",
+"huggingface",
+"embedding",
+"embeddings",
+"vector database",
+"pinecone",
+"weaviate",
+"milvus",
   ];
 
   const securityKeywords = [
@@ -82,6 +93,17 @@ const categorizeRole = (title = "", description = "") => {
     "platform engineer",
     "cloud engineer",
     "cloud engineering",
+    "docker",
+"kubernetes",
+"k8s",
+"helm",
+"terraform",
+"ansible",
+"jenkins",
+"github actions",
+"azure devops",
+"aws",
+"gcp",
   ];
 
   const dataKeywords = [
@@ -94,6 +116,12 @@ const categorizeRole = (title = "", description = "") => {
     "hadoop",
     "data platform",
     "data warehouse",
+    "snowflake",
+"databricks",
+"airflow",
+"dbt",
+"redshift",
+"bigquery",
   ];
 
   const embeddedKeywords = [
@@ -173,6 +201,12 @@ const categorizeRole = (title = "", description = "") => {
     "ui engineer",
     "ui developer",
     "web developer",
+    
+"svelte",
+"nuxt",
+"remix",
+"vite",
+"webpack",
   ];
 
   const fullStackKeywords = [
@@ -215,7 +249,57 @@ const categorizeRole = (title = "", description = "") => {
 
     "microservices",
     "distributed systems",
+    ".net",
+"dotnet",
+"asp.net",
+"c#",
+
+"django",
+"flask",
+"fastapi",
+
+"php",
+"laravel",
+
+"ruby",
+"ruby on rails",
+
+"graphql",
+"grpc",
+
+"redis",
+"kafka",
+"rabbitmq",
   ];
+  const nonEngineeringKeywords = [
+  "voice process",
+  "voice support",
+  "customer support",
+  "customer service",
+  "call center",
+  "bpo",
+  "process associate",
+  "operations associate",
+  "operations executive",
+  "claims",
+  "collections",
+  "advisor",
+  "analyst - operations",
+  "chat support",
+  "technical support",
+  "service desk",
+  "help desk",
+  "desktop support",
+  "it support",
+];
+
+if (
+  nonEngineeringKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "OTHER";
+}
 
   const generalSoftwareKeywords = [
     "software engineer",
@@ -245,7 +329,13 @@ const categorizeRole = (title = "", description = "") => {
     "developer iii",
 
     "wordpress engineer",
+    "member of engineering staff",
+"software analyst",
+"software consultant",
+"application programmer",
   ];
+ const normalizedDescription =
+    (description || "").toLowerCase();
 
   // HR
   if (
@@ -366,71 +456,106 @@ const categorizeRole = (title = "", description = "") => {
   ) {
     return "BACKEND";
   }
-
-  // Title is generic ("Software Engineer", "Member of Technical Staff", etc.)
-  // or matched nothing so far. Many real backend/fullstack/etc roles are
-  // posted under exactly these generic titles, so fall back to scanning the
-  // job description for the same technical signals before giving up.
-  const normalizedDescription =
-    (description || "").toLowerCase();
-
-  if (normalizedDescription) {
-    // AI / ML
-    if (
-      aiKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "AI_ML";
-    }
-
-    // DEVOPS
-    if (
-      devopsKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "DEVOPS";
-    }
-
-    // DATA ENGINEERING
-    if (
-      dataKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "DATA_ENGINEERING";
-    }
-
-    // MOBILE
-    if (
-      mobileKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "MOBILE";
-    }
-
-    // FRONTEND
-    if (
-      frontendKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "FRONTEND";
-    }
-
-    // FULLSTACK
-    if (
-      fullStackKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "FULLSTACK";
-    }
-
-    // BACKEND
-    if (
-      backendKeywords.some(keyword => hasKeyword(normalizedDescription, keyword)
-      )
-    ) {
-      return "BACKEND";
-    }
+ if (normalizedDescription) {
+  // AI / ML
+  if (
+    aiKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "AI_ML";
   }
+
+  // BACKEND
+  if (
+    backendKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "BACKEND";
+  }
+
+  // FULL STACK
+  if (
+    fullStackKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "FULLSTACK";
+  }
+
+  // FRONTEND
+  if (
+    frontendKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "FRONTEND";
+  }
+
+  // MOBILE
+  if (
+    mobileKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "MOBILE";
+  }
+
+  // DEVOPS
+  if (
+    devopsKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "DEVOPS";
+  }
+
+  // DATA ENGINEERING
+  if (
+    dataKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "DATA_ENGINEERING";
+  }
+
+  // SECURITY
+  if (
+    securityKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "SECURITY";
+  }
+
+  // QA
+  if (
+    qaKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "QA";
+  }
+
+  // EMBEDDED / VLSI
+  if (
+    embeddedKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "EMBEDDED";
+  }
+
+  // HARDWARE
+  if (
+    hardwareKeywords.some(keyword =>
+      hasKeyword(normalizedDescription, keyword)
+    )
+  ) {
+    return "HARDWARE";
+  }
+}
 
   // GENERAL SOFTWARE
   if (

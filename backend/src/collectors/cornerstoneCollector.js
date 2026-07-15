@@ -10,14 +10,12 @@ const collectCornerstoneJobs =
 
     while (true) {
 
-      const data =
-        await searchJobs({
-          careerSiteId:
-            company.careerSiteId,
-          careerSitePageId:
-            company.careerSitePageId,
-          pageNumber,
-        });
+    const data = await searchJobs({
+  apiUrl: company.cornerstoneApiUrl,
+  careerSiteId: company.careerSiteId,
+  careerSitePageId: company.careerSitePageId,
+  pageNumber,
+});
 
       const jobs =
         data.requisitions || [];

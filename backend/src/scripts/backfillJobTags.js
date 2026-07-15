@@ -30,15 +30,17 @@ for (const job of jobs) {
     job.title
   );
 
-  await Job.updateOne(
-    { _id: job._id },
-    {
-      $set: {
-        roleCategory,
-        eligibilityLevel,
-      },
-    }
-  );
+await Job.updateOne(
+  {
+    _id: job._id,
+  },
+  {
+    $set: {
+      roleCategory,
+      eligibilityLevel,
+    },
+  }
+);
 
   updatedCount++;
 

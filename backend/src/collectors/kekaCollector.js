@@ -10,7 +10,7 @@ const collectKekaJobs =
   await getKekaJobs(company);
 
    
-    console.dir(jobs[0], { depth: null });
+   
 
    return jobs.map((job) => ({
   title: job.title,

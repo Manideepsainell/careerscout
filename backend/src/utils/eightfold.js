@@ -1,12 +1,19 @@
 import axios from "axios";
-
+import https from "https";
+const agent = new https.Agent({
+  family: 4,
+});
 export async function searchJobs({
   baseUrl,
   domain,
   start = 0,
-}) { 
- 
-    const response = await axios.get( `${baseUrl}/api/pcsx/search`, {
+}) {
+  try {
+ const response = await axios.get(
+  `${baseUrl}/api/pcsx/search`,
+  {
+    httpsAgent: agent,
+    timeout: 30000,
     params: {
       domain,
       query: "",
@@ -14,24 +21,19 @@ export async function searchJobs({
       start,
       sort_by: "timestamp",
     },
-  });
-  return response.data.data;
-}
+  }
+);
 
-export async function getJobDetails({
-  baseUrl,
-  domain,
-  positionId,
-}) {
-  const response = await axios.get(
-    `${baseUrl}/api/pcsx/match_details`,
-    {
-      params: {
-        position_id: positionId,
-        domain,
-      },
+
+
+    return response.data.data;
+
+  } catch (error) {
+    if (error.response?.status === 403) {
+      console.log(`403 blocked: ${domain}`);
+      return { positions: [] };
     }
-  );
 
-  return response.data.data;
+    throw error;
+  }
 }

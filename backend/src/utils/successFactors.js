@@ -14,27 +14,34 @@ const getSuccessFactorsJobs = async (
 
   while (true) {
     try {
-      const response =
-        await axios.post(
-          careersUrl,
-          {
-            locale: "en_US",
-            pageNumber,
-            sortBy: "",
-            keywords: "",
-            location,
-            facetFilters: {},
-            brand: "",
-            categoryId,
-            alertId: "",
-            rcmCandidateId: "",
-            skills: [],
-          }
-        );
+      
+   const response = await axios.post(
+  careersUrl,
+  {
+    locale: "en_US",
+    pageNumber,
+    sortBy: "postingDate:desc",
+    keywords: "",
+    location,
+    facetFilters: {},
+    brand: "",
+    categoryId,
+    alertId: "",
+    rcmCandidateId: "",
+    skills: [],
+  },{
+     headers: { "Content-Type": "application/json" },
+  responseType: "text",
+  transformResponse: (data) => data,
+});
 
-      const jobs =
-        response.data?.jobSearchResult || [];
 
+if (pageNumber === 0) {
+  console.log(`SF ${careersUrl} status: ${response.status}`);
+  console.log(`SF ${careersUrl} first 300 chars:`, response.data.slice(0, 300));
+}
+
+const jobs = response.data?.jobSearchResult || [];
       if (totalPages === null) {
         totalPages = Math.ceil(
           (response.data?.totalJobs || 0) /
@@ -70,9 +77,10 @@ const getSuccessFactorsJobs = async (
       }
 
       pageNumber++;
-    } catch (error) {
-      break;
-    }
+   } catch (error) {
+  console.log(`SF fetch error for ${careersUrl}: ${error.response?.status || ''} ${error.message}`);
+  break;
+}
   }
 
   return allJobs;

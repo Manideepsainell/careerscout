@@ -12,6 +12,7 @@ const collectZohoRecruitJobs =
 
 
    return jobs.map((job) => ({
+    
   title:
     job.Posting_Title,
 

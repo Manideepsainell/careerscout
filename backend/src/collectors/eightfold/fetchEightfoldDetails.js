@@ -9,7 +9,7 @@ const fetchEightfoldDetails =
         await axios.get(
           job.detailUrl,
           {
-            timeout: 20000,
+            timeout: 30000,
           }
         );
 

@@ -47,9 +47,7 @@ const response = await axios.post(
     },
   }
 );
-console.dir(response.data, {
-  depth: null
-});
+
     const jobs =
       response.data?.jobVoList || [];
 

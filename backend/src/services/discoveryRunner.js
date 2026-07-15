@@ -25,12 +25,13 @@ import collectLeverJobs
   from "../collectors/juspayCollector.js";
   import collectSuccessFactorsJobs
   from "../collectors/successFactorsCollector.js";
-
+import collectTaleoJobs from "../collectors/taleoCollector.js";
 import collectTopGradingJobs from "../collectors/topgradingCollector.js";
 import collectKekaJobs from "../collectors/kekaCollector.js";
 import collectZohoRecruitJobs
   from "../collectors/zoho/zohoRecruitCollector.js";
 import collectDarwinboxJobs from "../collectors/darwinboxCollector.js";
+import collectTaleoLegacy from "../collectors/collectTaleoLegacy.js"
 import collectPeopleTechJobs from "../collectors/peopletechCollector.js";
 import categorizeRole from "../intelligence/jobCategorizer.js";
 import getEligibilityLevel from "../intelligence/eligibilityTagger.js";
@@ -54,6 +55,7 @@ import collectAshbyJobs from "../collectors/ashby/ashbyCollector.js";
 import collectKulaJobs from "../collectors/kulaCollector.js";
 import collectFreshteamJobs from "../collectors/freshteamCollector.js";
 import collectTrakstarJobs from "../collectors/trakstarCollector.js";
+import collectSuccessFactorsCSBJobs from "../collectors/successFactorsCSBCollector.js";
 import buildJobUpdate from "../utils/buildJobUpdate.js";
 const collectors = {
   WORKDAY: collectWorkdayJobs,
@@ -64,7 +66,7 @@ const collectors = {
   SUCCESSFACTORS: collectSuccessFactorsJobs,
   RIPPLEHIRE: collectRippleHireJobs,
   ZWAYAM: collectZwayamJobs,
-  TALEO: collectTaleoJobs,
+TALEOLEGACY:collectTaleoLegacy,
   CORNERSTONE: collectCornerstoneJobs,
   TOPGRADING: collectTopGradingJobs,
   ZOHO_RECRUIT: collectZohoRecruitJobs,
@@ -83,6 +85,8 @@ const collectors = {
   IBM: collectIbmJobs,
   MASTECH: collectMastechJobs,
   KULA: collectKulaJobs,
+  TALEO:collectTaleoJobs,
+  SUCCESSFACTORS_CSB:collectSuccessFactorsCSBJobs,
   "10KCODERS": collect10kCodersJobs,
 
   CUSTOM: async (company) => {
@@ -364,29 +368,37 @@ const failedCollectors = [];
   console.log(
     "Discovery Runner Started"
   );
+const filter =
+  process.argv[2] ||
+  process.env.FILTER;
 
-  const filter =
-    process.argv[2] ||
-    process.env.FILTER;
+let query = {};
 
-  let query = {};
+if (filter?.includes(",")) {
 
-  if (filter) {
+  query = {
+    name: {
+      $in: filter
+        .split(",")
+        .map(s => s.trim())
+    }
+  };
 
-    const company =
-      await Company.findOne({
-        name: filter,
-      });
+} else if (filter) {
 
-    query =
-      company
-        ? { name: filter }
-        : { jobBoardType: filter };
-  }
+  const company =
+    await Company.findOne({
+      name: filter,
+    });
 
-  const companies =
-    await Company.find(query);
+  query =
+    company
+      ? { name: filter }
+      : { jobBoardType: filter };
+}
 
+const companies =
+  await Company.find(query);
   const runStat =
     await RunStat.create({
       source:
@@ -436,6 +448,15 @@ const failedCollectors = [];
 console.log(
   `Batch ${i} completed`
 );
+if (
+  batch[0]?.jobBoardType === "ASHBY"
+) {
+  await new Promise(resolve =>
+    setTimeout(resolve, 2000)
+  );
+}
+
+
     for (const result of results) {
 
       totalCompaniesProcessed++;
