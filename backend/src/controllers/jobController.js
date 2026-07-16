@@ -354,12 +354,17 @@ else if (
 }
 ;
 
+console.time("Mongo Query");
+// Remove the .select(...) completely
+
 const jobs = await Job.find(filter)
   .sort(sortOption)
-  .populate("company");
-  
+  .populate("company")
+  .lean();
+console.timeEnd("Mongo Query");
+  console.time("Recommendation Scoring");
 const scoredJobs = jobs.map((job) => ({
-  ...job.toObject(),
+  ...job,
 
   tier: getJobTier(
     job.roleCategory,
@@ -369,6 +374,8 @@ const scoredJobs = jobs.map((job) => ({
   calculatedScore:
     calculateScore(job),
 }));
+
+console.timeEnd("Recommendation Scoring");
 const tierPriority = {
   TIER_1: 1,
   TIER_2: 2,
@@ -404,13 +411,13 @@ if (req.query.excludeSenior === "true") {
 
 
 if (req.query.sort === "recommended") {
-
+console.time("Sorting");
   filteredJobs.sort(
     (a, b) =>
       b.calculatedScore.score -
       a.calculatedScore.score
   );
-
+console.timeEnd("Sorting");
   const companyCount = {};
   const diversifiedJobs = [];
 
@@ -545,7 +552,8 @@ const getFresherJobs =
         ],
       },
     };
-
+console.log(filter);
+console.log(sortOption);
     const jobs =
       await Job.find(filter)
         .populate("company");
@@ -559,7 +567,7 @@ const getFresherJobs =
       })
     );
     const uniqueJobsMap = new Map();
-
+console.time("Deduplication");
 for (const job of scoredJobs) {
   const key =
     `${job.company?._id}-${normalizeTitle(job.title)}`;
@@ -568,7 +576,7 @@ for (const job of scoredJobs) {
     uniqueJobsMap.set(key, job);
   }
 }
-
+console.timeEnd("Deduplication");
 const uniqueJobs =
   [...uniqueJobsMap.values()];
 

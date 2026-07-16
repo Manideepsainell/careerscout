@@ -191,7 +191,7 @@ try {
   jobs =
     await withTimeout(
       collector(company),
-      120000
+    300000 
     );
 
   const elapsed =
@@ -200,7 +200,6 @@ try {
   console.log(
     `${company.name} completed in ${elapsed}s`
   );
-
 } catch (error) {
 
   const elapsed =
@@ -210,27 +209,28 @@ try {
     `${company.name} failed after ${elapsed}s`
   );
 
-  throw error;
-    console.log(
-      `${company.name}: ${error.message}`
-    );
+  console.log(error);
 
-    await CrawlStat.findByIdAndUpdate(
-      crawlStat._id,
-      {
-        completedAt: new Date(),
-        status: "FAILED",
-      }
-    );
+ try {
+  await CrawlStat.findByIdAndUpdate(
+    crawlStat._id,
+    {
+      completedAt: new Date(),
+      status: "FAILED",
+    }
+  );
+} catch (e) {
+  console.error("Failed to update CrawlStat:", e.message);
+}
 
   return {
-  success: false,
-  company: company.name,
-  collector: company.jobBoardType,
-  jobsFetched: 0,
-  jobsAdded: 0,
-};
-  }
+    success: false,
+    company: company.name,
+    collector: company.jobBoardType,
+    jobsFetched: 0,
+    jobsAdded: 0,
+  };
+}
 
 const detailedJobs =
   await enrichCollectorDetails(
@@ -441,10 +441,16 @@ const companies =
       console.log(
   `Batch ${i}`
 );
-    const results =
-      await Promise.all(
-        batch.map(processCompany)
-      );
+   let results = [];
+
+try {
+  results = await Promise.all(
+    batch.map(processCompany)
+  );
+} catch (err) {
+  console.error("Batch failed:", err);
+  continue;
+}
 console.log(
   `Batch ${i} completed`
 );

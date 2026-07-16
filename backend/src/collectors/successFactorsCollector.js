@@ -81,9 +81,7 @@ const recentCount = mapped.filter((j) => {
   return !j.postedDate || j.postedDate >= cutoff;
 }).length;
 
-console.log(
-  `SF ${company.name} breakdown: ${mapped.length} total, ${indiaCount} India, ${recentCount} recent`
-);
+
   const filtered = mapped.filter((job) => {
     const isRecent = !job.postedDate || job.postedDate >= cutoff;
     return job.isIndiaGuess && isRecent;

@@ -140,11 +140,10 @@ while (true) {
   }
 
   if (offset === 0) {
-    total = responseTotal;
-   
+  total = responseTotal;
 
 
-  }
+}
 
   if (!jobPostings.length) {
     break;
@@ -171,7 +170,9 @@ if (maxJobs) {
   allPostings.push(...jobPostings);
 }
 
-  offset += jobPostings.length;
+
+offset += jobPostings.length;
+
 
   
   if (

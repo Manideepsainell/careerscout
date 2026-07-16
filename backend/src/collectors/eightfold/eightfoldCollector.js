@@ -26,8 +26,6 @@ const collectEightfoldJobs = async (
     start,
   });
 
-console.log(company.name);
-console.log(data);
 
 const positions =
   data?.positions || [];

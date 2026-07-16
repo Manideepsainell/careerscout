@@ -11,7 +11,9 @@ const collectCornerstoneJobs =
     while (true) {
 
     const data = await searchJobs({
-  apiUrl: company.cornerstoneApiUrl,
+  apiUrl:
+    company.cornerstoneApiUrl ??
+    "https://us-galaxy.api.csod.com/rec-job-search/external/jobs",
   careerSiteId: company.careerSiteId,
   careerSitePageId: company.careerSitePageId,
   pageNumber,
