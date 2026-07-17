@@ -1,0 +1,63 @@
+{
+  "collector": "KEKA",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "The externalJobId is derived from the 'job.id' field.",
+        "code": "String(job.id)"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "/api/jobs/default/active",
+    "evidence": [
+      {
+        "reason": "The list endpoint is constructed using company.careersUrl.",
+        "code": "`${company.careersUrl}/api/jobs/default/active`"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "evidence": [
+      {
+        "reason": "No evidence of a dedicated detail endpoint for individual jobs was found in the provided code.",
+        "code": "UNKNOWN"
+      }
+    ]
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": [
+      {
+        "reason": "The code does not explicitly reference a field indicating job status (e.g., 'open', 'closed', 'active'). The list endpoint itself is '/active'.",
+        "code": "UNKNOWN"
+      }
+    ]
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "LIST_CHECK",
+  "confidence": "HIGH",
+  "evidence": [
+    {
+      "reason": "The collector fetches a list of 'active' jobs from a list endpoint. There is no evidence of a detail endpoint or a specific status field that can be directly checked for job closure.",
+      "code": "await getKekaJobs(company);"
+    },
+    {
+      "reason": "The primary method of obtaining jobs is through a GET request to an endpoint that appears to filter for active jobs.",
+      "code": "axios.get(`${company.careersUrl}/api/jobs/default/active`)"
+    },
+    {
+      "reason": "The collector maps job data directly from the API response, and no logic is present to query individual job details or check a status field.",
+      "code": "jobs.map((job) => ({"
+    }
+  ]
+}

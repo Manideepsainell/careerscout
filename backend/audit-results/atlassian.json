@@ -1,0 +1,51 @@
+{
+  "collector": "ATLASSIAN",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "The 'externalJobId' is derived from the 'job.id' field in the API response.",
+        "code": "String(job.id)"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "https://www.atlassian.com/endpoint/careers/listings",
+    "evidence": [
+      {
+        "reason": "The collector makes a GET request to fetch job listings from this URL.",
+        "code": "axios.get(\"https://www.atlassian.com/endpoint/careers/listings\")"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "method": "UNKNOWN",
+    "url": "UNKNOWN",
+    "evidence": []
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": []
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "UNKNOWN",
+  "confidence": "LOW",
+  "evidence": [
+    {
+      "reason": "The collector does not explicitly query individual job details via a separate endpoint. The job ID is derived from the list endpoint.",
+      "code": "String(job.id)"
+    },
+    {
+      "reason": "There is no evidence of a dedicated status field or mechanism to check if a job is closed directly from the API response.",
+      "code": "response.data.filter"
+    }
+  ]
+}

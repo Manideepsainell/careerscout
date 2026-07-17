@@ -1,0 +1,65 @@
+{
+  "collector": "ACCENTURE",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "externalJobId is constructed from job.requisitionId or job.guid.",
+        "code": "String(job.requisitionId || job.guid)"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "POST",
+    "url": "/jobs",
+    "evidence": [
+      {
+        "reason": "The getAccentureJobs function makes a POST request to the careersUrl, which is a POST endpoint for fetching jobs.",
+        "code": "axios.post(careersUrl, formData, { headers: formData.getHeaders() })"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "confidence": "LOW",
+    "evidence": [
+      {
+        "reason": "There is no explicit detail endpoint defined in the provided code. The jobUrl is constructed but not directly used to fetch details in this collector.",
+        "code": "jobUrl: job.jobDetailUrl ? job.jobDetailUrl.replace(\"{0}\", \"in-en\") : \"\""
+      }
+    ]
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "confidence": "LOW",
+    "evidence": [
+      {
+        "reason": "There is no field explicitly indicating the status of a job (e.g., open, closed, expired).",
+        "code": "UNKNOWN"
+      }
+    ]
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": true,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "LIST_CHECK",
+  "confidence": "MEDIUM",
+  "evidence": [
+    {
+      "reason": "The collector retrieves jobs using a POST request to a list endpoint and iterates through pages until all jobs are collected or a limit is reached. This indicates reliance on the list endpoint for job data.",
+      "code": "await getAccentureJobs(company.openPositionsUrl);"
+    },
+    {
+      "reason": "The collector relies on a `totalHits` field from the API response to determine when all jobs have been retrieved, suggesting a pagination mechanism that is sensitive to the total number of available jobs.",
+      "code": "const totalJobs = response.data?.totalHits?.total;"
+    },
+    {
+      "reason": "The collector constructs a `jobUrl` but does not demonstrate making requests to individual job URLs for fetching details. Therefore, detail check is not supported.",
+      "code": "jobUrl: job.jobDetailUrl ? job.jobDetailUrl.replace(\"{0}\", \"in-en\") : \"\""
+    }
+  ]
+}

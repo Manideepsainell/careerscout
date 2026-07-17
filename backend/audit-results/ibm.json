@@ -1,0 +1,63 @@
+{
+  "collector": "IBM",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "External job ID is extracted from URL using a regex match.",
+        "code": "data.url?.match(/jobId=(\\d+)/)?.[1]"
+      },
+      {
+        "reason": "If regex match fails, the entire URL is used as externalJobId.",
+        "code": "String(jobId || data.url)"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "POST",
+    "url": "careersUrl (from company object)",
+    "evidence": [
+      {
+        "reason": "The `getIbmJobs` utility function makes a POST request to the `careersUrl` to retrieve a list of jobs.",
+        "code": "axios.post(careersUrl, {...})"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "evidence": [
+      {
+        "reason": "There is no explicit endpoint for fetching individual job details. Job data is retrieved in a paginated list.",
+        "code": "N/A"
+      }
+    ]
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": [
+      {
+        "reason": "The provided code does not expose any field that explicitly indicates the status of a job (e.g., open, closed, expired).",
+        "code": "N/A"
+      }
+    ]
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "LIST_ONLY",
+  "confidence": "MEDIUM",
+  "evidence": [
+    {
+      "reason": "The collector retrieves jobs in a paginated list. There is no mechanism to directly check the status of an individual job via a detail endpoint.",
+      "code": "while (true) { ... from += size; }"
+    },
+    {
+      "reason": "There is no discernible field within the job data that signifies a closed or inactive status.",
+      "code": "N/A"
+    }
+  ]
+}

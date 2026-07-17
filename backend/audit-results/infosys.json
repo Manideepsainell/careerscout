@@ -1,0 +1,59 @@
+{
+  "collector": "INFOSYS",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "externalJobId is constructed from job.requisitionId, job.postingId, or job.publicationId which are present in the API response.",
+        "code": "String(job.requisitionId || job.postingId || job.publicationId)"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "company.openPositionsUrl",
+    "evidence": [
+      {
+        "reason": "The getInfosysJobs function uses the company.openPositionsUrl to fetch job data.",
+        "code": "await getInfosysJobs(company.openPositionsUrl);"
+      },
+      {
+        "reason": "axios.get is used to make the request to the careersUrl, which is aliased as company.openPositionsUrl in the collectInfosysJobs function.",
+        "code": "await axios.get(careersUrl, {...});"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "method": "UNKNOWN",
+    "url": "UNKNOWN",
+    "evidence": []
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": []
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "UNKNOWN",
+  "confidence": "LOW",
+  "evidence": [
+    {
+      "reason": "The collector does not provide a mechanism to retrieve individual job details via a dedicated endpoint.",
+      "code": " "
+    },
+    {
+      "reason": "There is no field identified that explicitly represents the status of a job (e.g., open, closed, draft).",
+      "code": " "
+    },
+    {
+      "reason": "The behavior of the API when requesting a closed job is not evident from the provided code.",
+      "code": " "
+    }
+  ]
+}

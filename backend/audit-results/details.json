@@ -1,0 +1,57 @@
+{
+  "collector": "DETAILS",
+  "stableJobId": {
+    "field": "UNKNOWN",
+    "confidence": "LOW"
+  },
+  "listEndpoint": {
+    "exists": false,
+    "method": "UNKNOWN",
+    "url": "UNKNOWN"
+  },
+  "detailEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "job.detailUrl"
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": []
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": true,
+  "recommendedStrategy": "DETAIL_CHECK",
+  "confidence": "HIGH",
+  "evidence": [
+    {
+      "reason": "The collector uses `job.detailUrl` to fetch job details in all implemented detail fetchers (Workday, Oracle, Ashby, Eightfold, RippleHire). Zoho Recruit uses `job.jobUrl` which also appears to be a detail URL.",
+      "code": "job.detailUrl"
+    },
+    {
+      "reason": "The collector dispatches to specific detail fetcher functions based on the ATS type, each of which makes an HTTP GET request to a provided URL.",
+      "code": "axios.get(job.detailUrl)"
+    },
+    {
+      "reason": "The collector does not expose a specific list endpoint. Instead, it appears to rely on individual detail URLs.",
+      "code": "No explicit list endpoint found across the provided detail fetcher files."
+    },
+    {
+      "reason": "There is no evidence of a specific field that denotes job status (e.g., 'open', 'closed', 'filled') within the detail responses.",
+      "code": "No status field identified in the parsed data across fetchers."
+    },
+    {
+      "reason": "The behavior when a job is closed or no longer available is not explicitly defined. The detail fetchers return an empty object `{}` or an empty response data if an item is not found, rather than a specific HTTP status code or error message indicating a closed job.",
+      "code": "Catch blocks return empty objects; 'if (!item) { return {}; }'"
+    },
+    {
+      "reason": "The collector's architecture focuses on fetching details via individual URLs, not on comparing lists of jobs. Therefore, list diffing is not supported.",
+      "code": "Absence of list comparison logic across collectors."
+    },
+    {
+      "reason": "Each detail fetcher makes a direct HTTP request to a `detailUrl` (or `jobUrl` for Zoho). This allows for checking the existence and content of a specific job posting.",
+      "code": "axios.get(job.detailUrl)"
+    }
+  ]
+}

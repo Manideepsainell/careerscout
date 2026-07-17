@@ -1,0 +1,61 @@
+{
+  "collector": "EPAM",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH"
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "https://careers.epam.com/api/jobs/v2/search/careers-i18n"
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "method": "UNKNOWN",
+    "url": "UNKNOWN"
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": []
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": true,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "LIST_DIFF",
+  "confidence": "MEDIUM",
+  "evidence": [
+    {
+      "reason": "The collector maps `job.unique_id` or `job.uid` to `externalJobId`. The presence of both suggests these are stable identifiers for jobs.",
+      "code": "externalJobId: String(job.unique_id || job.uid)"
+    },
+    {
+      "reason": "The `getEpamJobs` function makes a GET request to the specified URL to retrieve a list of jobs.",
+      "code": "axios.get(\"https://careers.epam.com/api/jobs/v2/search/careers-i18n\", { params: { ... } })"
+    },
+    {
+      "reason": "The collector iterates through a list of jobs obtained from the API response, indicating that a list of jobs can be fetched.",
+      "code": "response.data?.data?.jobs || []"
+    },
+    {
+      "reason": "There is no evidence in the provided code to suggest a dedicated endpoint for fetching individual job details. The collector only fetches a list of jobs.",
+      "code": "N/A"
+    },
+    {
+      "reason": "There is no field identified in the job data that explicitly indicates the status of a job (e.g., 'open', 'closed', 'filled').",
+      "code": "N/A"
+    },
+    {
+      "reason": "The behavior of the API when a job is closed or no longer available is not evident from the provided code. There is no explicit handling of 404 errors or specific status codes related to closed jobs.",
+      "code": "N/A"
+    },
+    {
+      "reason": "The collector fetches a list of all available jobs in batches using a `while` loop and incrementing `from`. This supports the capability of comparing lists of jobs over time to detect changes (new, removed, updated).",
+      "code": "while (true) { ... from += size; }"
+    },
+    {
+      "reason": "The collector does not appear to have a mechanism to check the status or existence of an individual job via a detail endpoint.",
+      "code": "N/A"
+    }
+  ]
+}

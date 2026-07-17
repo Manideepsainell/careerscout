@@ -1,0 +1,63 @@
+{
+  "collector": "DARWINBOX",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "Job ID is extracted from the 'id' field in the API response and converted to a string for 'externalJobId'.",
+        "code": "externalJobId: String(job.id)"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "POST",
+    "url": "/ms/candidateapi/job/alljobs",
+    "evidence": [
+      {
+        "reason": "The list of jobs is retrieved from the '/ms/candidateapi/job/alljobs' endpoint using a POST request.",
+        "code": "const response = await fetch(\n            `/ms/candidateapi/job/alljobs?companyId=${companyId}`,"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "evidence": [
+      {
+        "reason": "There is no explicit detail endpoint utilized in the provided code. The `collectDarwinboxJobs` function maps directly from the list response.",
+        "code": "return jobs.map((job) => ({"
+      }
+    ]
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": [
+      {
+        "reason": "No field indicating job status (e.g., 'open', 'closed', 'active') is present in the data structure returned by the API.",
+        "code": "const jobs = data.data || [];"
+      }
+    ]
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "LIST_PAGINATION_CHECK",
+  "confidence": "MEDIUM",
+  "evidence": [
+    {
+      "reason": "The collector paginates through a list of jobs by repeatedly calling the same endpoint with incrementing page numbers until no jobs are returned.",
+      "code": "while (true) {\n          // ... api call ...\n          const jobs = data.data || [];\n          if (!jobs.length) {\n            break;\n          }\n          allJobs.push(...jobs);\n          // ... pagination logic ...\n          currentPage++;\n        }"
+    },
+    {
+      "reason": "The pagination logic breaks the loop when 'jobs.length' is 0, indicating the end of available job listings.",
+      "code": "if (!jobs.length) {\n            break;\n          }"
+    },
+    {
+      "reason": "There is no explicit mechanism to check the status of an individual job or a dedicated endpoint for fetching job details, which would be necessary for a detail check strategy.",
+      "code": "return jobs.map((job) => ({"
+    }
+  ]
+}

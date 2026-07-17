@@ -1,0 +1,65 @@
+{
+  "collector": "ASHBY",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "Job ID is extracted from API response and used to construct jobUrl and detailUrl.",
+        "code": "job.id"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "POST",
+    "url": "/api/non-user-graphql",
+    "evidence": [
+      {
+        "reason": "The collectAshbyJobs function makes a POST request to company.openPositionsUrl to retrieve job postings.",
+        "code": "axios.post(\n      company.openPositionsUrl,\n      {\n        operationName: \"ApiJobBoardWithTeams\",\n\n        variables: {\n          organizationHostedJobsPageName: slug,\n        },\n\n        query,\n      },\n      {\n        headers: {\n          \"Content-Type\": \"application/json\",\n        },\n        timeout: 20000,\n      }\n    );"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": true,
+    "method": "POST",
+    "url": "/api/non-user-graphql",
+    "evidence": [
+      {
+        "reason": "The fetchAshbyDetails function makes a POST request to job.detailUrl to retrieve job details.",
+        "code": "axios.post(\n      job.detailUrl,\n      {\n        operationName:\n          \"ApiJobPosting\",\n\n        variables: {\n          organizationHostedJobsPageName:\n            company.slug,\n\n          jobPostingId:\n            job.externalJobId,\n        },\n\n        query,\n      },\n      {\n        headers: {\n          \"Content-Type\":\n            \"application/json\",\n        },\n\n        timeout: 20000,\n      }\n    );"
+      }
+    ]
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": [
+      {
+        "reason": "No explicit job status field is found in the API responses for job listings or details.",
+        "code": "response.data.data?.jobBoard?.jobPostings || []"
+      },
+      {
+        "reason": "No explicit job status field is found in the API responses for job listings or details.",
+        "code": "response.data.data?.jobPosting;"
+      }
+    ]
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": true,
+  "recommendedStrategy": "DETAIL_CHECK",
+  "confidence": "HIGH",
+  "evidence": [
+    {
+      "reason": "The collector fetches job postings via a list endpoint and then uses a separate detail endpoint to retrieve more information about each job. This structure supports checking individual job details.",
+      "code": "const collectedJobs = maxJobs\n  ? jobs.slice(0, maxJobs)\n  : jobs;\n\nreturn collectedJobs.map((job) => ({\n  // ... other job properties\n  externalJobId: job.id,\n  jobUrl: `https://jobs.ashbyhq.com/${slug}/${job.id}`,\n  detailUrl: \"https://jobs.ashbyhq.com/api/non-user-graphql\",\n  // ...\n}));\n\nconst fetchAshbyDetails = async (\n  job,\n  company\n) => {\n  // ... uses job.detailUrl and job.externalJobId\n};"
+    },
+    {
+      "reason": "The detail endpoint returns null or an empty object for a job if it's not found or potentially closed, as indicated by the check `if (!item) { return {}; }`.",
+      "code": "const item =\n      response.data.data?.jobPosting;\n\n    if (!item) {\n      return {};\n    }"
+    }
+  ]
+}

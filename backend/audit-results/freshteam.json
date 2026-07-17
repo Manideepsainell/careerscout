@@ -1,0 +1,55 @@
+{
+  "collector": "FRESHTEAM",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH",
+    "evidence": [
+      {
+        "reason": "The externalJobId is derived from the 'href' attribute of anchor tags, which is split to extract a segment assumed to be a unique identifier.",
+        "code": "href.split(\"/\")[2]"
+      }
+    ]
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "company.openPositionsUrl",
+    "evidence": [
+      {
+        "reason": "The collector fetches job listings from the URL provided in the 'company.openPositionsUrl' configuration.",
+        "code": "await axios.get(company.openPositionsUrl)"
+      }
+    ]
+  },
+  "detailEndpoint": {
+    "exists": false,
+    "method": "UNKNOWN",
+    "url": "UNKNOWN",
+    "evidence": []
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": [],
+    "evidence": []
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": false,
+  "recommendedStrategy": "UNKNOWN",
+  "confidence": "LOW",
+  "evidence": [
+    {
+      "reason": "The collector does not appear to have a dedicated endpoint for fetching individual job details. Job information is scraped from a list page.",
+      "code": "const response = await axios.get(company.openPositionsUrl);"
+    },
+    {
+      "reason": "There is no explicit field or logic within the collector to determine the status of a job posting (e.g., open, closed, filled).",
+      "code": "null"
+    },
+    {
+      "reason": "The collector scrapes job data from HTML using cheerio and does not interact with an API that would return specific HTTP status codes for closed jobs.",
+      "code": "const $ = cheerio.load(response.data);"
+    }
+  ]
+}

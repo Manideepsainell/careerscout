@@ -1,0 +1,57 @@
+{
+  "collector": "WORKDAY",
+  "stableJobId": {
+    "field": "externalJobId",
+    "confidence": "HIGH"
+  },
+  "listEndpoint": {
+    "exists": true,
+    "method": "POST",
+    "url": "/wday/cxs/{tenant}/{siteName}/jobs"
+  },
+  "detailEndpoint": {
+    "exists": true,
+    "method": "GET",
+    "url": "/wday/cxs/{tenant}/{siteName}{externalPath}"
+  },
+  "statusField": {
+    "exists": false,
+    "field": "UNKNOWN",
+    "values": []
+  },
+  "closedJobBehavior": "UNKNOWN",
+  "supportsListDiff": false,
+  "supportsDetailCheck": true,
+  "recommendedStrategy": "DETAIL_CHECK",
+  "confidence": "MEDIUM",
+  "evidence": [
+    {
+      "reason": "The collector fetches job details from a specific URL in the `fetchWorkdayDetails` function.",
+      "code": "await axios.get(job.detailUrl, { timeout: 20000 })"
+    },
+    {
+      "reason": "The `externalJobId` is derived from the `externalPath` property of the job posting.",
+      "code": "posting.externalPath?.split(\"/\").pop() || \"\""
+    },
+    {
+      "reason": "The list endpoint is a POST request to a dynamically built URL.",
+      "code": "await axios.post(endpoint, { appliedFacets: {}, limit, offset, searchText: \"\" }, { timeout: 20000, headers: { \"Content-Type\": \"application/json\" } })"
+    },
+    {
+      "reason": "The detail endpoint URL is constructed using helper functions that parse the original URL.",
+      "code": "buildWorkdayDetailUrl(company.openPositionsUrl || company.careersUrl, posting.externalPath)"
+    },
+    {
+      "reason": "There is no explicit field indicating the job's status (e.g., open, closed) in the collected data.",
+      "code": "response.data.jobPostings"
+    },
+    {
+      "reason": "The collector does not explicitly handle a scenario where a job might be closed, leading to an unknown behavior for closed job detection.",
+      "code": "try { ... } catch (error) { ... return {}; }"
+    },
+    {
+      "reason": "The collector does not seem to store or process a list of previous jobs to perform diffing.",
+      "code": "const allPostings = [];"
+    }
+  ]
+}
