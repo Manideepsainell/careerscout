@@ -38,6 +38,30 @@ rippleHireToken: {
 careerSiteId: {
   type: Number,
 },
+companyType: {
+  type: String
+},
+
+fresherFriendly: {
+  type: String
+},
+
+backendStrength: {
+  type: String
+},
+
+hiringPattern: {
+  type: String
+},
+
+companyTier: {
+  type: String
+},
+
+companyBoost: {
+  type: Number,
+  default: 0
+},
 
 careerSitePageId: {
   type: Number,

@@ -43,11 +43,28 @@ const categorizeRole = (title = "", description = "") => {
     "campaign",
   ];
 
-  const productKeywords = [
-    "product manager",
-    "product owner",
-  ];
-
+const productKeywords = [
+  "product manager",
+  "product owner",
+  "product management",
+  "digital product",
+  "product analyst",
+  "product specialist",
+  "digital product management",
+];
+const erpKeywords = [
+  "oracle hcm",
+  "oracle fusion",
+  "oracle ebs",
+  "oracle cloud",
+  "sap",
+  "abap",
+  "successfactors",
+  "peoplesoft",
+  "workday",
+  "oracle technical developer",
+"hcm",
+];
   const aiKeywords = [
     "machine learning",
     "ml engineer",
@@ -104,6 +121,12 @@ const categorizeRole = (title = "", description = "") => {
 "azure devops",
 "aws",
 "gcp",
+"kafka",
+"rabbitmq",
+"confluent",
+"messaging",
+"event streaming",
+"swaggerhub",
   ];
 
   const dataKeywords = [
@@ -268,8 +291,7 @@ const categorizeRole = (title = "", description = "") => {
 "grpc",
 
 "redis",
-"kafka",
-"rabbitmq",
+
   ];
   const nonEngineeringKeywords = [
   "voice process",
@@ -291,6 +313,20 @@ const categorizeRole = (title = "", description = "") => {
   "help desk",
   "desktop support",
   "it support",
+  "document controller",
+"document control",
+"infrastructure support",
+"infrastructure analyst",
+"technical operations",
+"operations engineer",
+"noc engineer",
+"network operations",
+"system administrator",
+"systems administrator",
+"linux administrator",
+"windows administrator",
+"network administrator",
+"it administrator",
 ];
 
 if (
@@ -300,6 +336,24 @@ if (
 ) {
   return "OTHER";
 }
+const nonSoftwareEngineeringKeywords = [
+  "manufacturing engineer",
+  "process engineer",
+  "industrial engineer",
+  "production engineer",
+  "quality engineer",
+  "mechanical engineer",
+  "electrical engineer",
+  "electronics engineer",
+  "civil engineer",
+  "chemical engineer",
+  "design engineer",
+  "field engineer",
+  "maintenance engineer",
+  "plant engineer",
+  "project engineer",
+  "automation technician",
+];
 
   const generalSoftwareKeywords = [
     "software engineer",
@@ -336,7 +390,22 @@ if (
   ];
  const normalizedDescription =
     (description || "").toLowerCase();
-
+// NON-ENGINEERING
+if (
+  nonEngineeringKeywords.some(keyword =>
+    hasKeyword(normalizedDescription, keyword)
+  )
+) {
+  return "OTHER";
+}
+// NON-SOFTWARE ENGINEERING
+if (
+  nonSoftwareEngineeringKeywords.some(keyword =>
+    hasKeyword(normalizedDescription, keyword)
+  )
+) {
+  return "OTHER";
+}
   // HR
   if (
     hrKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
@@ -352,6 +421,22 @@ if (
   ) {
     return "SALES";
   }
+  // PRODUCT
+if (
+  productKeywords.some(keyword =>
+    hasKeyword(normalizedDescription, keyword)
+  )
+) {
+  return "PRODUCT";
+}
+// ERP
+if (
+  erpKeywords.some(keyword =>
+    hasKeyword(normalizedDescription, keyword)
+  )
+) {
+  return "ERP";
+}
 
   // MARKETING
   if (
@@ -368,7 +453,13 @@ if (
   ) {
     return "PRODUCT";
   }
-
+if (
+  erpKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "ERP";
+}
   // AI / ML
   if (
     aiKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)
@@ -416,7 +507,13 @@ if (
   ) {
     return "HARDWARE";
   }
-
+if (
+  nonSoftwareEngineeringKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "OTHER";
+}
   // QA
   if (
     qaKeywords.some(keyword => hasKeyword(normalizedTitle, keyword)

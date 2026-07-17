@@ -2,57 +2,59 @@ import dotenv from "dotenv";
 import connectDB from "../config/db.js";
 import Job from "../models/Job.js";
 
-import categorizeRole
-from "../intelligence/jobCategorizer.js";
-
-import getEligibilityLevel
-from "../intelligence/eligibilityTagger.js";
+import categorizeRole from "../intelligence/jobCategorizer.js";
+import getEligibilityLevel from "../intelligence/eligibilityTagger.js";
 
 dotenv.config();
+
+const BATCH_SIZE = 500;
 
 const main = async () => {
   await connectDB();
 
-  const jobs =
-    await Job.find({});
-      console.log(
-    `Found ${jobs.length} jobs`
-  );
+  const jobs = await Job.find({}).lean();
+
+  console.log(`Found ${jobs.length} jobs`);
 
   let updatedCount = 0;
-for (const job of jobs) {
-  const roleCategory = categorizeRole(
-    job.title,
-    job.description
-  );
 
-  const eligibilityLevel = getEligibilityLevel(
-    job.title
-  );
+  for (let i = 0; i < jobs.length; i += BATCH_SIZE) {
+    const batch = jobs.slice(i, i + BATCH_SIZE);
 
-await Job.updateOne(
-  {
-    _id: job._id,
-  },
-  {
-    $set: {
-      roleCategory,
-      eligibilityLevel,
-    },
+    const operations = batch.map((job) => ({
+      updateOne: {
+        filter: { _id: job._id },
+        update: {
+          $set: {
+            roleCategory: categorizeRole(
+              job.title,
+              job.description
+            ),
+            eligibilityLevel: getEligibilityLevel(
+              job.title
+            ),
+          },
+        },
+      },
+    }));
+
+    await Job.bulkWrite(operations);
+
+    updatedCount += batch.length;
+
+    console.log(
+      `${updatedCount}/${jobs.length} jobs updated`
+    );
   }
-);
 
-  updatedCount++;
-
-  if (updatedCount % 100 === 0) {
-    console.log(`${updatedCount} jobs updated`);
-  }
-}
   console.log(
-    `Backfilled ${updatedCount} jobs`
+    `\n✅ Successfully backfilled ${updatedCount} jobs`
   );
 
   process.exit(0);
 };
 
-main().catch(console.error);
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

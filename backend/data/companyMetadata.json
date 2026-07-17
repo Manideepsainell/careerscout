@@ -1,0 +1,5402 @@
+[
+  {
+    "company": "Microsoft",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 30
+  },
+  {
+    "company": "10K Coders",
+    "companyType": "EDTECH",
+    "priority": "LOW",
+    "fresherFriendly": "YES",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "21K School",
+    "companyType": "EDTECH",
+    "priority": "LOW",
+    "fresherFriendly": "YES",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "6sense",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "ABB",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "ACI Worldwide",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "ACT Worldwide",
+    "companyType": "OTHER",
+    "priority": "LOW",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "AQR Capital Management",
+    "companyType": "FINTECH",
+    "priority": "HIGHEST",
+    "fresherFriendly": "NO",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "AT&T",
+    "companyType": "TELECOM",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "AVEVA",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Abbott",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Accelleron",
+    "companyType": "OTHER",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Accelya",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Accenture",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "Acquia",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Adaglobal",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Adobe",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Advance Auto Parts",
+    "companyType": "ECOMMERCE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Adyen",
+    "companyType": "FINTECH",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Aera Technology",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Aerospike",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Agoda",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "AgroStar",
+    "companyType": "ECOMMERCE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Airbnb",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "NO",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Airbus",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Airbyte",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Airwallex",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Allstate India",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Altera Digital Health",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Alteryx",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Altimetrik",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Altus Group",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Amadeus",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Amber",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "American Express",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Amgen",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Analog Devices",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Anblicks",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Anteriad",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Apollo Global Management (Athene)",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "AppDynamics",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Aptiv",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Aptus Data Labs",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Arcesium",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Argano",
+    "companyType": "CONSULTING",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Arya.ai",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ascendion",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "AspenTech",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Assurant India",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "AstraZeneca",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Astreya",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Astronomer",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Atlan",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Atlassian",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 25
+  },
+  {
+    "company": "Atomicwork",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Autodesk",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Automation Anywhere",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Axtria",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Baker Hughes",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Barclays",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Barry-Wehmiller",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Baseten",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Baxter",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bayer",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Berkadia",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bhanzu",
+    "companyType": "EDTECH",
+    "priority": "LOW",
+    "fresherFriendly": "YES",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "BigBasket",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "BigBinary",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bijak",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Billtrust",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Birlasoft",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bito",
+    "companyType": "STARTUP",
+    "priority": "LOW",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bizongo",
+    "companyType": "STARTUP",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 10
+  },
+  {
+    "company": "Black Box",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "BlackRock",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 20
+  },
+  {
+    "company": "Bloomreach",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Blue Yonder",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Boeing",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "BorgWarner",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bosch",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 10
+  },
+  {
+    "company": "Bounce",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bright Money",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Brillio",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bristol Myers Squibb",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Broadcom",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Broadridge",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "BrowserStack",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Bybit",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "CDK",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "CME Group",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "CRED",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "CSG",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cadence",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Calix",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Canonical",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Capgemini",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "Carrier",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cashfree",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Caterpillar",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Celigo",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cerebras Systems",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Chainguard",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Chubb India",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ciklum",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cimpress",
+    "companyType": "PRODUCT",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cisco",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Citi",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "CitiusTech",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Clari",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Clear",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Clerk",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "ClickHouse",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "CloudKaptan",
+    "companyType": "CONSULTING",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "CloudSEK",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cloudflare",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "CoStar Group",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Coder",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Coforge",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cognizant",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "Cohere Health",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Coherent Corp",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Comcast",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "CommScope",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Commonwealth Bank of Australia",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Commvault",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Composio",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Contentstack",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Convex",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Copart",
+    "companyType": "ECOMMERCE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Coram AI",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cornerstone OnDemand",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Corpay",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Corteva",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cotality",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cropin",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "CrowdStrike",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cult.fit",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cushman & Wakefield",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cyient",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Cynchly",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "DBS",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "DP World",
+    "companyType": "LOGISTICS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "DXC Technology",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dagster Labs",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Danfoss",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Darktrace",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Darwinbox",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Databeat",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Daxko",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Deccan AI",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Deepgram",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Definitive Healthcare",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Delhivery",
+    "companyType": "LOGISTICS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Deliveroo",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dell",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dentsu",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Deutsche Bank",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "DevRev",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Devoted Health",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dialpad",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Diebold Nixdorf",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "DigitalOcean",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Diligent",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Docker",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dow",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dr. Reddy's Laboratories",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Drata",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "DrinkPrime",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Druva",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "DuPont",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Dun & Bradstreet",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "EPAM Systems",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "EXL",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Eaton",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Elevance Health",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Elevance Health (Carelon Global)",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ema",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Emerson",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Encora",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Enovix",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Enveu",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Equiniti",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ericsson",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Eurofins IT Solutions",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Evergent",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Everstage",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Evolent Health",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Expedia Group",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Experian",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "F5",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "FCLPL",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "FIS",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "FORVIA Faurecia",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "FactSet",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "FalconX",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "FamPay",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "FarEye",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Fastly",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Fi Money",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Finastra",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Fireworks AI",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "First American",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "First Citizens",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Fisdom",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Flex (Flextronics)",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Flexera",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Flywire",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Forcepoint",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ford",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Fortinet",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Franklin Templeton",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Freshworks",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "GHX (Global Healthcare Exchange)",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Gartner",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "General Motors",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Genesys",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Genpact",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "GitLab",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Global Payments (Worldpay)",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Grab",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Grafana Labs",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "GreyOrange",
+    "companyType": "LOGISTICS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Growfin",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Groww",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Guidewire",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "HCLTech",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "HELLA",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "HFCL",
+    "companyType": "TELECOM",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "HPE",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "HackerRank",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Haptik",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Harmonic",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Harness",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Healthify",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Hevo Data",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Hexaware",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "HighLevel (GoHighLevel)",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "HighRadius",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Hitachi",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Honeycomb",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Honeywell",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Hubilo",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Hyundai Mobis",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "IBM",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "IQVIA",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Icertis",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Increff",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Infineon",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Infosys",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "Ingenico",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Innomotics",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "InsuranceDekho",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Intel",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Invesco",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Itron",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "JLL",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "JP Morgan Chase",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "JioStar",
+    "companyType": "TELECOM",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Jupiter",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Juspay",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "KLA",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Kaleris",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Keka",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Kellton",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Kotak Mahindra Bank",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "KredX",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "KreditBee",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Kroll",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Kyndryl",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "LPL Financial",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "LSEG",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "LTIMindtree",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "LambdaTest",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "LangChain",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "LeadSquared",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Lear Corporation",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Lightdash",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Linear",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Lloyds Technology Centre",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Locus",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Log9 Materials",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Lumel",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Lytx",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "M2P Fintech",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "MRI Software",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Marut Drones",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Marvell",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "MassMutual",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mastech Digital",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mastercard",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 20
+  },
+  {
+    "company": "Mavenir",
+    "companyType": "TELECOM",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Medtronic",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Meesho",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mendix",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "MetLife India",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Metay",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Microchip Technology",
+    "companyType": "PRODUCT",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Micron",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mindtickle",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mirafra Technologies",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "MoEngage",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mobikwik",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "ModMed",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Modal",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Model N",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Modern Health",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Moody's",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Moody's India",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Morgan Stanley",
+    "companyType": "FINTECH",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Morningstar",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "MosChip Technologies",
+    "companyType": "PRODUCT",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "MotherDuck",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Motorola Solutions",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mouser Electronics",
+    "companyType": "ECOMMERCE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mozilor Technologies",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mphasis",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Mthree",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "MuleSoft",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "NCR Atleos",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "NCR Voyix",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "NSF",
+    "companyType": "OTHER",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "NTT Data",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "NVIDIA",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "NXP Semiconductors",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Nasuni",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "NatWest Group",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "National Australia Bank",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Neon",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Netcracker",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Netlify",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Netskope",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "New Relic",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "NewRocket",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Newton School",
+    "companyType": "EDTECH",
+    "priority": "LOW",
+    "fresherFriendly": "YES",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Neysa",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Nielsen",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ninjacart",
+    "companyType": "LOGISTICS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Nokia",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Northern Trust",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Novartis",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "NxtWave",
+    "companyType": "EDTECH",
+    "priority": "LOW",
+    "fresherFriendly": "YES",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Observe.AI",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "OnePlus",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Onity",
+    "companyType": "OTHER",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Open Financial",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Oportun",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Optum (UnitedHealth Group)",
+    "companyType": "HEALTHCARE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Oracle",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Orb",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Otis Technology Center",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "P99Soft",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Parexel",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "PayPal",
+    "companyType": "FINTECH",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "PayU",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Payoneer",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Paytm",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "People Tech Group",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Perceptyne",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Perfios",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "PerkinElmer",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Pfizer",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "PhonePe",
+    "companyType": "FINTECH",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Photon",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Pinecone",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Piramal Group",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Pixxel",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Plane",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "PlumHQ",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Porter",
+    "companyType": "LOGISTICS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Postman",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Prefect",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Procore",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Project Lithium",
+    "companyType": "OTHER",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Proofpoint",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Pure Storage",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "PwC",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Q2",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "QAD",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Qualcomm",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Qualys",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Quest Global",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "R1 RCM",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "RED Health",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "RELX",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "RTX (Raytheon Technologies)",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Radisys",
+    "companyType": "TELECOM",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ralliant",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Rapido",
+    "companyType": "LOGISTICS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Razorpay",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Red Hat",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 10
+  },
+  {
+    "company": "Reddington",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Redis",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Redwood Software",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "ReliaQuest",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Remidio",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Render",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Reo.Dev",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "ResMed",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Revature",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Rocketium",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Rockwell Automation",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Rolls-Royce",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Rubrik",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "RunPod",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ryan Specialty",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "S&P Global",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "SLB (Schlumberger)",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "SOTI",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 10
+  },
+  {
+    "company": "SS&C Technologies",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sabre",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Salesforce",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Samsung India",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Schindler",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Schrödinger",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Semtech",
+    "companyType": "PRODUCT",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sentry",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "ServiceNow",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Shell",
+    "companyType": "ENTERPRISE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "ShipBob",
+    "companyType": "LOGISTICS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "ShopUp",
+    "companyType": "ECOMMERCE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "SiFive",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sids Farm",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "LOW",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Signify",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Signzy",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Silicon Labs",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sitel (Foundever)",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "LOW",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Skillsoft",
+    "companyType": "EDTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Skyflow",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Skypoint Cloud",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Skyroot Aerospace",
+    "companyType": "STARTUP",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Slack",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Slice",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Smallcase",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "SmartBear",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "SmartQ",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Smith+Nephew",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Snowflake",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Snyk",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Softlink Global",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Solenis Global Capability Center",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Solera India",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "SonarSource",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sonata Software",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Soroco",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sourcegraph",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Spendflo",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Spinny Tech",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Springworks",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sprinklr",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sprinto",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Stanley Black & Decker India",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "State Street",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Stellantis",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Stryker",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Successive Technologies",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sumo Logic",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sun Life",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Supabase",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Sutherland",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Swiss Re",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Synchrony",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Syniverse",
+    "companyType": "TELECOM",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Systango",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tableau",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Taboola",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tailscale",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Target",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tata Technologies",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "TechnipFMC",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "TechnoTree",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Techolution",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Teciem",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tejas Networks",
+    "companyType": "TELECOM",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tekion",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Temenos",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tenstorrent",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tessolve",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Texas Instruments",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Thomson Reuters",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "ThoughtSpot",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tide",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tinybird",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Toddle",
+    "companyType": "EDTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tower Research Capital",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "TransUnion",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tredence",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Trellix",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "TriNet",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Trimble",
+    "companyType": "PRODUCT",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Tuple Technologies",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Twilio",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "UST",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Ultraviolette",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Uniphore",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Upstox",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "VVDN Technologies",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Valeo",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Vanguard",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Vanta",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Veeva Systems",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Verifone",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Verint",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Verizon India",
+    "companyType": "TELECOM",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Viatris",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Viavi Solutions",
+    "companyType": "TELECOM",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Virtusa",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Visa",
+    "companyType": "FINTECH",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Visteon",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Vogo",
+    "companyType": "STARTUP",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "OCCASIONAL",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "Vymo",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "WM",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Wabtec",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Walmart",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Warner Bros. Discovery",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Warp",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Weaviate",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Wells Fargo",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Western Union",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Whatfix",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Wipro",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "MASS",
+    "companyTier": "TIER_2",
+    "companyBoost": 20
+  },
+  {
+    "company": "Wissen Technology",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Workato",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Yellow.ai",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Yext",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "ZF Group",
+    "companyType": "ENTERPRISE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zapier",
+    "companyType": "SAAS",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zebra Technologies",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zelis",
+    "companyType": "FINTECH",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zenoti",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zensar",
+    "companyType": "SERVICE",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zeta Global",
+    "companyType": "SAAS",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zinnia",
+    "companyType": "FINTECH",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zoho",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "YES",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zomato",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_2",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zoom",
+    "companyType": "PRODUCT",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zscaler",
+    "companyType": "PRODUCT",
+    "priority": "HIGHEST",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_1",
+    "companyBoost": 0
+  },
+  {
+    "company": "Zuper",
+    "companyType": "SAAS",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "eClerx",
+    "companyType": "SERVICE",
+    "priority": "NORMAL",
+    "fresherFriendly": "YES",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  },
+  {
+    "company": "ekincare",
+    "companyType": "HEALTHCARE",
+    "priority": "NORMAL",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "MEDIUM",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_4",
+    "companyBoost": 0
+  },
+  {
+    "company": "ixigo",
+    "companyType": "ECOMMERCE",
+    "priority": "HIGH",
+    "fresherFriendly": "LIMITED",
+    "backendStrength": "HIGH",
+    "hiringPattern": "REGULAR",
+    "companyTier": "TIER_3",
+    "companyBoost": 0
+  }
+]
