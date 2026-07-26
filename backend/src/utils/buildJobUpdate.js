@@ -7,7 +7,10 @@ const buildJobUpdate = (job) => ({
   department: job.department,
   team: job.team,
   workplace: job.workplace,
+jobUrl: job.jobUrl,
+detailUrl: job.detailUrl,
 
+description: job.description,
   experience: job.experience,
 
   experienceYearsMin: job.experienceYearsMin,

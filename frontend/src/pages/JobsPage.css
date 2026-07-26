@@ -233,8 +233,22 @@ align-items: end;
   color:rgba(255,255,255,0.9);
   font-weight:600;
 }
+.service-company-header {
+  background: linear-gradient(
+    90deg,
+    #fff8dc,
+    #fff3cd
+  );
 
+  color: #92400e;
 
+  border-left: 5px solid #f59e0b;
+
+  padding: 10px 16px;
+  border-radius: 10px;
+
+  font-weight: 700;
+}
 
 .top10k-section {
   margin-bottom: 2rem;

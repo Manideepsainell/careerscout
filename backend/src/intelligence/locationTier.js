@@ -86,6 +86,31 @@ const outsideIndia = [
   "melbourne",
   "budapest",
 "hungary",
+// South Asia
+"philippines",
+"sri lanka",
+"malaysia",
+"indonesia",
+"thailand",
+"vietnam",
+"bangladesh",
+"pakistan",
+"nepal",
+"bhutan",
+"myanmar",
+
+// Cities seen during testing
+"galway",
+"colombo",
+"manila",
+"washington",
+"boston",
+"chicago",
+"atlanta",
+"dallas",
+"phoenix",
+"san francisco",
+"los angeles",
 ];
   if (
     outsideIndia.some((place) =>
@@ -101,7 +126,11 @@ const outsideIndia = [
     text.includes("work from home") ||
     text.includes("wfh") ||
     text.includes("anywhere in india") ||
-    text.includes("hybrid")
+    text.includes("hybrid")||
+    text.includes("remote india")||
+text.includes("india remote")||
+text.includes("remote - india")||
+text.includes("work from anywhere in india")
   ) {
     return "TIER_1";
   }
@@ -159,36 +188,29 @@ if (
   text.includes("tiruchirappalli") ||
   text.includes("madurai") ||
   text.includes("mangalore") ||
-  text.includes("mangaluru")
+  text.includes("mangaluru")||
+  text.includes("hubli")||
+text.includes("dharwad")||
+text.includes("rajkot")||
+text.includes("raipur")||
+text.includes("nashik")||
+text.includes("aurangabad")||
+text.includes("warangal")||
+text.includes("tirupati"),
+text.includes("guntur")
 ) {
   return "TIER_4";
 }
-  // Preferred cities
-  if (
-    text.includes("chennai") ||
-    text.includes("pune") ||
-    text.includes("noida") ||
-    text.includes("gurgaon") ||
-    text.includes("gurugram")
-  ) {
-    return "TIER_3";
-  }
 
-  // Acceptable cities
-  if (
-    text.includes("bangalore") ||
-    text.includes("bengaluru") ||
-    text.includes("mumbai") ||
-    text.includes("delhi") ||
-    text.includes("navi mumbai")
-  ) {
-    return "TIER_4";
-  }
+
+  
 
   // India but not preferred
   if (
-    text.includes("india")
-  ) {
+  text.includes("india") ||
+  text.includes(", in") ||
+  text.endsWith(" in")
+) {
     return "TIER_5";
   }
 

@@ -46,7 +46,10 @@ team: {
   type: String,
   default: "",
 },
-
+detailUrl: {
+  type: String,
+  default: "",
+},
 businessUnit: {
   type: String,
   default: "",
@@ -212,6 +215,20 @@ roleCategory: {
 eligibilityLevel: {
   type: String,
   default: "GENERAL",
+},validity: {
+  type: String,
+  enum: ["UNKNOWN", "ALIVE", "DEAD"],
+  default: "UNKNOWN",
+},
+
+lastValidatedAt: {
+  type: Date,
+  default: null,
+},
+
+validityReason: {
+  type: String,
+  default: "",
 },
 experienceBand: {
   type: String,

@@ -41,7 +41,7 @@ const [
   refreshing10k,
   setRefreshing10k
 ] = useState(false);
-
+const [serviceJobs, setServiceJobs] = useState([]);
 const [
   last10kRefresh,
   setLast10kRefresh
@@ -97,6 +97,9 @@ const response =
 
 setJobs(response.data);
 
+setServiceJobs(
+  response.serviceJobs || []
+);
 
 setTop10kJobs(
   response.top10kJobs || []
@@ -540,14 +543,42 @@ Role</label>
 }
   
 
-      <h2 className="section-title">
-        ⭐ Recommended Jobs
-      </h2>
-
     </div>
   )
 }
+{
+  !showSavedOnly &&
+ 
+  serviceJobs.length > 0 && (
+    <>
+      <h2 className="section-title">
+        🏢 Service Companies
+      </h2>
 
+     {serviceJobs.slice(0, 10).map((job) => (
+  <div
+    key={job._id}
+    className="service-company-card"
+  >
+    
+    <JobCard
+      job={job}
+      onHide={hideJob}
+      onSave={saveJob}
+      onStatusChange={fetchJobs}
+    />
+  </div>
+))}
+    </>
+  )
+}
+{
+  !showSavedOnly && (
+    <h2 className="section-title">
+      ⭐ Recommended Jobs
+    </h2>
+  )
+}
     {filteredJobs.map((job) => (
    <JobCard
   key={job._id}

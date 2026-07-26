@@ -24,7 +24,7 @@ export const getJobs = async (
         },
       }
     );
-
+console.log(response);
 return response.data;
 };
 

@@ -19,18 +19,24 @@ const experience =
   (job.experience || "").toLowerCase();;
   const locationTier =
   getLocationTier(job.location);
+
+if (job.validity === "UNKNOWN")
+    score -= 40;
+
+
   // Role Match
 if (job.eligibilityLevel === "ENTRY_LEVEL") {
-  score += 80;
+  score += 100;
   reasons.push("Entry level role");
 }
 
 if (job.eligibilityLevel === "INTERNSHIP") {
-  score += 60;
+  score += 80;
   reasons.push("Internship role");
 }
+
 if (job.eligibilityLevel === "GENERAL") {
-  score -= 10;
+  score -= 30;
 }
 // Role Category Scoring
 
@@ -122,6 +128,47 @@ if (title.includes("support")) {
   score -= 40;
   reasons.push("Support role");
 }
+// Seniority keywords in title
+if (
+  title.includes("senior") ||
+  title.includes(" sr ") ||
+  title.startsWith("sr ")
+) {
+  score -= 180;
+  reasons.push("Senior title");
+}
+
+if (
+  title.includes("lead") ||
+  title.includes("technical lead") ||
+  title.includes("team lead")
+) {
+  score -= 250;
+  reasons.push("Lead title");
+}
+
+if (title.includes("principal")) {
+  score -= 350;
+  reasons.push("Principal title");
+}
+
+if (title.includes("staff")) {
+  score -= 300;
+  reasons.push("Staff title");
+}
+
+if (title.includes("manager")) {
+  score -= 300;
+  reasons.push("Manager title");
+}
+if (
+  title.includes(" ii") ||
+  title.includes(" iii") ||
+  title.includes(" iv")
+) {
+  score -= 120;
+  reasons.push("Experienced role");
+}
   // Experience Match
 if (experience.includes("0-1")) {
   score += 30;
@@ -139,9 +186,42 @@ if (experience.includes("1-3")) {
 if (experience.includes("0-2")) {
   score += 30;
   reasons.push("0-2 years experience");
+  if (
+  experience.includes("2-4") ||
+  experience.includes("2 to 4")
+) {
+  score -= 40;
+  reasons.push("2-4 years experience");
 }
-if (job.experienceBand === "FRESHER") {
-  score += 40;
+
+if (
+  experience.includes("3+") ||
+  experience.includes("3+ years") ||
+  experience.includes("3 years")
+) {
+  score -= 80;
+  reasons.push("3+ years experience");
+}
+
+if (
+  experience.includes("4+") ||
+  experience.includes("4+ years") ||
+  experience.includes("4 years")
+) {
+  score -= 120;
+  reasons.push("4+ years experience");
+}
+
+if (
+  experience.includes("5+") ||
+  experience.includes("5+ years") ||
+  experience.includes("5 years")
+) {
+  score -= 180;
+  reasons.push("5+ years experience");
+}
+}if (job.experienceBand === "FRESHER") {
+  score += 50;
   reasons.push("Fresher profile");
 }
 
@@ -151,8 +231,13 @@ if (job.experienceBand === "JUNIOR") {
 }
 
 if (job.experienceBand === "MID_LEVEL") {
-  score += 5;
-  reasons.push("Mid profile");
+  score -= 60;
+  reasons.push("Mid-level profile");
+}
+
+if (job.experienceBand === "SENIOR") {
+  score -= 150;
+  reasons.push("Senior profile");
 }
   // Location Match
   switch (locationTier) {
@@ -209,23 +294,23 @@ if (title.includes("developer")) {
   reasons.push("Developer role");
 }
 if (job.eligibilityLevel === "SENIOR") {
-  score -= 100;
+  score -= 180;
 }
 
 if (job.eligibilityLevel === "LEAD") {
-  score -= 120;
+  score -= 250;
 }
 
 if (job.eligibilityLevel === "MANAGER") {
-  score -= 140;
+  score -= 300;
 }
 
 if (job.eligibilityLevel === "STAFF") {
-  score -= 160;
+  score -= 350;
 }
 
 if (job.eligibilityLevel === "PRINCIPAL") {
-  score -= 200;
+  score -= 400;
 }
 const freshnessScore =
   getFreshnessScore(job.postedDate);
@@ -246,6 +331,7 @@ const normalizeTitle = (title) => {
 const getJobs = asyncHandler(async (req, res) => {
 const filter = {};
 filter.status = "ACTIVE";
+filter.validity = { $ne: "DEAD" };
 if (req.query.days) {
   const days = Number(req.query.days);
 
@@ -500,9 +586,24 @@ const recommendedJobs = filteredJobs
   .filter(
     job => job.source !== "10KCODERS"
   );
-const totalJobs =
+  const serviceJobs = recommendedJobs.filter(
+  job => job.company?.companyType === "SERVICE"
+);
+const uniqueServiceMap = new Map();
 
-  recommendedJobs.length;
+for (const job of serviceJobs) {
+  const companyId = job.company?._id.toString();
+
+  if (!uniqueServiceMap.has(companyId)) {
+    uniqueServiceMap.set(companyId, job);
+  }
+}
+
+const uniqueServiceJobs = [...uniqueServiceMap.values()];
+const nonServiceJobs = recommendedJobs.filter(
+  job => job.company?.companyType !== "SERVICE"
+);
+const totalJobs = nonServiceJobs.length;
 
 const totalPages =
   Math.ceil(totalJobs / limit);
@@ -513,19 +614,21 @@ const startIndex =
 const endIndex =
   startIndex + limit;
 
-const paginatedJobs =
-  recommendedJobs.slice(
-    startIndex,
-    endIndex
-  );
+
+const paginatedJobs = nonServiceJobs.slice(
+  startIndex,
+  endIndex
+);
+
 res.status(200).json({
   success: true,
   page,
   limit,
-  count: recommendedJobs.length,
+  count: nonServiceJobs.length,
   totalJobs,
   totalPages,
   top10kJobs,
+ serviceJobs: uniqueServiceJobs,
   data: paginatedJobs,
 });
 });
@@ -534,6 +637,7 @@ const getFresherJobs =
   asyncHandler(async (req, res) => {
 
     const filter = {
+       validity: { $ne: "DEAD" },
       roleCategory: {
         $in: [
           "BACKEND",
