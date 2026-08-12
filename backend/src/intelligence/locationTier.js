@@ -1,24 +1,32 @@
 const getLocationTier = (
   location = ""
 ) => {
-  const text =
-    location.toLowerCase();
+  const text = location
+    .toLowerCase()
+    .trim();
 
-  // Outside India — checked first, so a foreign remote/hybrid role
-  // (e.g. "Remote - United States", "London, UK - Hybrid") is correctly
-  // excluded instead of being scored as our best tier below.
-const outsideIndia = [
+  // OUTSIDE INDIA
+  // Checked first so foreign remote/hybrid roles are never
+  // mistaken for Indian remote roles.
+  const outsideIndia = [
+  // North America
   "united states",
   "usa",
   "u.s.",
   "america",
   "canada",
+  "mexico",
+
+  // United Kingdom & Ireland
   "uk",
   "united kingdom",
   "england",
   "scotland",
   "wales",
+  "northern ireland",
   "ireland",
+
+  // Europe
   "germany",
   "france",
   "spain",
@@ -28,7 +36,8 @@ const outsideIndia = [
   "switzerland",
   "austria",
   "poland",
-  "czech",
+  "czech republic",
+  "czechia",
   "hungary",
   "romania",
   "bulgaria",
@@ -37,6 +46,44 @@ const outsideIndia = [
   "sweden",
   "norway",
   "finland",
+  "iceland",
+  "greece",
+  "croatia",
+  "serbia",
+  "slovakia",
+  "slovenia",
+  "estonia",
+  "latvia",
+  "lithuania",
+  "luxembourg",
+  "malta",
+  "cyprus",
+  "ukraine",
+  "belarus",
+  "bosnia",
+  "montenegro",
+  "north macedonia",
+  "albania",
+  "moldova",
+
+  // Middle East
+  "uae",
+  "united arab emirates",
+  "dubai",
+  "abu dhabi",
+  "qatar",
+  "saudi arabia",
+  "saudi",
+  "oman",
+  "bahrain",
+  "kuwait",
+  "israel",
+  "jordan",
+  "lebanon",
+  "turkey",
+  "türkiye",
+
+  // East & Southeast Asia
   "singapore",
   "japan",
   "china",
@@ -44,19 +91,57 @@ const outsideIndia = [
   "taiwan",
   "south korea",
   "korea",
+  "philippines",
+  "malaysia",
+  "indonesia",
+  "thailand",
+  "vietnam",
+  "myanmar",
+  "cambodia",
+  "laos",
+  "brunei",
+
+  // South Asia — non-India
+  "sri lanka",
+  "bangladesh",
+  "pakistan",
+  "nepal",
+  "bhutan",
+  "maldives",
+  "afghanistan",
+
+  // Africa
+  "south africa",
+  "egypt",
+  "nigeria",
+  "kenya",
+  "ghana",
+  "morocco",
+  "tunisia",
+  "algeria",
+  "ethiopia",
+  "tanzania",
+  "uganda",
+  "rwanda",
+  "mauritius",
+
+  // Oceania
   "australia",
   "new zealand",
-  "mexico",
+  "fiji",
+
+  // South America
   "brazil",
   "argentina",
-  "uae",
-  "dubai",
-  "abu dhabi",
-  "qatar",
-  "saudi",
-  "oman",
+  "chile",
+  "colombia",
+  "peru",
+  "uruguay",
+  "ecuador",
+  "bolivia",
+  "paraguay",
 
-  // Cities
+  // Cities / regions commonly appearing without country
   "london",
   "berlin",
   "munich",
@@ -85,32 +170,17 @@ const outsideIndia = [
   "sydney",
   "melbourne",
   "budapest",
-"hungary",
-// South Asia
-"philippines",
-"sri lanka",
-"malaysia",
-"indonesia",
-"thailand",
-"vietnam",
-"bangladesh",
-"pakistan",
-"nepal",
-"bhutan",
-"myanmar",
-
-// Cities seen during testing
-"galway",
-"colombo",
-"manila",
-"washington",
-"boston",
-"chicago",
-"atlanta",
-"dallas",
-"phoenix",
-"san francisco",
-"los angeles",
+  "galway",
+  "colombo",
+  "manila",
+  "washington",
+  "boston",
+  "chicago",
+  "atlanta",
+  "dallas",
+  "phoenix",
+  "san francisco",
+  "los angeles",
 ];
   if (
     outsideIndia.some((place) =>
@@ -120,101 +190,96 @@ const outsideIndia = [
     return "OUTSIDE_INDIA";
   }
 
-  // Remote
+  // TIER 1 — Remote India
   if (
     text.includes("remote") ||
     text.includes("work from home") ||
     text.includes("wfh") ||
     text.includes("anywhere in india") ||
-    text.includes("hybrid")||
-    text.includes("remote india")||
-text.includes("india remote")||
-text.includes("remote - india")||
-text.includes("work from anywhere in india")
+    text.includes("remote india") ||
+    text.includes("india remote") ||
+    text.includes("remote - india") ||
+    text.includes("work from anywhere in india")
   ) {
     return "TIER_1";
   }
 
-  // Hyderabad (Top preference)
+  // TIER 2 — Hyderabad
   if (
     text.includes("hyderabad")
   ) {
     return "TIER_2";
   }
-// Preferred cities
-if (
-  text.includes("chennai") ||
-  text.includes("pune") ||
-  text.includes("noida") ||
-  text.includes("gurgaon") ||
-  text.includes("gurugram") ||
-  text.includes("greater noida")
-) {
-  return "TIER_3";
-}
 
-// Acceptable cities
-if (
-  text.includes("bangalore") ||
-  text.includes("bengaluru") ||
-  text.includes("mumbai") ||
-  text.includes("navi mumbai") ||
-  text.includes("delhi") ||
-  text.includes("new delhi") ||
-  text.includes("ahmedabad") ||
-  text.includes("coimbatore") ||
-  text.includes("kochi") ||
-  text.includes("ernakulam") ||
-  text.includes("thiruvananthapuram") ||
-  text.includes("trivandrum") ||
-  text.includes("visakhapatnam") ||
-  text.includes("vizag") ||
-  text.includes("vijayawada") ||
-  text.includes("mysore") ||
-  text.includes("mysuru") ||
-  text.includes("jaipur") ||
-  text.includes("indore") ||
-  text.includes("nagpur") ||
-  text.includes("kolkata") ||
-  text.includes("bhubaneswar") ||
-  text.includes("bhubaneshwar") ||
-  text.includes("lucknow") ||
-  text.includes("vadodara") ||
-  text.includes("baroda") ||
-  text.includes("surat") ||
-  text.includes("chandigarh") ||
-  text.includes("mohali") ||
-  text.includes("trichy") ||
-  text.includes("tiruchirappalli") ||
-  text.includes("madurai") ||
-  text.includes("mangalore") ||
-  text.includes("mangaluru")||
-  text.includes("hubli")||
-text.includes("dharwad")||
-text.includes("rajkot")||
-text.includes("raipur")||
-text.includes("nashik")||
-text.includes("aurangabad")||
-text.includes("warangal")||
-text.includes("tirupati"),
-text.includes("guntur")
-) {
-  return "TIER_4";
-}
-
-
-  
-
-  // India but not preferred
+  // TIER 3 — Preferred cities
   if (
-  text.includes("india") ||
-  text.includes(", in") ||
-  text.endsWith(" in")
-) {
+    text.includes("bangalore") ||
+    text.includes("bengaluru") ||
+    text.includes("chennai") ||
+    text.includes("pune") ||
+    text.includes("noida") ||
+    text.includes("gurgaon") ||
+    text.includes("gurugram") ||
+    text.includes("greater noida")
+  ) {
+    return "TIER_3";
+  }
+
+  // TIER 4 — Other acceptable Indian cities
+  if (
+    text.includes("mumbai") ||
+    text.includes("navi mumbai") ||
+    text.includes("delhi") ||
+    text.includes("new delhi") ||
+    text.includes("ahmedabad") ||
+    text.includes("coimbatore") ||
+    text.includes("kochi") ||
+    text.includes("ernakulam") ||
+    text.includes("thiruvananthapuram") ||
+    text.includes("trivandrum") ||
+    text.includes("visakhapatnam") ||
+    text.includes("vizag") ||
+    text.includes("vijayawada") ||
+    text.includes("mysore") ||
+    text.includes("mysuru") ||
+    text.includes("jaipur") ||
+    text.includes("indore") ||
+    text.includes("nagpur") ||
+    text.includes("kolkata") ||
+    text.includes("bhubaneswar") ||
+    text.includes("bhubaneshwar") ||
+    text.includes("lucknow") ||
+    text.includes("vadodara") ||
+    text.includes("baroda") ||
+    text.includes("surat") ||
+    text.includes("chandigarh") ||
+    text.includes("mohali") ||
+    text.includes("trichy") ||
+    text.includes("tiruchirappalli") ||
+    text.includes("madurai") ||
+    text.includes("mangalore") ||
+    text.includes("mangaluru") ||
+    text.includes("hubli") ||
+    text.includes("dharwad") ||
+    text.includes("rajkot") ||
+    text.includes("raipur") ||
+    text.includes("nashik") ||
+    text.includes("aurangabad") ||
+    text.includes("warangal") ||
+    text.includes("tirupati") ||
+    text.includes("guntur")
+  ) {
+    return "TIER_4";
+  }
+
+  // TIER 5 — India, but not a specifically classified city
+  if (
+    text.includes("india")
+  ) {
     return "TIER_5";
   }
 
-  // Unknown
+  // Unknown / insufficient location information
   return "UNKNOWN";
 };
 

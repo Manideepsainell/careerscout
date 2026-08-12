@@ -129,6 +129,7 @@ externalJobId: {
   default: "",
 },
 
+
     description: {
       type: String,
       default: "",
@@ -211,7 +212,19 @@ roleCategory: {
   type: String,
   default: "OTHER",
 },
-
+locationTier: {
+  type: String,
+  enum: [
+    "TIER_1",
+    "TIER_2",
+    "TIER_3",
+    "TIER_4",
+    "TIER_5",
+    "OUTSIDE_INDIA",
+    "UNKNOWN",
+  ],
+  default: "UNKNOWN",
+},
 eligibilityLevel: {
   type: String,
   default: "GENERAL",
@@ -248,7 +261,21 @@ experienceBand: {
   postedDate: {
   type: Date,
 },
+applicationDeadline: {
+  type: Date,
+  default: null,
+},
 
+applicationUrgency: {
+  type: String,
+  enum: [
+    "URGENT",
+    "SOON",
+    "OPEN",
+    "UNKNOWN",
+  ],
+  default: "UNKNOWN",
+},
 lastSeenAt: {
   type: Date,
   default: Date.now,

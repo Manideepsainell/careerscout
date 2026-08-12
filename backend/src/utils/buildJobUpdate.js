@@ -7,10 +7,11 @@ const buildJobUpdate = (job) => ({
   department: job.department,
   team: job.team,
   workplace: job.workplace,
-jobUrl: job.jobUrl,
-detailUrl: job.detailUrl,
 
-description: job.description,
+  jobUrl: job.jobUrl,
+  detailUrl: job.detailUrl,
+
+  description: job.description,
   experience: job.experience,
 
   experienceYearsMin: job.experienceYearsMin,
@@ -21,9 +22,6 @@ description: job.description,
   salary: job.salary,
 
   source: job.source,
-  jobUrl: job.jobUrl,
-
-  description: job.description,
 
   primaryLocation: job.primaryLocation,
   secondaryLocations: job.secondaryLocations,
@@ -33,6 +31,20 @@ description: job.description,
   roleCategory: job.roleCategory,
   eligibilityLevel: job.eligibilityLevel,
   experienceBand: job.experienceBand,
+
+  // Workday metadata
+  canApply: job.canApply,
+  endDate: job.endDate,
+  posted: job.posted,
+  applicationDeadline:
+  job.applicationDeadline,
+
+applicationUrgency:
+  job.applicationUrgency,
+  startDate: job.startDate,
+  timeLeftToApply: job.timeLeftToApply,
+  jobPostingEndDateAsText:
+    job.jobPostingEndDateAsText,
 
   status: "ACTIVE",
   postedDate: job.postedDate,

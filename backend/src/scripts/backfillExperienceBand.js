@@ -9,12 +9,17 @@ try {
 
   console.log('Connected to MongoDB');
 
-  const jobs = await Job.find({});
+  const jobs = await Job.find({
+  source: "GREENHOUSE",
+});
 
   let updated = 0;
 
   for (const job of jobs) {
-    const newBand = getExperienceBand(job.title);
+    const newBand = getExperienceBand(
+  job.title,
+  job.description
+);
 
     if (job.experienceBand !== newBand) {
       job.experienceBand = newBand;

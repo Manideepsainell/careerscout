@@ -17,8 +17,7 @@ const calculateScore = (job) => {
 
 const experience =
   (job.experience || "").toLowerCase();;
-  const locationTier =
-  getLocationTier(job.location);
+ const locationTier = job.locationTier;
 
 if (job.validity === "UNKNOWN")
     score -= 40;
@@ -161,13 +160,20 @@ if (title.includes("manager")) {
   score -= 300;
   reasons.push("Manager title");
 }
-if (
-  title.includes(" ii") ||
-  title.includes(" iii") ||
-  title.includes(" iv")
-) {
-  score -= 120;
-  reasons.push("Experienced role");
+// Experience Band
+if (job.experienceBand === "JUNIOR") {
+  score += 20;
+  reasons.push("Junior profile");
+}
+
+if (job.experienceBand === "MID_LEVEL") {
+  score -= 40;
+  reasons.push("Mid-level profile");
+}
+
+if (job.experienceBand === "SENIOR") {
+  score -= 180;
+  reasons.push("Senior profile");
 }
   // Experience Match
 if (experience.includes("0-1")) {
@@ -268,9 +274,16 @@ if (job.experienceBand === "SENIOR") {
     break;
 
   case "OUTSIDE_INDIA":
-    score -= 80;
-    reasons.push("Outside preferred geography");
-    break;
+  console.log(
+    "OUTSIDE_INDIA PENALTY APPLIED:",
+    job.title,
+    job.location,
+    job.locationTier
+  );
+
+  score -= 150;
+  reasons.push("Outside preferred geography");
+  break;
 }
   //Role Match
   
@@ -328,10 +341,19 @@ const normalizeTitle = (title) => {
     .replace(/[^a-z0-9 ]/g, "")
     .trim();
 };
+
 const getJobs = asyncHandler(async (req, res) => {
+console.log(
+  "GET /api/jobs",
+  Date.now(),
+  req.query
+);
 const filter = {};
 filter.status = "ACTIVE";
 filter.validity = { $ne: "DEAD" };
+if (req.query.source) {
+  filter.source = req.query.source;
+}
 if (req.query.days) {
   const days = Number(req.query.days);
 
@@ -561,7 +583,6 @@ else {
     ...remainingJobs,
   ];
 }
-if (req.query.sort === "latest") {
 
   const cutoffDate = new Date();
 
@@ -575,7 +596,6 @@ if (req.query.sort === "latest") {
       new Date(job.postedDate) >= cutoffDate
   );
 
-}
 const top10kJobs = filteredJobs
   .filter(
     job => job.source === "10KCODERS"
@@ -839,6 +859,7 @@ const getNewJobs =
 
   });
 export {
+  calculateScore,
   getJobs,
   getNewJobs,
   getFresherJobs,

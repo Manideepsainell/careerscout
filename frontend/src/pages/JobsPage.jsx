@@ -84,16 +84,18 @@ const [page, setPage] =
   setExperienceBand
 ] = useState("");
   const fetchJobs = async () => {
+      console.trace("FETCH JOBS CALLED");
+
       try {
-const response =
-  await getJobs({
-    days,
-    location,
-    experienceBand,
-    role,
-    page,
-    sort
-  });
+const response = await getJobs({
+  days,
+  location,
+  experienceBand,
+  role,
+  page,
+  sort,
+  source: "GREENHOUSE"
+});
 
 setJobs(response.data);
 

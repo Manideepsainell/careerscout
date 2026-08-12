@@ -39,8 +39,7 @@ const getEligibilityLevel = (
   ) {
     return "LEAD";
   }
-
-  // MANAGER
+   // MANAGER
   if (
     /\b(manager|director|head|vice president|assistant vice president|vp|avp|rvp)\b/.test(
       normalizedTitle
@@ -48,10 +47,35 @@ const getEligibilityLevel = (
   ) {
     return "MANAGER";
   }
+  // Associate roles without an explicit entry-level technical/business title
+if (
+  /\bassociate\b/.test(normalizedTitle) &&
+  !/\b(software engineer|software developer|engineer|developer|sde|account executive)\b/.test(
+    normalizedTitle
+  )
+) {
+  return "GENERAL";
+}
+  // ENTRY LEVEL
+  if (
+    /\b(engineer|developer|software engineer|software developer)\s*(i|1)\b/.test(
+      normalizedTitle
+    ) ||
+    /\bsde\s*(i|1)\b/.test(
+      normalizedTitle
+    ) ||
+    /\b(associate|graduate|graduate engineer|graduate trainee|campus|campus hire|fresher|entry level|entry-level|junior|trainee|amts)\b/.test(
+      normalizedTitle
+    )
+  ) {
+    return "ENTRY_LEVEL";
+  }
+
+ 
 
   // SENIOR
   if (
-    /\b(senior|architect|distinguished|expert|specialist|consultant)\b/.test(
+    /\b(senior|architect|distinguished|expert)\b/.test(
       normalizedTitle
     ) ||
     /\bsr\b|\bsr\./.test(
@@ -79,20 +103,7 @@ const getEligibilityLevel = (
     return "MID_LEVEL";
   }
 
-  // ENTRY LEVEL
-  if (
-    /\b(engineer|developer|software engineer|software developer)\s*(i|1)\b/.test(
-      normalizedTitle
-    ) ||
-    /\bsde\s*(i|1)\b/.test(
-      normalizedTitle
-    ) ||
-    /\b(associate|graduate|graduate engineer|graduate trainee|campus|campus hire|fresher|entry level|entry-level|junior|trainee|amts)\b/.test(
-      normalizedTitle
-    )
-  ) {
-    return "ENTRY_LEVEL";
-  }
+  
 
   return "GENERAL";
 };

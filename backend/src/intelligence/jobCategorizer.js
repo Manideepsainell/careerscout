@@ -34,6 +34,12 @@ const categorizeRole = (title = "", description = "") => {
     "account manager",
     "business development",
     "customer success",
+    "account executive",
+"sales executive",
+"sales representative",
+"sales development",
+"business development representative",
+"account executive",
   ];
 
   const marketingKeywords = [
@@ -65,33 +71,34 @@ const erpKeywords = [
   "oracle technical developer",
 "hcm",
 ];
-  const aiKeywords = [
-    "machine learning",
-    "ml engineer",
-    "ml developer",
-    "ai engineer",
-    "artificial intelligence",
-    "genai",
-    "generative ai",
-    "llm",
-    "large language model",
-    "computer vision",
-    "nlp",
-    "deep learning",
-    "data scientist",
-    "applied scientist",
-    "rag",
-"langchain",
-"langgraph",
-"hugging face",
-"huggingface",
-"embedding",
-"embeddings",
-"vector database",
-"pinecone",
-"weaviate",
-"milvus",
-  ];
+const aiKeywords = [
+  "ai",
+  "machine learning",
+  "ml engineer",
+  "ml developer",
+  "ai engineer",
+  "artificial intelligence",
+  "genai",
+  "generative ai",
+  "llm",
+  "large language model",
+  "computer vision",
+  "nlp",
+  "deep learning",
+  "data scientist",
+  "applied scientist",
+  "rag",
+  "langchain",
+  "langgraph",
+  "hugging face",
+  "huggingface",
+  "embedding",
+  "embeddings",
+  "vector database",
+  "pinecone",
+  "weaviate",
+  "milvus",
+];
 
   const securityKeywords = [
     "security",
@@ -390,6 +397,38 @@ const nonSoftwareEngineeringKeywords = [
   ];
  const normalizedDescription =
     (description || "").toLowerCase();
+    // BUSINESS ROLES — TITLE HAS PRIORITY
+if (
+  hrKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "HR";
+}
+
+if (
+  salesKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "SALES";
+}
+
+if (
+  marketingKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "MARKETING";
+}
+
+if (
+  productKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  )
+) {
+  return "PRODUCT";
+}
 // NON-ENGINEERING
 if (
   nonEngineeringKeywords.some(keyword =>
@@ -553,8 +592,44 @@ if (
   ) {
     return "BACKEND";
   }
- if (normalizedDescription) {
-  // AI / ML
+  const isSoftwareRole =
+  generalSoftwareKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  aiKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  securityKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  devopsKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  dataKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  embeddedKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  hardwareKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  qaKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  mobileKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  frontendKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  fullStackKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  ) ||
+  backendKeywords.some(keyword =>
+    hasKeyword(normalizedTitle, keyword)
+  );
+if (normalizedDescription && isSoftwareRole) {
   if (
     aiKeywords.some(keyword =>
       hasKeyword(normalizedDescription, keyword)

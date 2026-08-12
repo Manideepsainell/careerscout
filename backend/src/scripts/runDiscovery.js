@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
+import runPostDiscoveryPipeline from "../services/postDiscoveryPipeline.js";
 console.log("1. File loaded");
 
 import runDiscovery from "../services/discoveryRunner.js";
@@ -28,7 +28,7 @@ const start = async () => {
     console.log("7. Calling runDiscovery()");
 
     await runDiscovery();
-
+await runPostDiscoveryPipeline();
     console.log("8. runDiscovery() finished");
 
     console.log("9. Exiting with code 0");
