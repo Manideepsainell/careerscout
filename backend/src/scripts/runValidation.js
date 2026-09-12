@@ -10,13 +10,22 @@ const start = async () => {
 
     console.log("MongoDB Connected");
 
-  await validateJobs({
-  source: "GREENHOUSE",
-  validity: "UNKNOWN",
-});
+    await validateJobs({
+      source: "ASHBY",
+      validity: "UNKNOWN",
+    });
+
+    console.log("VALIDATION FUNCTION RETURNED");
+
+    await mongoose.disconnect();
+
+    console.log("MongoDB Disconnected");
+
     process.exit(0);
   } catch (error) {
+    console.error("VALIDATION RUN FAILED:");
     console.error(error);
+
     process.exit(1);
   }
 };

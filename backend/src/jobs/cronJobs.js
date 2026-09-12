@@ -1,49 +1,35 @@
 import cron from "node-cron";
 import runDiscovery from "../services/discoveryRunner.js";
+
 let isRunning = false;
+
 const startCronJobs = () => {
-    
-cron.schedule(
-  "0 */6 * * *",
-  async () => {
+  // TEMPORARILY DISABLED
+  return;
 
-    if (isRunning) {
-      console.log(
-        "Previous crawl still running"
-      );
+  cron.schedule(
+    "0 */6 * * *",
+    async () => {
+      if (isRunning) {
+        console.log("Previous crawl still running");
+        return;
+      }
 
-      return;
+      try {
+        isRunning = true;
+
+        console.log("Running scheduled crawl...");
+
+        await runDiscovery();
+
+        console.log("Scheduled crawl completed");
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        isRunning = false;
+      }
     }
-
-    try {
-
-      isRunning = true;
-
-      console.log(
-        "Running scheduled crawl..."
-      );
-
-      await runDiscovery();
-
-      console.log(
-        "Scheduled crawl completed"
-      );
-
-    } catch (error) {
-
-      console.log(
-        error.message
-      );
-
-    } finally {
-
-      isRunning = false;
-
-    }
-
-  }
-);
-
+  );
 };
 
 export default startCronJobs;

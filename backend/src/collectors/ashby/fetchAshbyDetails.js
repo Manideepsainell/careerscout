@@ -1,4 +1,5 @@
 import axios from "axios";
+import fetchAshbyPublicMetadata from "./fetchAshbyPublicMetadata.js";
 
 const query = `
 query ApiJobPosting(
@@ -28,8 +29,7 @@ const fetchAshbyDetails = async (
     const response = await axios.post(
       job.detailUrl,
       {
-        operationName:
-          "ApiJobPosting",
+        operationName: "ApiJobPosting",
 
         variables: {
           organizationHostedJobsPageName:
@@ -58,6 +58,11 @@ const fetchAshbyDetails = async (
       return {};
     }
 
+    // Ashby GraphQL does not expose datePosted.
+    // The public JobPosting JSON-LD does.
+    const publicMetadata =
+      await fetchAshbyPublicMetadata(job);
+
     return {
       description:
         item.descriptionHtml || "",
@@ -79,8 +84,19 @@ const fetchAshbyDetails = async (
 
       salary:
         item.compensationTierSummary || "",
+
+      postedDate:
+        publicMetadata.postedDate || null,
     };
   } catch (error) {
+    console.error(
+      `[Ashby Details Failed] ${job.title}`
+    );
+
+    console.error(
+      error.code || error.message
+    );
+
     return {};
   }
 };

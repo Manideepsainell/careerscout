@@ -1,14 +1,18 @@
 import validateJobs from "./validateJobs.js";
 
 const runPostDiscoveryPipeline = async () => {
-  console.log("\n========== POST DISCOVERY PIPELINE ==========\n");
+  console.log(
+    "\n========== ASHBY VALIDATION ==========\n"
+  );
 
   await validateJobs({
-    source: "WORKDAY",
+    source: "ASHBY",
     validity: "UNKNOWN",
   });
 
-  console.log("\n========== POST DISCOVERY COMPLETE ==========\n");
+  console.log(
+    "\n========== ASHBY VALIDATION COMPLETE ==========\n"
+  );
 };
 
 export default runPostDiscoveryPipeline;

@@ -351,6 +351,7 @@ console.log(
 const filter = {};
 filter.status = "ACTIVE";
 filter.validity = { $ne: "DEAD" };
+filter.locationTier = { $ne: "OUTSIDE_INDIA" };
 if (req.query.source) {
   filter.source = req.query.source;
 }
@@ -655,27 +656,27 @@ res.status(200).json({
 
 const getFresherJobs =
   asyncHandler(async (req, res) => {
+const filter = {
+  validity: { $ne: "DEAD" },
+  locationTier: { $ne: "OUTSIDE_INDIA" },
+  roleCategory: {
+    $in: [
+      "BACKEND",
+      "FULLSTACK",
+      "FRONTEND",
+      "DEVOPS",
+      "DATA_ENGINEERING",
+    ],
+  },
 
-    const filter = {
-       validity: { $ne: "DEAD" },
-      roleCategory: {
-        $in: [
-          "BACKEND",
-          "FULLSTACK",
-          "FRONTEND",
-          "DEVOPS",
-          "DATA_ENGINEERING"
-        ],
-      },
-
-      eligibilityLevel: {
-        $in: [
-          "ENTRY_LEVEL",
-          "INTERNSHIP",
-          "GENERAL"
-        ],
-      },
-    };
+  eligibilityLevel: {
+    $in: [
+      "ENTRY_LEVEL",
+      "INTERNSHIP",
+      "GENERAL",
+    ],
+  },
+};
 console.log(filter);
 console.log(sortOption);
     const jobs =

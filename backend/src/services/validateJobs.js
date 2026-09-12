@@ -3,7 +3,7 @@ import validateJob from "../validity/validateJob.js";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const BATCH_SIZE = 20;
+const BATCH_SIZE = 5;
 
 const validateJobs = async (query = {}) => {
   let alive = 0;

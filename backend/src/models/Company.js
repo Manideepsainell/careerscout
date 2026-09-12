@@ -139,15 +139,54 @@ successFactorsConfig: {
       default: "Startup",
     },
 
-    location: {
-      type: String,
-      default: "",
-    },
+   location: {
+  type: String,
+  default: "",
+},
 
-    active: {
-      type: Boolean,
-      default: true,
-    },
+locationMetadata: {
+  hyderabad: {
+    type: String,
+    enum: [
+      "MAIN_BRANCH",
+      "BRANCH",
+      "NOT_FOUND",
+      "UNCLEAR",
+      "REMOTE_ONLY",
+    ],
+    default: "UNCLEAR",
+  },
+
+  indiaLocations: {
+    type: [String],
+    default: [],
+  },
+
+  remoteIndia: {
+    type: Boolean,
+    default: false,
+  },
+
+  verified: {
+    type: Boolean,
+    default: false,
+  },
+
+  verifiedAt: {
+    type: Date,
+    default: null,
+  },
+
+  source: {
+    type: String,
+    default: "",
+  },
+},
+
+active: {
+  type: Boolean,
+  default: true,
+},
 
     crawlStatus: {
       type: String,
